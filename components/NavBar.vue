@@ -80,23 +80,38 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Clock </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> No-Flip Method </a>
+            <a class="navbar-item" href="/clock/clock-no-flip">
+              No-Flip Method
+            </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Other </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> 各種解法 </a>
-            <a class="navbar-item" href="/"> 知っておいてほしいこと </a>
-            <a class="navbar-item" href="/"> 続ける意味について </a>
+            <a class="navbar-item" href="/other/3x3x3-method"> 各種解法 </a>
+            <a class="navbar-item" href="/other/for-non-cubers">
+              知っておいてほしいこと
+            </a>
+            <a class="navbar-item" href="/other/advent-calendar2014">
+              続ける意味について
+            </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Tooks </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> VisualCube Editor </a>
-            <a class="navbar-item" href="/"> Megaminx Image editor </a>
-            <a class="navbar-item" href="/"> PLL Trainer </a>
+            <a class="navbar-item" href="https://visualcube.roudai.net/">
+              VisualCube Editor
+            </a>
+            <a
+              class="navbar-item"
+              href="https://roudai.github.io/MegaminxImageEditor/"
+            >
+              Megaminx Image editor
+            </a>
+            <a class="navbar-item" href="https://roudai.github.io/PLLTrainer/">
+              PLL Trainer
+            </a>
           </div>
         </div>
       </div>
