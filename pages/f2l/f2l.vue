@@ -1,11 +1,7 @@
 <template>
   <div class="content m-2">
     <h2>F2L手順</h2>
-    <div
-      v-for="(item, index) in f2l"
-      :key="index"
-      class="columns is-mobile is-vcentered is-marginless"
-    >
+    <div v-for="(item, index) in f2l" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-1 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'f2l' + index"></div>

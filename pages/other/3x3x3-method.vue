@@ -11,10 +11,7 @@
     </ol>
 
     <h3>
-      <a
-        href="https://ja.wikipedia.org/wiki/CFOP%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89"
-        >CFOP Method (Fridrich Method)</a
-      >
+      <a href="https://ja.wikipedia.org/wiki/CFOP%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">CFOP Method (Fridrich Method)</a>
     </h3>
     <ol>
       <li>Cross</li>
@@ -73,9 +70,7 @@
     </ol>
 
     <h3>
-      <a href="https://www.speedsolving.com/wiki/index.php/8355_Method"
-        >8835 Method</a
-      >
+      <a href="https://www.speedsolving.com/wiki/index.php/8355_Method">8835 Method</a>
     </h3>
     <ol>
       <li>Cross</li>
@@ -87,9 +82,7 @@
     </ol>
 
     <h3>
-      <a href="https://mzrg.com/rubik/methods/TF/"
-        >Triangular Francisco Method</a
-      >
+      <a href="https://mzrg.com/rubik/methods/TF/">Triangular Francisco Method</a>
     </h3>
     <ol>
       <li>トライアングル</li>
@@ -110,9 +103,7 @@
     </ol>
 
     <h3>
-      <a href="https://www.ryanheise.com/cube/heise_method.html"
-        >Heise Method</a
-      >
+      <a href="https://www.ryanheise.com/cube/heise_method.html">Heise Method</a>
     </h3>
     <ol>
       <li>2x2x1ブロックx4</li>
@@ -122,22 +113,15 @@
     </ol>
 
     <h3>
-      <a
-        href="https://www.ryanheise.com/cube/human_thistlethwaite_algorithm.html"
-        >Human Thistlethwaite Algorithm</a
-      >
+      <a href="https://www.ryanheise.com/cube/human_thistlethwaite_algorithm.html">Human Thistlethwaite Algorithm</a>
     </h3>
 
     <h3>
-      <a href="https://www.speedsolving.com/wiki/index.php/Snyder_Method"
-        >Snyder Method</a
-      >
+      <a href="https://www.speedsolving.com/wiki/index.php/Snyder_Method">Snyder Method</a>
     </h3>
 
     <h3>
-      <a href="https://www.speedsolving.com/wiki/index.php/Hahn_Method"
-        >Hahn Method</a
-      >
+      <a href="https://www.speedsolving.com/wiki/index.php/Hahn_Method">Hahn Method</a>
     </h3>
 
     <h3>
@@ -147,22 +131,15 @@
     </h3>
 
     <h3>
-      <a href="https://www.stefan-pochmann.info/spocc/blindsolving/M2R2/"
-        >M2/R2 Method</a
-      >
+      <a href="https://www.stefan-pochmann.info/spocc/blindsolving/M2R2/">M2/R2 Method</a>
     </h3>
 
     <h3>
-      <a href="https://www.speedsolving.com/wiki/index.php/TuRBo"
-        >TuRBo Method</a
-      >
+      <a href="https://www.speedsolving.com/wiki/index.php/TuRBo">TuRBo Method</a>
     </h3>
 
     <h3>
-      <a
-        href="https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method"
-        >Beyer-Hardwick Method</a
-      >
+      <a href="https://www.speedsolving.com/wiki/index.php/Beyer-Hardwick_Method">Beyer-Hardwick Method</a>
     </h3>
   </div>
 </template>

@@ -1,9 +1,5 @@
 <template>
-  <nav
-    class="navbar is-dark p-2"
-    role="navigation"
-    aria-label="main navigation"
-  >
+  <nav class="navbar is-dark p-2" role="navigation" aria-label="main navigation">
     <div class="navbar-brand ml-1">
       <a class="navbar-item" href="/"> roudai.net </a>
 
@@ -29,9 +25,7 @@
           <div class="navbar-dropdown">
             <a class="navbar-item" href="/f2l/f2l"> F2L手順 </a>
             <a class="navbar-item" href="/f2l/f2l-advanced"> 発展形F2L </a>
-            <a class="navbar-item" href="/f2l/winter-variation">
-              Winter Variation
-            </a>
+            <a class="navbar-item" href="/f2l/winter-variation"> Winter Variation </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
@@ -54,78 +48,47 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> BLD </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/bld/bld-introduction">
-              ルービックキューブを目隠しで揃えるには
-            </a>
-            <a class="navbar-item" href="/bld/bld-method">
-              ルービックキューブ目隠しの解法
-            </a>
-            <a class="navbar-item" href="/bld/old-pochmann-corner">
-              Old Pochmann method(corner)
-            </a>
+            <a class="navbar-item" href="/bld/bld-introduction"> ルービックキューブを目隠しで揃えるには </a>
+            <a class="navbar-item" href="/bld/bld-method"> ルービックキューブ目隠しの解法 </a>
+            <a class="navbar-item" href="/bld/old-pochmann-corner"> Old Pochmann method(corner) </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Megaminx </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/megaminx/megaminx-eo">
-              Megaminx EO
-            </a>
-            <a class="navbar-item" href="/megaminx/megaminx-co">
-              Megaminx CO
-            </a>
-            <a class="navbar-item" href="/megaminx/megaminx-ep">
-              Megaminx EP
-            </a>
-            <a class="navbar-item" href="/megaminx/megaminx-cp">
-              Megaminx CP
-            </a>
+            <a class="navbar-item" href="/megaminx/megaminx-eo"> Megaminx EO </a>
+            <a class="navbar-item" href="/megaminx/megaminx-co"> Megaminx CO </a>
+            <a class="navbar-item" href="/megaminx/megaminx-ep"> Megaminx EP </a>
+            <a class="navbar-item" href="/megaminx/megaminx-cp"> Megaminx CP </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> FMC </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/fmc/intro-fmc">
-              最小手数競技の紹介
-            </a>
+            <a class="navbar-item" href="/fmc/intro-fmc"> 最小手数競技の紹介 </a>
             <a class="navbar-item" href="/"> Domino Reduction </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Clock </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/clock/clock-no-flip">
-              No-Flip Method
-            </a>
+            <a class="navbar-item" href="/clock/clock-no-flip"> No-Flip Method </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Other </a>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="/other/3x3x3-method"> 各種解法 </a>
-            <a class="navbar-item" href="/other/for-non-cubers">
-              知っておいてほしいこと
-            </a>
-            <a class="navbar-item" href="/other/advent-calendar2014">
-              続ける意味について
-            </a>
+            <a class="navbar-item" href="/other/for-non-cubers"> 知っておいてほしいこと </a>
+            <a class="navbar-item" href="/other/advent-calendar2014"> 続ける意味について </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Tooks </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://visualcube.roudai.net/">
-              VisualCube Editor
-            </a>
-            <a
-              class="navbar-item"
-              href="https://roudai.github.io/MegaminxImageEditor/"
-            >
-              Megaminx Image editor
-            </a>
-            <a class="navbar-item" href="https://roudai.github.io/PLLTrainer/">
-              PLL Trainer
-            </a>
+            <a class="navbar-item" href="https://visualcube.roudai.net/"> VisualCube Editor </a>
+            <a class="navbar-item" href="https://roudai.github.io/MegaminxImageEditor/"> Megaminx Image editor </a>
+            <a class="navbar-item" href="https://roudai.github.io/PLLTrainer/"> PLL Trainer </a>
           </div>
         </div>
       </div>

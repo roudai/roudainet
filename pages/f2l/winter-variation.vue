@@ -2,11 +2,7 @@
   <div class="content m-2">
     <h2>Winter Variation</h2>
     <h3>コーナー反転なし</h3>
-    <div
-      v-for="(item, index) in winterVariation0"
-      :key="index"
-      class="columns is-mobile is-vcentered is-marginless"
-    >
+    <div v-for="(item, index) in winterVariation0" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation0' + index"></div>
@@ -17,11 +13,7 @@
     </div>
 
     <h3>コーナー反転1つ</h3>
-    <div
-      v-for="(item, index) in winterVariation1"
-      :key="index"
-      class="columns is-mobile is-vcentered is-marginless"
-    >
+    <div v-for="(item, index) in winterVariation1" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation1' + index"></div>
@@ -32,11 +24,7 @@
     </div>
 
     <h3>コーナー反転2つ</h3>
-    <div
-      v-for="(item, index) in winterVariation2"
-      :key="index"
-      class="columns is-mobile is-vcentered is-marginless"
-    >
+    <div v-for="(item, index) in winterVariation2" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation2' + index"></div>
@@ -47,11 +35,7 @@
     </div>
 
     <h3>コーナー反転3つ</h3>
-    <div
-      v-for="(item, index) in winterVariation3"
-      :key="index"
-      class="columns is-mobile is-vcentered is-marginless"
-    >
+    <div v-for="(item, index) in winterVariation3" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation3' + index"></div>
@@ -120,10 +104,7 @@ export default {
       paramter[key].width = this.width
       paramter[key].height = this.height
       paramter[key].case = this.winterVariation0[key][0]
-      SRVisualizer.cubePNG(
-        document.getElementById('winterVariation0' + key),
-        paramter[key]
-      )
+      SRVisualizer.cubePNG(document.getElementById('winterVariation0' + key), paramter[key])
     }
 
     for (const key in this.winterVariation1) {
@@ -133,10 +114,7 @@ export default {
       paramter[key].width = this.width
       paramter[key].height = this.height
       paramter[key].case = this.winterVariation1[key][0]
-      SRVisualizer.cubePNG(
-        document.getElementById('winterVariation1' + key),
-        paramter[key]
-      )
+      SRVisualizer.cubePNG(document.getElementById('winterVariation1' + key), paramter[key])
     }
 
     for (const key in this.winterVariation2) {
@@ -146,10 +124,7 @@ export default {
       paramter[key].width = this.width
       paramter[key].height = this.height
       paramter[key].case = this.winterVariation2[key][0]
-      SRVisualizer.cubePNG(
-        document.getElementById('winterVariation2' + key),
-        paramter[key]
-      )
+      SRVisualizer.cubePNG(document.getElementById('winterVariation2' + key), paramter[key])
     }
 
     for (const key in this.winterVariation3) {
@@ -159,10 +134,7 @@ export default {
       paramter[key].width = this.width
       paramter[key].height = this.height
       paramter[key].case = this.winterVariation3[key][0]
-      SRVisualizer.cubePNG(
-        document.getElementById('winterVariation3' + key),
-        paramter[key]
-      )
+      SRVisualizer.cubePNG(document.getElementById('winterVariation3' + key), paramter[key])
     }
   },
 }
