@@ -4,7 +4,7 @@
       <div :id="image"></div>
     </div>
     <div class="column is-10-tablet is-9-mobile p-0">
-      {{ algorithm }}
+      {{ algorithm[0] }}
     </div>
   </div>
 </template>

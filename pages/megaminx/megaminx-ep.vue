@@ -3,23 +3,23 @@
     <h2>Megaminx EP</h2>
     <h3>隣り合った3点交換</h3>
     <h4>時計回り（コーナー干渉あり）</h4>
-    <megaminx-view image="megacase1" :algorithm="megacase[1][0]"></megaminx-view>
+    <megaminx-view image="megacase1" :algorithm="megacase[1]"></megaminx-view>
     <h4>反時計回り（コーナー干渉あり）</h4>
-    <megaminx-view image="megacase2" :algorithm="megacase[2][0]"></megaminx-view>
+    <megaminx-view image="megacase2" :algorithm="megacase[2]"></megaminx-view>
     <h4>時計回り（コーナー干渉なし）</h4>
-    <megaminx-view image="megacase3" :algorithm="megacase[3][0]"></megaminx-view>
+    <megaminx-view image="megacase3" :algorithm="megacase[3]"></megaminx-view>
     <h4>反時計回り（コーナー干渉なし）</h4>
-    <megaminx-view image="megacase4" :algorithm="megacase[4][0]"></megaminx-view>
+    <megaminx-view image="megacase4" :algorithm="megacase[4]"></megaminx-view>
 
     <h3>離れた3点交換</h3>
     <h4>時計回り（コーナー干渉あり）</h4>
-    <megaminx-view image="megacase5" :algorithm="megacase[5][0]"></megaminx-view>
+    <megaminx-view image="megacase5" :algorithm="megacase[5]"></megaminx-view>
     <h4>反時計回り（コーナー干渉あり）</h4>
-    <megaminx-view image="megacase6" :algorithm="megacase[5][0]"></megaminx-view>
+    <megaminx-view image="megacase6" :algorithm="megacase[5]"></megaminx-view>
     <h4>時計回り（コーナー干渉なし）</h4>
-    <megaminx-view image="megacase7" :algorithm="megacase[7][0]"></megaminx-view>
+    <megaminx-view image="megacase7" :algorithm="megacase[7]"></megaminx-view>
     <h4>反時計回り（コーナー干渉なし）</h4>
-    <megaminx-view image="megacase8" :algorithm="megacase[8][0]"></megaminx-view>
+    <megaminx-view image="megacase8" :algorithm="megacase[8]"></megaminx-view>
   </div>
 </template>
 

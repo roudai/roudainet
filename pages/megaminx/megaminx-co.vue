@@ -2,28 +2,28 @@
   <div class="content m-2">
     <h2>Megaminx CO</h2>
     <h3>2つ反転</h3>
-    <megaminx-view image="megacase1" :algorithm="megacase[1][0]"></megaminx-view>
-    <megaminx-view image="megacase2" :algorithm="megacase[2][0]"></megaminx-view>
-    <megaminx-view image="megacase3" :algorithm="megacase[3][0]"></megaminx-view>
-    <megaminx-view image="megacase4" :algorithm="megacase[4][0]"></megaminx-view>
+    <megaminx-view image="megacase1" :algorithm="megacase[1]"></megaminx-view>
+    <megaminx-view image="megacase2" :algorithm="megacase[2]"></megaminx-view>
+    <megaminx-view image="megacase3" :algorithm="megacase[3]"></megaminx-view>
+    <megaminx-view image="megacase4" :algorithm="megacase[4]"></megaminx-view>
 
     <h3>3つ反転</h3>
-    <megaminx-view image="megacase5" :algorithm="megacase[5][0]"></megaminx-view>
-    <megaminx-view image="megacase6" :algorithm="megacase[6][0]"></megaminx-view>
-    <megaminx-view image="megacase7" :algorithm="megacase[7][0]"></megaminx-view>
-    <megaminx-view image="megacase8" :algorithm="megacase[8][0]"></megaminx-view>
+    <megaminx-view image="megacase5" :algorithm="megacase[5]"></megaminx-view>
+    <megaminx-view image="megacase6" :algorithm="megacase[6]"></megaminx-view>
+    <megaminx-view image="megacase7" :algorithm="megacase[7]"></megaminx-view>
+    <megaminx-view image="megacase8" :algorithm="megacase[8]"></megaminx-view>
 
     <h3>4つ反転</h3>
-    <megaminx-view image="megacase9" :algorithm="megacase[9][0]"></megaminx-view>
-    <megaminx-view image="megacase10" :algorithm="megacase[10][0]"></megaminx-view>
-    <megaminx-view image="megacase11" :algorithm="megacase[11][0]"></megaminx-view>
-    <megaminx-view image="megacase12" :algorithm="megacase[12][0]"></megaminx-view>
-    <megaminx-view image="megacase13" :algorithm="megacase[13][0]"></megaminx-view>
-    <megaminx-view image="megacase14" :algorithm="megacase[14][0]"></megaminx-view>
+    <megaminx-view image="megacase9" :algorithm="megacase[9]"></megaminx-view>
+    <megaminx-view image="megacase10" :algorithm="megacase[10]"></megaminx-view>
+    <megaminx-view image="megacase11" :algorithm="megacase[11]"></megaminx-view>
+    <megaminx-view image="megacase12" :algorithm="megacase[12]"></megaminx-view>
+    <megaminx-view image="megacase13" :algorithm="megacase[13]"></megaminx-view>
+    <megaminx-view image="megacase14" :algorithm="megacase[14]"></megaminx-view>
 
     <h3>5つ反転</h3>
-    <megaminx-view image="megacase15" :algorithm="megacase[15][0]"></megaminx-view>
-    <megaminx-view image="megacase16" :algorithm="megacase[16][0]"></megaminx-view>
+    <megaminx-view image="megacase15" :algorithm="megacase[15]"></megaminx-view>
+    <megaminx-view image="megacase16" :algorithm="megacase[16]"></megaminx-view>
   </div>
 </template>
 
