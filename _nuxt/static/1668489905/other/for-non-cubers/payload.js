@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/other/for-non-cubers", {data:[{}],fetch:{},mutations:void 0});

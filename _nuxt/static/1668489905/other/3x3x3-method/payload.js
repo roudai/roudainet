@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/other/3x3x3-method", {data:[{}],fetch:{},mutations:void 0});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/clock/clock-no-flip", {data:[{}],fetch:{},mutations:void 0});
