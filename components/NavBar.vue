@@ -37,37 +37,49 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> OLL </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> OLL一覧 </a>
-            <a class="navbar-item" href="/"> OLL手順 </a>
-            <a class="navbar-item" href="/"> COLL </a>
+            <a class="navbar-item" href="/oll/oll-view"> OLL一覧 </a>
+            <a class="navbar-item" href="/oll/oll"> OLL手順 </a>
+            <a class="navbar-item" href="/oll/coll"> COLL </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> PLL </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> PLL一覧 </a>
-            <a class="navbar-item" href="/"> PLLの確率 </a>
-            <a class="navbar-item" href="/"> PLL手順 </a>
-            <a class="navbar-item" href="/"> 2側面判断 </a>
+            <a class="navbar-item" href="/pll/pll-view"> PLL一覧 </a>
+            <a class="navbar-item" href="/pll/pll-chances"> PLLの確率 </a>
+            <a class="navbar-item" href="/pll/pll"> PLL手順 </a>
+            <a class="navbar-item" href="/pll/two-sided-pll"> 2側面判断 </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> BLD </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/">
+            <a class="navbar-item" href="/bld/bld-introduction">
               ルービックキューブを目隠しで揃えるには
             </a>
-            <a class="navbar-item" href="/"> ルービックキューブ目隠しの解法 </a>
-            <a class="navbar-item" href="/"> Old Pochmann method(corner) </a>
+            <a class="navbar-item" href="/bld/bld-method">
+              ルービックキューブ目隠しの解法
+            </a>
+            <a class="navbar-item" href="/bld/old-pochmann-corner">
+              Old Pochmann method(corner)
+            </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Megaminx </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> Megaminx EO </a>
-            <a class="navbar-item" href="/"> Megaminx CO </a>
-            <a class="navbar-item" href="/"> Megaminx EP </a>
-            <a class="navbar-item" href="/"> Megaminx CP </a>
+            <a class="navbar-item" href="/megaminx/megaminx-eo">
+              Megaminx EO
+            </a>
+            <a class="navbar-item" href="/megaminx/megaminx-co">
+              Megaminx CO
+            </a>
+            <a class="navbar-item" href="/megaminx/megaminx-ep">
+              Megaminx EP
+            </a>
+            <a class="navbar-item" href="/megaminx/megaminx-cp">
+              Megaminx CP
+            </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
