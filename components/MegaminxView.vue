@@ -17,7 +17,7 @@ export default {
       required: true,
     },
     algorithm: {
-      type: String,
+      type: Array,
       required: true,
     },
   },
