@@ -37,35 +37,66 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> OLL </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item"> OLL一覧 </a>
-            <a class="navbar-item"> OLL手順 </a>
-            <a class="navbar-item"> COLL </a>
+            <a class="navbar-item" href="/"> OLL一覧 </a>
+            <a class="navbar-item" href="/"> OLL手順 </a>
+            <a class="navbar-item" href="/"> COLL </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> PLL </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item"> PLL一覧 </a>
-            <a class="navbar-item"> PLLの確率 </a>
-            <a class="navbar-item"> PLL手順 </a>
-            <a class="navbar-item"> 2側面判断 </a>
+            <a class="navbar-item" href="/"> PLL一覧 </a>
+            <a class="navbar-item" href="/"> PLLの確率 </a>
+            <a class="navbar-item" href="/"> PLL手順 </a>
+            <a class="navbar-item" href="/"> 2側面判断 </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> BLD </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item"> ルービックキューブを目隠しで揃えるには </a>
-            <a class="navbar-item"> ルービックキューブ目隠しの解法 </a>
-            <a class="navbar-item"> Old Pochmann method(corner) </a>
+            <a class="navbar-item" href="/">
+              ルービックキューブを目隠しで揃えるには
+            </a>
+            <a class="navbar-item" href="/"> ルービックキューブ目隠しの解法 </a>
+            <a class="navbar-item" href="/"> Old Pochmann method(corner) </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Megaminx </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item"> Megaminx EO </a>
-            <a class="navbar-item"> Megaminx CO </a>
-            <a class="navbar-item"> Megaminx EP </a>
-            <a class="navbar-item"> Megaminx CP </a>
+            <a class="navbar-item" href="/"> Megaminx EO </a>
+            <a class="navbar-item" href="/"> Megaminx CO </a>
+            <a class="navbar-item" href="/"> Megaminx EP </a>
+            <a class="navbar-item" href="/"> Megaminx CP </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Megaminx </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/"> 最小手数競技の紹介 </a>
+            <a class="navbar-item" href="/"> Domino Reduction </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Clock </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/"> No-Flip Method </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Other </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/"> 各種解法 </a>
+            <a class="navbar-item" href="/"> 知っておいてほしいこと </a>
+            <a class="navbar-item" href="/"> 続ける意味について </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Tooks </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/"> VisualCube Editor </a>
+            <a class="navbar-item" href="/"> Megaminx Image editor </a>
+            <a class="navbar-item" href="/"> PLL Trainer </a>
           </div>
         </div>
       </div>
