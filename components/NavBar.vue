@@ -71,9 +71,11 @@
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link"> Megaminx </a>
+          <a class="navbar-link"> FMC </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/"> 最小手数競技の紹介 </a>
+            <a class="navbar-item" href="/fmc/intro-fmc">
+              最小手数競技の紹介
+            </a>
             <a class="navbar-item" href="/"> Domino Reduction </a>
           </div>
         </div>
