@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import { PNG } from 'sr-puzzlegen'
+import { Type, PNG } from 'sr-puzzlegen'
 export default {
   data: () => ({
-    type: 'megaminx-top',
+    type: Type.MEGAMINX_TOP,
     options: {
       width: 120,
       height: 120,
