@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <div class="content m-2">
-      <h2>F2L手順</h2>
-    </div>
-
+  <div class="content m-2">
+    <h2>F2L手順</h2>
     <div
       v-for="(item, index) in f2l"
       :key="index"

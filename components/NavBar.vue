@@ -28,8 +28,10 @@
           <a class="navbar-link"> F2L </a>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="/f2l/f2l"> F2L手順 </a>
-            <a class="navbar-item"> 発展形F2L </a>
-            <a class="navbar-item"> Winter Variation </a>
+            <a class="navbar-item" href="/f2l/f2l-advanced"> 発展形F2L </a>
+            <a class="navbar-item" href="/f2l/winter-variation">
+              Winter Variation
+            </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
