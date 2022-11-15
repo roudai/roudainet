@@ -21,10 +21,5 @@ export default {
       required: true,
     },
   },
-  methods: {
-    imagePath() {
-      return require(`@/assets/images/megaminx/${this.image}.png`)
-    },
-  },
 }
 </script>
