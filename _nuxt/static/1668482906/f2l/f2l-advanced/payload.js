@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/f2l/f2l-advanced", {data:[{}],fetch:{},mutations:void 0});

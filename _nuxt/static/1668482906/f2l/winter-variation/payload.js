@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/f2l/winter-variation", {data:[{}],fetch:{},mutations:void 0});
