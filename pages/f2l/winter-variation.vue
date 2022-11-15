@@ -7,11 +7,11 @@
       :key="index"
       class="columns is-mobile is-vcentered is-marginless"
     >
-      <div class="column is-1 has-text-centered">{{ index }}</div>
+      <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation0' + index"></div>
       </div>
-      <div class="column is-10-tablet is-9-mobile">
+      <div class="column is-9-tablet is-8-mobile">
         <div>{{ item[0] }}</div>
       </div>
     </div>
@@ -22,11 +22,11 @@
       :key="index"
       class="columns is-mobile is-vcentered is-marginless"
     >
-      <div class="column is-1 has-text-centered">{{ index }}</div>
+      <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation1' + index"></div>
       </div>
-      <div class="column is-10-tablet is-9-mobile">
+      <div class="column is-9-tablet is-8-mobile">
         <div>{{ item[0] }}</div>
       </div>
     </div>
@@ -37,11 +37,11 @@
       :key="index"
       class="columns is-mobile is-vcentered is-marginless"
     >
-      <div class="column is-1 has-text-centered">{{ index }}</div>
+      <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation2' + index"></div>
       </div>
-      <div class="column is-10-tablet is-9-mobile">
+      <div class="column is-9-tablet is-8-mobile">
         <div>{{ item[0] }}</div>
       </div>
     </div>
@@ -52,11 +52,11 @@
       :key="index"
       class="columns is-mobile is-vcentered is-marginless"
     >
-      <div class="column is-1 has-text-centered">{{ index }}</div>
+      <div class="column is-2 has-text-centered">{{ index }}</div>
       <div class="column is-1-tablet is-2-mobile p-0">
         <div :id="'winterVariation3' + index"></div>
       </div>
-      <div class="column is-10-tablet is-9-mobile">
+      <div class="column is-9-tablet is-8-mobile">
         <div>{{ item[0] }}</div>
       </div>
     </div>
