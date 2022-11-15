@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content m-2">
     <h2>Megaminx EP</h2>
     <h3>隣り合った3点交換</h3>
     <div>
