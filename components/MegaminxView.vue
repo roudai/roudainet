@@ -1,9 +1,9 @@
 <template>
   <div class="columns is-mobile is-vcentered is-marginless">
-    <div class="column is-1-tablet is-2-mobile has-text-centered">
-      <img :src="imagePath()" height="80" width="80" :alt="image" />
+    <div class="column is-2-tablet is-3-mobile has-text-centered">
+      <div :id="image"></div>
     </div>
-    <div class="column is-11-tablet is-10-mobile p-0">
+    <div class="column is-10-tablet is-9-mobile p-0">
       {{ algorithm }}
     </div>
   </div>
