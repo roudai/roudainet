@@ -3,11 +3,11 @@
     <h2>Megaminx EO</h2>
     <h3>2つ反転</h3>
     <h4>隣り合った2つ反転</h4>
-    <megaminx-view image="eo1" :algorithm="eo[1][0]"></megaminx-view>
+    <megaminx-view image="megacase1" :algorithm="megacase[1][0]"></megaminx-view>
     <h4>離れた2つ反転</h4>
-    <megaminx-view image="eo2" :algorithm="eo[2][0]"></megaminx-view>
+    <megaminx-view image="megacase2" :algorithm="megacase[2][0]"></megaminx-view>
     <h2>4つ反転</h2>
-    <megaminx-view image="eo3" :algorithm="eo[3][0]"></megaminx-view>
+    <megaminx-view image="megacase3" :algorithm="megacase[3][0]"></megaminx-view>
   </div>
 </template>
 
@@ -36,16 +36,16 @@ export default {
         },
       },
     },
-    eo: {
+    megacase: {
       1: ["R' U' F' U F R"],
       2: ["F R U R' U' F'"],
       3: ["R BR BL U BL' U BR' U2' R'"],
     },
   }),
   mounted() {
-    for (const key in this.eo) {
-      this.options.puzzle.case = this.eo[key][0]
-      PNG('#eo' + key, this.type, this.options)
+    for (const key in this.megacase) {
+      this.options.puzzle.case = this.megacase[key][0]
+      PNG('#megacase' + key, this.type, this.options)
     }
   },
 }
