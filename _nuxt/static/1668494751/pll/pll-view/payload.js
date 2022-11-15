@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/pll/pll-view", {data:[{}],fetch:{},mutations:void 0});

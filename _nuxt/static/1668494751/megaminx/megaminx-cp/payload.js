@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/megaminx/megaminx-cp", {data:[{}],fetch:{},mutations:void 0});

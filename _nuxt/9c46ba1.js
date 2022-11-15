@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{291:function(n,t,e){"use strict";e.r(t);var c=e(26),component=Object(c.a)({},(function(){return(0,this._self._c)("div",{staticClass:"content m-2"},[this._v("Megaminx EP")])}),[],!1,null,null,null);t.default=component.exports}}]);

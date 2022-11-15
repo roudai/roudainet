@@ -1,1 +1,0 @@
-__NUXT_JSONP__("manifest.js", {routes:["\u002F","\u002Fclock\u002Fclock-no-flip","\u002Ff2l\u002Ff2l","\u002Fother\u002F3x3x3-method","\u002Ff2l\u002Ff2l-advanced","\u002Ff2l\u002Fwinter-variation","\u002Fother\u002Fadvent-calendar2014","\u002Fother\u002Ffor-non-cubers"]})

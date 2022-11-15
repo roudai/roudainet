@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/oll/coll", {data:[{}],fetch:{},mutations:void 0});

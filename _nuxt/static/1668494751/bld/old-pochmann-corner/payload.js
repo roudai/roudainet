@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/bld/old-pochmann-corner", {data:[{}],fetch:{},mutations:void 0});

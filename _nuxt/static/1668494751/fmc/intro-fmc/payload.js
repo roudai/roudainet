@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/fmc/intro-fmc", {data:[{}],fetch:{},mutations:void 0});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/oll/oll-view", {data:[{}],fetch:{},mutations:void 0});
