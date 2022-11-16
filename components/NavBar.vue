@@ -31,7 +31,6 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> OLL </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/oll/oll-view"> OLL一覧 </a>
             <a class="navbar-item" href="/oll/oll"> OLL手順 </a>
             <a class="navbar-item" href="/oll/coll"> COLL </a>
           </div>
