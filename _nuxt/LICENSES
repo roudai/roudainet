@@ -12,13 +12,6 @@
 
 
 /*!
- * Vue.js v2.7.14
- * (c) 2014-2022 Evan You
- * Released under the MIT License.
- */
-
-
-/*!
 * svg.js - A lightweight library for manipulating and animating SVG.
 * @version 2.7.1
 * https://svgdotjs.github.io/
@@ -28,3 +21,10 @@
 *
 * BUILT: Fri Nov 30 2018 10:01:55 GMT+0100 (GMT+01:00)
 */
+
+
+/*!
+ * Vue.js v2.7.14
+ * (c) 2014-2022 Evan You
+ * Released under the MIT License.
+ */
