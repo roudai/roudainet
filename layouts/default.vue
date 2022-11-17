@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="main-content columns">
-      <div class="container column is-10">
+    <div class="main-content">
+      <div class="container is-four-fifths">
         <nav-bar></nav-bar>
         <Nuxt />
       </div>
