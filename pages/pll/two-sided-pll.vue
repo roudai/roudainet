@@ -58,384 +58,273 @@
       </div>
     </div>
 
-    <div class="accordion" role="tablist">
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-2 block variant="outline-primary">
-            DOUBLE LIGHTS<br />（LIGHTSが2つ）<br />
-            <img src="~/assets/images/two-sided/Double_Lights.png" :width="iwidth" :height="iheight"
-          /></b-button>
-        </b-card-header>
-        <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/Double_Lights_1.png" :width="iwidth" :height="iheight" /><br />
-                2色6チェッカー = Z
-                <b-row>
-                  <b-col><div id="pll_DoubleLights0"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/Double_Lights_2.png" :width="iwidth" :height="iheight" /><br />
-                エッジが隣接色かつ4色 = Z
-                <b-row>
-                  <b-col><div id="pll_DoubleLights1"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/Double_Lights_3.png" :width="iwidth" :height="iheight" /><br />
-                エッジが対面色 = H
-                <b-row>
-                  <b-col><div id="pll_DoubleLights2"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/Double_Lights_4.png" :width="iwidth" :height="iheight" /><br />
-                2:1になっているかつ3色 = U
-                <b-row>
-                  <b-col><div id="pll_DoubleLights3"></div></b-col>
-                  <b-col><div id="pll_DoubleLights4"></div></b-col>
-                  <b-col><div id="pll_DoubleLights5"></div></b-col>
-                  <b-col><div id="pll_DoubleLights6"></div></b-col>
-                </b-row>
-              </div>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>DOUBLE LIGHTS</h4>
+        <h4>（LIGHTSが2つ）</h4>
+        <img src="~/assets/images/two-sided/Double_Lights.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>2色6チェッカー = Z</h5>
+      <img src="~/assets/images/two-sided/Double_Lights_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights0"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-3 block variant="outline-primary">
-            LIGHTS + 2-BAR<br />
-            <img src="~/assets/images/two-sided/Lights_2-BAR_A.png" :width="iwidth" :height="iheight" /><br />
-            <img src="~/assets/images/two-sided/Lights_2-BAR_B.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Lights_2-BAR_1.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが内側かつ3色 = T
-              <b-row>
-                <b-col><div id="pll_Lights_2BAR0"></div></b-col>
-                <b-col><div id="pll_Lights_2BAR1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lights_2-BAR_2.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが内側かつ4色 = R
-              <b-row>
-                <b-col><div id="pll_Lights_2BAR2"></div></b-col>
-                <b-col><div id="pll_Lights_2BAR3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lights_2-BAR_3.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが外側かつ3色 = A
-              <b-row>
-                <b-col><div id="pll_Lights_2BAR4"></div></b-col>
-                <b-col><div id="pll_Lights_2BAR5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lights_2-BAR_4.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが外側かつ4色 = Ga/c
-              <b-row>
-                <b-col><div id="pll_Lights_2BAR6"></div></b-col>
-                <b-col><div id="pll_Lights_2BAR7"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>エッジが隣接色かつ4色 = Z</h5>
+      <img src="~/assets/images/two-sided/Double_Lights_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights1"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-4 block variant="outline-primary">
-            LONE LIGHTS<br />（LIGHTSがひとつ）<br />
-            <img src="~/assets/images/two-sided/Lone_lights.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Lone_lights_1.png" :width="iwidth" :height="iheight" /><br />
-              5つのチェック柄 = R
-              <b-row>
-                <b-col><div id="PLL_Lone_Lights0"></div></b-col>
-                <b-col><div id="PLL_Lone_Lights1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lone_lights_2.png" :width="iwidth" :height="iheight" /><br />
-              4つのチェック柄 = Ga/c
-              <b-row>
-                <b-col><div id="PLL_Lone_Lights2"></div></b-col>
-                <b-col><div id="PLL_Lone_Lights3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lone_lights_3.png" :width="iwidth" :height="iheight" /><br />
-              lightsの間に対面色 = Gb/d
-              <b-row>
-                <b-col><div id="PLL_Lone_Lights4"></div></b-col>
-                <b-col><div id="PLL_Lone_Lights5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Lone_lights_4.png" :width="iwidth" :height="iheight" /><br />
-              lightsの間に隣接色かつチェック柄なし = A
-              <b-row>
-                <b-col><div id="PLL_Lone_Lights6"></div></b-col>
-                <b-col><div id="PLL_Lone_Lights7"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>エッジが対面色 = H</h5>
+      <img src="~/assets/images/two-sided/Double_Lights_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights2"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-5 block variant="outline-primary">
-            DOUBLE 2-BAR<br />（2-BARが2つ）<br />
-            <img src="~/assets/images/two-sided/Double_2-BAR_A.png" :width="iwidth" :height="iheight" /><br />
-            <img src="~/assets/images/two-sided/Double_2-BAR_B.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Double_2-BAR_1.png" :width="iwidth" :height="iheight" /><br />
-              2-BARがどちらも外側 = Y
-              <b-row>
-                <b-col><div id="PLL_Double_2BAR0"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Double_2-BAR_2.png" :width="iwidth" :height="iheight" /><br />
-              2-BARがどちらも内側かつbookend = A
-              <b-row>
-                <b-col><div id="PLL_Double_2BAR1"></div></b-col>
-                <b-col><div id="PLL_Double_2BAR2"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Double_2-BAR_3.png" :width="iwidth" :height="iheight" /><br />
-              2-BARがどちらも内側かつbookendなし = V
-              <b-row>
-                <b-col><div id="PLL_Double_2BAR3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Double_2-BAR_4.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが同じ側に寄っているかつbookend = J
-              <b-row>
-                <b-col><div id="PLL_Double_2BAR4"></div></b-col>
-                <b-col><div id="PLL_Double_2BAR5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Double_2-BAR_5.png" :width="iwidth" :height="iheight" /><br />
-              2-BARが同じ側に寄っているかつbookendなし = N
-              <b-row>
-                <b-col><div id="PLL_Double_2BAR6"></div></b-col>
-                <b-col><div id="PLL_Double_2BAR7"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>2:1になっているかつ3色 = U</h5>
+      <img src="~/assets/images/two-sided/Double_Lights_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights3"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights5"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_DoubleLights6"></div></div>
+      </div>
+    </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-6 block variant="outline-primary">
-            OUTSIDE 2-BAR<br />（外側に2-BAR）<br />
-            <img src="~/assets/images/two-sided/Outside_2-BAR.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Outside_2-BAR_1.png" :width="iwidth" :height="iheight" /><br />
-              bookendなし = V
-              <b-row>
-                <b-col><div id="PLL_Outside_2BAR0"></div></b-col>
-                <b-col><div id="PLL_Outside_2BAR1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Outside_2-BAR_2.png" :width="iwidth" :height="iheight" /><br />
-              隣接色が2つ = R
-              <b-row>
-                <b-col><div id="PLL_Outside_2BAR2"></div></b-col>
-                <b-col><div id="PLL_Outside_2BAR3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Outside_2-BAR_3.png" :width="iwidth" :height="iheight" /><br />
-              対面色が2つ = Gb/d
-              <b-row>
-                <b-col><div id="PLL_Outside_2BAR4"></div></b-col>
-                <b-col><div id="PLL_Outside_2BAR5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Outside_2-BAR_4.png" :width="iwidth" :height="iheight" /><br />
-              2-BARの隣が隣接色かつ4色 = T
-              <b-row>
-                <b-col><div id="PLL_Outside_2BAR6"></div></b-col>
-                <b-col><div id="PLL_Outside_2BAR7"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Outside_2-BAR_5.png" :width="iwidth" :height="iheight" /><br />
-              2-BARの隣が対面色かつ4色 = A
-              <b-row>
-                <b-col><div id="PLL_Outside_2BAR8"></div></b-col>
-                <b-col><div id="PLL_Outside_2BAR9"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>LIGHTS + 2-BAR</h4>
+        <img src="~/assets/images/two-sided/Lights_2-BAR_A.png" :width="iwidth" :height="iheight" /><br />
+        <img src="~/assets/images/two-sided/Lights_2-BAR_B.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>2-BARが内側かつ3色 = T</h5>
+      <img src="~/assets/images/two-sided/Lights_2-BAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR1"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-7 block variant="outline-primary">
-            INSIDE 2-BAR<br />（内側に2-BAR）<br />
-            <img src="~/assets/images/two-sided/Inside_2-BAR.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-7" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Inside_2-BAR_1.png" :width="iwidth" :height="iheight" /><br />
-              隣接色でbookend = Ga/c
-              <b-row>
-                <b-col><div id="PLL_Inside_2BAR0"></div></b-col>
-                <b-col><div id="PLL_Inside_2BAR1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Inside_2-BAR_2.png" :width="iwidth" :height="iheight" /><br />
-              対面色でbookend = Gb/d
-              <b-row>
-                <b-col><div id="PLL_Inside_2BAR2"></div></b-col>
-                <b-col><div id="PLL_Inside_2BAR3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Inside_2-BAR_3.png" :width="iwidth" :height="iheight" /><br />
-              bookendなし = Y
-              <b-row>
-                <b-col><div id="PLL_Inside_2BAR4"></div></b-col>
-                <b-col><div id="PLL_Inside_2BAR5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>2-BARが内側かつ4色 = R</h5>
+      <img src="~/assets/images/two-sided/Lights_2-BAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR3"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-8 block variant="outline-primary">
-            BOOKENDS NO BAR<br />（BOOKENDSかつBARなし）<br />
-            <img src="~/assets/images/two-sided/Bookends_NoBAR.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-8" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/Bookends_NoBAR_1.png" :width="iwidth" :height="iheight" /><br />
-              中間4つがチェック柄 = F
-              <b-row>
-                <b-col><div id="PLL_Bookends_NoBAR0"></div></b-col>
-                <b-col><div id="PLL_Bookends_NoBAR1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Bookends_NoBAR_2.png" :width="iwidth" :height="iheight" /><br />
-              隣接色が2つ = R
-              <b-row>
-                <b-col><div id="PLL_Bookends_NoBAR2"></div></b-col>
-                <b-col><div id="PLL_Bookends_NoBAR3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/Bookends_NoBAR_3.png" :width="iwidth" :height="iheight" /><br />
-              対面色が2つ = Ga/c
-              <b-row>
-                <b-col><div id="PLL_Bookends_NoBAR4"></div></b-col>
-                <b-col><div id="PLL_Bookends_NoBAR5"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>2-BARが外側かつ3色 = A</h5>
+      <img src="~/assets/images/two-sided/Lights_2-BAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR5"></div></div>
+      </div>
 
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-9 block variant="outline-primary">
-            NO BOOKENDS<br />（BOOKENDS無しかつBARなし）<br />
-            <img src="~/assets/images/two-sided/No_bookends.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-9" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <img src="~/assets/images/two-sided/No_bookends_1.png" :width="iwidth" :height="iheight" /><br />
-              中間4つがチェック柄 = V
-              <b-row>
-                <b-col><div id="PLL_No_Bookends0"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/No_bookends_2.png" :width="iwidth" :height="iheight" /><br />
-              外側4つがチェック柄 = Y
-              <b-row>
-                <b-col><div id="PLL_No_Bookends1"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-              <img src="~/assets/images/two-sided/No_bookends_3.png" :width="iwidth" :height="iheight" /><br />
-              5つで3色のチェック柄でその真ん中が対面色 = E
-              <b-row>
-                <b-col><div id="PLL_No_Bookends2"></div></b-col>
-                <b-col><div id="PLL_No_Bookends3"></div></b-col>
-                <b-col></b-col>
-                <b-col></b-col>
-              </b-row>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+      <h5>2-BARが外側かつ4色 = Ga/c</h5>
+      <img src="~/assets/images/two-sided/Lights_2-BAR_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR6"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_Lights_2BAR7"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>LONE LIGHTS</h4>
+        <h4>（LIGHTSがひとつ）</h4>
+        <img src="~/assets/images/two-sided/Lone_lights.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>5つのチェック柄 = R</h5>
+      <img src="~/assets/images/two-sided/Lone_lights_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights1"></div></div>
+      </div>
+
+      <h5>4つのチェック柄 = Ga/c</h5>
+      <img src="~/assets/images/two-sided/Lone_lights_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights3"></div></div>
+      </div>
+
+      <h5>lightsの間に対面色 = Gb/d</h5>
+      <img src="~/assets/images/two-sided/Lone_lights_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights5"></div></div>
+      </div>
+
+      <h5>lightsの間に隣接色かつチェック柄なし = A</h5>
+      <img src="~/assets/images/two-sided/Lone_lights_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights6"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Lone_Lights7"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>DOUBLE 2-BAR</h4>
+        <h4>（2-BARが2つ）</h4>
+        <img src="~/assets/images/two-sided/Double_2-BAR_A.png" :width="iwidth" :height="iheight" /><br />
+        <img src="~/assets/images/two-sided/Double_2-BAR_B.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>2-BARがどちらも外側 = Y</h5>
+      <img src="~/assets/images/two-sided/Double_2-BAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR0"></div></div>
+      </div>
+
+      <h5>2-BARがどちらも内側かつbookend = A</h5>
+      <img src="~/assets/images/two-sided/Double_2-BAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR1"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR2"></div></div>
+      </div>
+
+      <h5>2-BARがどちらも内側かつbookendなし = V</h5>
+      <img src="~/assets/images/two-sided/Double_2-BAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR3"></div></div>
+      </div>
+
+      <h5>2-BARが同じ側に寄っているかつbookend = J</h5>
+      <img src="~/assets/images/two-sided/Double_2-BAR_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR5"></div></div>
+      </div>
+
+      <h5>2-BARが同じ側に寄っているかつbookendなし = N</h5>
+      <img src="~/assets/images/two-sided/Double_2-BAR_5.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR6"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Double_2BAR7"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>OUTSIDE 2-BAR</h4>
+        <h4>（外側に2-BAR）</h4>
+        <img src="~/assets/images/two-sided/Outside_2-BAR.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>bookendなし = V</h5>
+      <img src="~/assets/images/two-sided/Outside_2-BAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR1"></div></div>
+      </div>
+
+      <h5>隣接色が2つ = R</h5>
+      <img src="~/assets/images/two-sided/Outside_2-BAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR3"></div></div>
+      </div>
+
+      <h5>対面色が2つ = Gb/d</h5>
+      <img src="~/assets/images/two-sided/Outside_2-BAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR5"></div></div>
+      </div>
+
+      <h5>2-BARの隣が隣接色かつ4色 = T</h5>
+      <img src="~/assets/images/two-sided/Outside_2-BAR_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR6"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR7"></div></div>
+      </div>
+
+      <h5>2-BARの隣が対面色かつ4色 = A</h5>
+      <img src="~/assets/images/two-sided/Outside_2-BAR_5.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR8"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Outside_2BAR9"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>INSIDE 2-BAR</h4>
+        <h4>（内側に2-BAR）</h4>
+        <img src="~/assets/images/two-sided/Inside_2-BAR.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>隣接色でbookend = Ga/c</h5>
+      <img src="~/assets/images/two-sided/Inside_2-BAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR1"></div></div>
+      </div>
+
+      <h5>対面色でbookend = Gb/d</h5>
+      <img src="~/assets/images/two-sided/Inside_2-BAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR3"></div></div>
+      </div>
+
+      <h5>bookendなし = Y</h5>
+      <img src="~/assets/images/two-sided/Inside_2-BAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Inside_2BAR5"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>BOOKENDS NO BAR</h4>
+        <h4>（BOOKENDSかつBARなし）</h4>
+        <img src="~/assets/images/two-sided/Bookends_NoBAR.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>中間4つがチェック柄 = F</h5>
+      <img src="~/assets/images/two-sided/Bookends_NoBAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR1"></div></div>
+      </div>
+
+      <h5>隣接色が2つ = R</h5>
+      <img src="~/assets/images/two-sided/Bookends_NoBAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR3"></div></div>
+      </div>
+
+      <h5>対面色が2つ = Ga/c</h5>
+      <img src="~/assets/images/two-sided/Bookends_NoBAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_Bookends_NoBAR5"></div></div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>NO BOOKENDS</h4>
+        <h4>（BOOKENDS無しかつBARなし）</h4>
+        <img src="~/assets/images/two-sided/No_bookends.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>中間4つがチェック柄 = V</h5>
+      <img src="~/assets/images/two-sided/No_bookends_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_No_Bookends0"></div></div>
+      </div>
+
+      <h5>外側4つがチェック柄 = Y</h5>
+      <img src="~/assets/images/two-sided/No_bookends_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_No_Bookends1"></div></div>
+      </div>
+
+      <h5>5つで3色のチェック柄でその真ん中が対面色 = E</h5>
+      <img src="~/assets/images/two-sided/No_bookends_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="PLL_No_Bookends2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="PLL_No_Bookends3"></div></div>
+      </div>
     </div>
   </div>
 </template>
