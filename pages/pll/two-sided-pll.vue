@@ -22,62 +22,43 @@
     <p>各パターンには4色のパターン違い、さらに左右ミラーのパターンがあります。</p>
     <p>「対面色」は反対面の色（緑の場合青、等）、「隣接色」は隣面の色（緑の場合赤とオレンジ、等）を表します。</p>
 
-    <div class="accordion" role="tablist">
-      <b-card no-body class="mb-1">
-        <b-card-header header-tag="header" class="p-1" role="tab">
-          <b-button v-b-toggle.accordion-1 block variant="outline-primary">
-            3-BAR<br />
-            <img src="~/assets/images/two-sided/3-BAR.png" :width="iwidth" :height="iheight" />
-          </b-button>
-        </b-card-header>
-        <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
-          <b-card-body>
-            <b-card-text>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/3-BAR_1.png" :width="iwidth" :height="iheight" /><br />
-                もう一面がLights = U
-                <b-row>
-                  <b-col><div id="pll_3BAR0"></div></b-col>
-                  <b-col><div id="pll_3BAR1"></div></b-col>
-                  <b-col><div id="pll_3BAR2"></div></b-col>
-                  <b-col><div id="pll_3BAR3"></div></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/3-BAR_2.png" :width="iwidth" :height="iheight" /><br />
-                もう一面が2-bar = J
-                <b-row>
-                  <b-col><div id="pll_3BAR4"></div></b-col>
-                  <b-col><div id="pll_3BAR5"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/3-BAR_3.png" :width="iwidth" :height="iheight" /><br />
-                もう一面が2-bar = J
-                <b-row>
-                  <b-col><div id="pll_3BAR6"></div></b-col>
-                  <b-col><div id="pll_3BAR7"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-              <div class="p-1">
-                <img src="~/assets/images/two-sided/3-BAR_4.png" :width="iwidth" :height="iheight" /><br />
-                4色 = F
-                <b-row>
-                  <b-col><div id="pll_3BAR8"></div></b-col>
-                  <b-col><div id="pll_3BAR9"></div></b-col>
-                  <b-col></b-col>
-                  <b-col></b-col>
-                </b-row>
-              </div>
-            </b-card-text>
-          </b-card-body>
-        </b-collapse>
-      </b-card>
+    <div class="box">
+      <div class="has-text-centered">
+        <h4>3-BAR</h4>
+        <img src="~/assets/images/two-sided/3-BAR.png" :width="iwidth" :height="iheight" />
+      </div>
+      <h5>もう一面がLights = U</h5>
+      <img src="~/assets/images/two-sided/3-BAR_1.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR0"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR1"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR2"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR3"></div></div>
+      </div>
 
+      <h5>もう一面が2-bar = J</h5>
+      <img src="~/assets/images/two-sided/3-BAR_2.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR4"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR5"></div></div>
+      </div>
+
+      <h5>もう一面が2-bar = J</h5>
+      <img src="~/assets/images/two-sided/3-BAR_3.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR6"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR7"></div></div>
+      </div>
+
+      <h5>4色 = F</h5>
+      <img src="~/assets/images/two-sided/3-BAR_4.png" :width="iwidth" :height="iheight" />
+      <div class="columns is-mobile is-vcentered is-marginless">
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR8"></div></div>
+        <div class="column is-3 has-text-centered"><div id="pll_3BAR9"></div></div>
+      </div>
+    </div>
+
+    <div class="accordion" role="tablist">
       <b-card no-body class="mb-1">
         <b-card-header header-tag="header" class="p-1" role="tab">
           <b-button v-b-toggle.accordion-2 block variant="outline-primary">
