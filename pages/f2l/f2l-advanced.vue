@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>発展系F2L</h2>
     <h3>両手手順</h3>
     <div v-for="(item, index) in advancedF2lth" :key="index" class="columns is-mobile is-vcentered is-marginless">

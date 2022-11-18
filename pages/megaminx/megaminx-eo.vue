@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>Megaminx EO</h2>
     <h3>2つ反転</h3>
     <h4>隣り合った2つ反転</h4>

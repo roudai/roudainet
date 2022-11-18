@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>ルービックキューブの早解きについて知らない方々に知っておいて欲しいこと</h2>
     <p>
       このページの元ネタは、アメリカ在住の日本人キューバー、<a href="http://www.cubefreak.net/articles/fornoncubers.php"

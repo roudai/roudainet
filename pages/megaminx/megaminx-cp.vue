@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>Megaminx CP</h2>
     <h3>3点交換</h3>
     <h4>離れた3点交換 時計回り</h4>

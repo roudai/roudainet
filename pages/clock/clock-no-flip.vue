@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <p>
       ルービッククロックをフリップ（反転）なしで解く方法の日本語解説です。 元ネタは<a
         href="https://www.speedsolving.com/threads/no-flip-clock-method-with-less-calculations.86326/"

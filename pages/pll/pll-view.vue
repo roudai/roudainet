@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <div class="columns is-mobile has-text-centered is-marginless">
       <div class="column is-3">PLL01,02</div>
       <div class="column is-3">U-Perm</div>

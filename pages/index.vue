@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h1>roudai.netとは</h1>
     <p>
       ルービックキューブの手順、解法その他についてまとめています。

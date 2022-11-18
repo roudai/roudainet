@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>PLLの確率</h2>
     <p>PLLの各Permの出現率は、次のようになります。</p>
     <table class="table is-striped is-narrow">

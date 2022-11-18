@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>Megaminx CO</h2>
     <h3>2つ反転</h3>
     <megaminx-view image="megacase1" :algorithm="megacase[1]"></megaminx-view>

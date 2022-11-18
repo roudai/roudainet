@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>F2L手順</h2>
     <div v-for="(item, index) in f2l" :key="index" class="columns is-mobile is-vcentered is-marginless">
       <div class="column is-1 has-text-centered">{{ index }}</div>

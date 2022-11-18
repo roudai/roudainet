@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>PLL 2側面判断</h2>
     <p>
       この記事は、<a href="http://cubing.pt/wp-content/uploads/2017/03/pll2side-20140531.pdf"

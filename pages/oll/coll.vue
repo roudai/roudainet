@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>COLL</h2>
     <h3>OLL n21 H Orientation</h3>
     <div v-for="(item, index) in COLLn21" :key="index" class="columns is-mobile is-vcentered is-marginless">

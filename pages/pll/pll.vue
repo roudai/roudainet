@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>PLL手順</h2>
     <div v-for="n of 21" :key="n">
       <h3 v-text="pllName['name' + n]"></h3>

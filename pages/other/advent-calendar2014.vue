@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>社会人がスピードキューブを続ける意味について</h2>
     <p>
       ※このページは、

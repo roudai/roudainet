@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>Old Pochmann method（corner）</h2>
     <h3>基本</h3>
     <P> コーナーのOld Pochmann法の基本は、PLLのY-Permの手順になります。 </P>

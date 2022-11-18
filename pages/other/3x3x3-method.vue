@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>ルービックキューブ各種解法</h2>
     <h3>
       <a href="https://ja.wikipedia.org/wiki/Layer_By_Layer">LBL Method</a>

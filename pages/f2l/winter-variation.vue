@@ -1,5 +1,5 @@
 <template>
-  <div class="content m-2">
+  <div>
     <h2>Winter Variation</h2>
     <h3>コーナー反転なし</h3>
     <div v-for="(item, index) in winterVariation0" :key="index" class="columns is-mobile is-vcentered is-marginless">
