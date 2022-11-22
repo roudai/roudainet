@@ -80,6 +80,7 @@
             <a class="navbar-item" href="/other/for-non-cubers"> 知っておいてほしいこと </a>
             <a class="navbar-item" href="/other/advent-calendar2014"> 続ける意味について </a>
             <a class="navbar-item" href="https://competition.roudai.net"> ルービックキューブの世界 </a>
+            <a class="navbar-item" href="https://blog.roudai.net"> ブログ版ろーだいねっと </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
