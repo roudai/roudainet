@@ -36,10 +36,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    ['@nuxtjs/google-adsense'],
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['sr-puzzlegen'],
+  },
+
+  'google-adsense': {
+    id: 'ca-pub-309998932754054',
+    pageLevelAds: true,
   },
 }
