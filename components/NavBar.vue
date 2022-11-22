@@ -93,7 +93,7 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <a href="https://github.com/roudai/roudai.net">
+          <a href="https://github.com/roudai/roudainet">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

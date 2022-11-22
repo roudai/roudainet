@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       &copy; 2012-{{ now }} {{ copyright }}
-      <a href="https://github.com/roudai/roudai.net">
+      <a href="https://github.com/roudai/roudainet">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
