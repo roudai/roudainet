@@ -79,6 +79,7 @@
             <a class="navbar-item" href="/other/3x3x3-method"> 各種解法 </a>
             <a class="navbar-item" href="/other/for-non-cubers"> 知っておいてほしいこと </a>
             <a class="navbar-item" href="/other/advent-calendar2014"> 続ける意味について </a>
+            <a class="navbar-item" href="https://competition.roudai.net"> ルービックキューブの世界 </a>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
