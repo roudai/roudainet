@@ -20,6 +20,14 @@
     <megaminx-view image="megacase7" :algorithm="megacase[7]"></megaminx-view>
     <h4>反時計回り（コーナー干渉なし）</h4>
     <megaminx-view image="megacase8" :algorithm="megacase[8]"></megaminx-view>
+
+    <h3>4点交換</h3>
+
+    <megaminx-view image="megacase9" :algorithm="megacase_view[9]"></megaminx-view>
+
+    <megaminx-view image="megacase10" :algorithm="megacase[10]"></megaminx-view>
+
+    <megaminx-view image="megacase11" :algorithm="megacase[11]"></megaminx-view>
   </div>
 </template>
 
@@ -71,6 +79,12 @@ export default {
       6: ["R U R' U' R' F R2 U' R' U' R U R' F'"],
       7: ["R U R' U2 R' U' R U' R U R2' U R U' R U2' R'"],
       8: ["R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'"],
+      9: ["R U2 R2' F R F' R U2' BR U' BR' U' BR U BR' R' U2"],
+      10: ["R' U2' R' U' R F R' F' U R F' U' F U2' R"],
+      11: ["R' L' U2 L U R BR F U2' BR' U' F'"],
+    },
+    megacase_view: {
+      9: ["R U2 R2' F R F' R U2' y R U' R' U' R U R' F' U2"],
     },
     arrows: {
       1: [
@@ -127,6 +141,30 @@ export default {
           { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 5 } },
           { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 9 } },
           { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 1 } },
+        ],
+      ],
+      9: [
+        [
+          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 9 } },
+          { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 1 } },
+          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 7 } },
+          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 5 } },
+        ],
+      ],
+      10: [
+        [
+          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 5 } },
+          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 1 } },
+          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 9 } },
+          { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 7 } },
+        ],
+      ],
+      11: [
+        [
+          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 5 } },
+          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 1 } },
+          { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 9 } },
+          { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 3 } },
         ],
       ],
     },
