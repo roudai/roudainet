@@ -26,7 +26,7 @@
     <megaminx-view image="megacase9" :algorithm="megacase[9]"></megaminx-view>
     <h4>コーナー干渉なし</h4>
     <megaminx-view image="megacase10" :algorithm="megacase_view[10]"></megaminx-view>
-    <megaminx-view image="megacase11" :algorithm="megacase_view[11]"></megaminx-view>
+    <megaminx-view image="megacase11" :algorithm="megacase[11]"></megaminx-view>
     <megaminx-view image="megacase12" :algorithm="megacase_view[12]"></megaminx-view>
 
     <h3>5点交換</h3>
@@ -87,7 +87,7 @@ export default {
       8: ["R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'"],
       9: ["R U R' F' R U R' U' R' F R U' R' F R2 U' R' U' R U R' F'"],
       10: ["R U2 R2' F R F' R U2' BR U' BR' U' BR U BR' R' U2"],
-      11: ["F U2' F' L' R' U2 L U R F BR U2' BR' U F'"],
+      11: ["R' U2' R' U' R F R' F' U R F' U' F U2' R"],
       12: ["L' R' U2 L U R F BR U2' BR' U' F'"],
       13: ["R2' U2 R2 U R2' U2 R2 U' R2' U2 R2 U R2' U2 R2 U'"],
       14: ["R2 U2' R2' U' R2 U2' R2' U R2 U2' R2' U' R2 U2' R2' U"],
@@ -96,7 +96,6 @@ export default {
     },
     megacase_view: {
       10: ["R U2 R2' F R F' R U2' y R U' R' U' R U R' F' U2"],
-      11: ["F U2' F' L’ R' U2 L U R y L R U2' R' U L'"],
       12: ["L' R' U2 L U R y L R U2' R' U' L'"],
       13: ["(R2' U2 R2 U R2' U2 R2 U' )x2"],
       14: ["(R2 U2' R2' U' R2 U2' R2' U)x2"],
@@ -176,10 +175,10 @@ export default {
       ],
       11: [
         [
-          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 7 } },
-          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 1 } },
-          { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 5 } },
-          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 3 } },
+          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 5 } },
+          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 1 } },
+          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 9 } },
+          { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 7 } },
         ],
       ],
       12: [
