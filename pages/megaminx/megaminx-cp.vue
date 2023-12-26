@@ -28,9 +28,9 @@
     <megaminx-view image="megacase11" :algorithm="megacase[11]"></megaminx-view>
     <h4>隣のコーナーに一周移動</h4>
     <h5>時計回り</h5>
-    <megaminx-view image="megacase12" :algorithm="megacase_view[12]"></megaminx-view>
+    <megaminx-view image="megacase12" :algorithm="megacase[12]"></megaminx-view>
     <h5>反時計回り</h5>
-    <megaminx-view image="megacase13" :algorithm="megacase_view[13]"></megaminx-view>
+    <megaminx-view image="megacase13" :algorithm="megacase[13]"></megaminx-view>
     <h4>2つ隣のコーナーに一周移動</h4>
     <h5>時計回り</h5>
     <megaminx-view image="megacase14" :algorithm="megacase_view[14]"></megaminx-view>
@@ -90,15 +90,13 @@ export default {
       9: ["(R U R' U2' R U R' U2') (R U' R' U2') (R U2 R' U' R U2 R')"],
       10: ["(R2 U2' R2' U') (R2 U R2' U' R2 U R2' U') (R2 U2' R2')"],
       11: ["(R2 U2 R2' U) (R2 U' R2' U R2 U' R2' U) (R2 U2 R2')"],
-      12: ["(U R U R' U R' U' R2 U' R' U R' U R) (U R U R' U R' U' R2 U' R' U R' U R)"],
-      13: ["(U' R' U' R U' R U R2' U R U' R U' R') (U' R' U' R U' R U R2' U R U' R U' R')"],
+      12: ["(R U2 R' U2 R U' R' U' R U2 R') U (R' F' R U R U' R' F)"],
+      13: ["(F' R U R' U' R' F R) U' (R U2' R' U R U R' U2' R U2' R')"],
       14: ["R2' U2' R2 U R2' U R2 (BR2 U BR2' U BR2 U2' BR2' U)"],
       15: ["R2 U2 R2' U' R2 U' R2' (F2' U' F2 U' F2' U2 F2 U)"],
     },
     megacase_view: {
-      5: ["R2 U R' U' y R U R' U' R U R' U' R U R' y' R U' R2'"],
-      12: ["(U R U R' U R' U' R2 U' R' U R' U R) x 2"],
-      13: ["(U' R' U' R U' R U R2' U R U' R U' R') x 2"],
+      5: ["F' R2' U2 (R U R' U' R U R' U' R U R') U2 R2 F"],
       14: ["R2' U2' R2 U R2' U R2 y R2 U R2' U R2 U2' R2' U"],
       15: ["R2 U2 R2' U' R2 U' R2' y' R2' U' R2 U' R2' U2 R2 U"],
     },

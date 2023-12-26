@@ -25,15 +25,9 @@
     <h4>コーナー干渉あり</h4>
     <megaminx-view image="megacase9" :algorithm="megacase[9]"></megaminx-view>
     <h4>コーナー干渉なし</h4>
-    <megaminx-view image="megacase10" :algorithm="megacase_view[10]"></megaminx-view>
+    <megaminx-view image="megacase10" :algorithm="megacase[10]"></megaminx-view>
     <megaminx-view image="megacase11" :algorithm="megacase[11]"></megaminx-view>
     <megaminx-view image="megacase12" :algorithm="megacase_view[12]"></megaminx-view>
-
-    <h3>5点交換</h3>
-    <megaminx-view image="megacase13" :algorithm="megacase_view[13]"></megaminx-view>
-    <megaminx-view image="megacase14" :algorithm="megacase_view[14]"></megaminx-view>
-    <megaminx-view image="megacase15" :algorithm="megacase[15]"></megaminx-view>
-    <megaminx-view image="megacase16" :algorithm="megacase[16]"></megaminx-view>
   </div>
 </template>
 
@@ -86,26 +80,18 @@ export default {
       7: ["R U R' U2 R' U' R U' R U R2' U R U' R U2' R'"],
       8: ["R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'"],
       9: ["R U R' F' R U R' U' R' F R U' R' F R2 U' R' U' R U R' F'"],
-      10: ["R U2 R2' F R F' R U2' BR U' BR' U' BR U BR' R' U2"],
+      10: ["R' U' R' U' R F R' F' U R F' U' F U2 R"],
       11: ["R' U2' R' U' R F R' F' U R F' U' F U2' R"],
       12: ["L' R' U2 L U R F BR U2' BR' U' F'"],
-      13: ["R2' U2 R2 U R2' U2 R2 U' R2' U2 R2 U R2' U2 R2 U'"],
-      14: ["R2 U2' R2' U' R2 U2' R2' U R2 U2' R2' U' R2 U2' R2' U"],
-      15: ["R' U2' R U' R' U2' R2 U2' R' U' R U2' R' U2'"],
-      16: ["R U2' R' U' R U2' R' U2' R' U2' R U' R' U2' R"],
     },
     megacase_view: {
-      10: ["R U2 R2' F R F' R U2' y R U' R' U' R U R' F' U2"],
-      12: ["L' R' U2 L U R y L R U2' R' U' L'"],
-      13: ["(R2' U2 R2 U R2' U2 R2 U' )x2"],
-      14: ["(R2 U2' R2' U' R2 U2' R2' U)x2"],
+      12: ["(R' L' U2 L U R) (BR F U2' BR' U' F')"],
     },
     arrows: {
       1: [
         [
           { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 3 } },
           { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 1 } },
-          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 5 } },
         ],
       ],
       2: [
@@ -169,8 +155,8 @@ export default {
         [
           { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 9 } },
           { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 1 } },
-          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 7 } },
-          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 5 } },
+          { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 5 } },
+          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 3 } },
         ],
       ],
       11: [
@@ -187,30 +173,6 @@ export default {
           { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 1 } },
           { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 9 } },
           { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 3 } },
-        ],
-      ],
-      13: [
-        [
-          { start: { face: 'U', sticker: 3 }, end: { face: 'U', sticker: 1 } },
-          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 9 } },
-        ],
-      ],
-      14: [
-        [
-          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 9 } },
-          { start: { face: 'U', sticker: 9 }, end: { face: 'U', sticker: 1 } },
-        ],
-      ],
-      15: [
-        [
-          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 9 } },
-          { start: { face: 'U', sticker: 5 }, end: { face: 'U', sticker: 3 } },
-        ],
-      ],
-      16: [
-        [
-          { start: { face: 'U', sticker: 1 }, end: { face: 'U', sticker: 3 } },
-          { start: { face: 'U', sticker: 7 }, end: { face: 'U', sticker: 9 } },
         ],
       ],
     },
