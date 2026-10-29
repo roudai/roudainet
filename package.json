@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "node scripts/preview.mjs",
     "postinstall": "nuxt prepare",
     "lint": "eslint . && prettier --check .",
     "typecheck": "nuxt typecheck",

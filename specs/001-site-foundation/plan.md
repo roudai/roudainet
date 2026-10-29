@@ -90,19 +90,22 @@ app/
 │   ├── AppFooter.vue          # フッター(© 2012-{年}、GitHub アイコン)
 │   └── IconGithub.vue         # GitHub アイコン(色を指定できる SVG)
 ├── data/navigation.ts         # NavGroup / NavItem の型と、メニューの定義
-├── layouts/default.vue        # ヘッダー + 本文(10/12 幅) + フッター
+├── layouts/default.vue        # ヘッダー + 本文(10/12 幅、中央寄せ) + フッター
 └── pages/index.vue            # トップページの骨組み
 public/
 ├── CNAME                      # roudai.net
 ├── app-ads.txt                # legacy/pages/app-ads.txt と同一
 └── favicon.ico                # legacy/static/favicon.ico と同一
 scripts/
-└── verify-output.mjs          # 出力の検証(CNAME、app-ads.txt、ads.txt の不在、広告関連の不在)
+├── verify-output.mjs          # 出力の検証(CNAME、app-ads.txt、ads.txt の不在、広告関連の不在)
+└── preview.mjs                # 生成結果の静的配信(nuxt preview は静的生成のみの出力では使えない)
 .github/
 ├── actions/setup/action.yml   # 共通のセットアップ(Node 24、pnpm、依存のインストール)
 └── workflows/
     ├── ci.yml                 # PR 用(Lint、型チェック、generate、出力の検証。デプロイなし)
     └── deploy.yml             # main への push 用(generate → Pages へデプロイ)
+modules/
+└── prerender-pages.ts         # 存在する静的ページだけを prerender の対象にする
 nuxt.config.ts                 # SSG、Tailwind、prerender 設定、head
 tsconfig.json                  # .nuxt/tsconfig.*.json を参照。legacy/ を除外
 eslint.config.mjs              # @nuxt/eslint + eslint-config-prettier。legacy/ を無視
@@ -122,9 +125,9 @@ legacy/                        # 読み取り専用(変更しない)
 
 ## 実装上の留意点
 
-- **メニューの切り替え幅**: Bulma の `navbar` は 1024px で切り替わる。Tailwind の `lg` を使う。本文の 10/12 幅は 769px 以上で、Tailwind の `md`(768px)と 1px ずれる。必要ならブレークポイントを調整し、quickstart の目視比較で確認する。
+- **メニューの切り替え幅**: Bulma の `navbar` は 1024px で切り替わる。ブレークポイントは、px の独自名(`tablet` 769px、`desktop` 1024px、`widescreen` 1216px、`fullhd` 1408px)で定義し、Tailwind 既定の `lg`(`64rem`)は使わない(単位が混在すると出力順が崩れるため。research.md の 2)。本文の 10/12 幅は `tablet` 以上で、中央寄せ、最大幅は幅に応じて 960 / 1152 / 1344px。
 - **ドロップダウン**: ポインターの重ね(`group-hover`)に加えて `focus-within` でも開く(Spec の Edge Cases)。1024px 未満では、各カテゴリの項目を縦に並べて常時表示する(現行の Bulma と同じ)。
-- **prerender の対象ページ**: `crawlLinks: false`。存在するページのパスを `routes` に渡す方法(`pages:extend` フック)は、実装時に動作を確認する。難しければ、`routes` に明示的に列挙する。
+- **prerender の対象ページ**: `crawlLinks: false`。存在するページのパスは、ローカルモジュール `modules/prerender-pages.ts` が `routes` に追加する(research.md の 4)。
 - **フッターの年**: ビルド時の年で描画し、マウント後に現在の年へ更新する(research.md の 9)。
 - **外部の設定(リポジトリの外)**: Settings > Pages の Source を「GitHub Actions」へ変更する(`main` の初回デプロイの前)。Custom domain が `roudai.net` のままであることを確認する。ブランチ保護で、`main` と `nuxt4-rebuild` への PR の CI を必須にする。これらは、リポジトリのコードでは変更できない。
 - **アクションのバージョン**: `actions/checkout`、`actions/setup-node`、`pnpm/action-setup`、`actions/upload-pages-artifact`、`actions/deploy-pages` は、実装時に最新のメジャー版を確認して固定する。

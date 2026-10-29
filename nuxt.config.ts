@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      // 未移植ページへのリンクを辿ると 404 で generate が失敗するため、リンクは辿らない
+      // 未移植ページへのリンクを辿ると 404 で generate が失敗するため、リンクは辿らない。
+      // 存在するページは modules/prerender-pages.ts が routes に追加する
       crawlLinks: false,
       routes: ['/'],
     },

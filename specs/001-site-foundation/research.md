@@ -25,8 +25,8 @@ spike(原則 VIII)は、リポジトリの外(scratchpad)で、`nuxt dev` と `n
   - Bulma の CSS だけを導入する: 見た目の再現は最も楽。ただし、ユーザーの希望(Tailwind)と異なり、JS 連動部分は結局自前になるため採用しない。
   - Nuxt UI などのコンポーネントライブラリ: 見た目が現行から変わりやすく、原則 IV(パリティ優先)に反するおそれがある。
 - **パリティに関わる調査結果**(現行の Bulma の挙動を、Tailwind で再現するための値):
-  - **メニューの切り替え幅**: Bulma の `navbar` は 1024px 以上でバーガーボタンを隠し、メニューを横並びにする。Tailwind の `lg`(1024px)と一致する。
-  - **本文の幅**: 現行レイアウトは `columns` + `column is-10` で、769px 以上ではビューポートの 10/12 幅になる(左寄せ)。Tailwind の `md`(768px)とは 1px ずれるため、必要なら独自のブレークポイントを定義する。
+  - **メニューの切り替え幅**: Bulma の `navbar` は 1024px 以上でバーガーボタンを隠し、メニューを横並びにする。Tailwind 既定の `lg` は `64rem` で、px の独自値と混ぜると出力順が崩れて `max-width` が上書きされた(実装時に判明)。そのため、ブレークポイントはすべて px の独自名(`tablet` 769px、`desktop` 1024px、`widescreen` 1216px、`fullhd` 1408px)で定義し、`lg` は使わない。
+  - **本文の幅**: 現行レイアウトは `columns` + `container column is-10` で、769px 以上ではビューポートの 10/12 幅になり、`container` の `margin: 0 auto` により**中央寄せ**になる(実装時の実測で、左寄せという当初の想定を訂正した)。最大幅は 1024px 以上で 960px、1216px 以上で 1152px、1408px 以上で 1344px。
   - **Preflight**: Tailwind は見出しやリスト、リンクの既定スタイルを消す。現行の `.content`(Bulma の本文スタイル)で整形されているページ本体は、後続の Spec で移植するため、基盤では `.content` 相当のスタイルを自前の CSS で定義する。`@tailwindcss/typography` は見た目が Bulma と異なるため使わない。
   - **ドロップダウン**: 現行は `is-hoverable`(ポインターを重ねて開く)。Spec の Edge Cases に合わせて、`focus-within` でもキーボードやタッチで開けるようにする。
 
@@ -40,7 +40,7 @@ spike(原則 VIII)は、リポジトリの外(scratchpad)で、`nuxt dev` と `n
 
 ## 4. 静的生成と未移植ページへのリンク(spike 結果)
 
-- **Decision**: `nitro.prerender.crawlLinks` を `false` にし、`routes` に、存在するページのパスを明示する。存在するページのパスは、Nuxt の `pages:extend` フックで集めて `routes` へ渡す方針とする(実装時に動作を確認する)。
+- **Decision**: `nitro.prerender.crawlLinks` を `false` にし、存在する静的ページのパスを、ローカルモジュール(`modules/prerender-pages.ts`)で集めて `routes` へ渡す。モジュールは、`pages:resolved` でパスを集め、`nitro:build:before` で Nitro の `routes` へ足す(`pages:resolved` は `nitro:config` より後に走るため、`nitro:config` では空になる。実装時に判明)。静的なページと入れ子のページは出力され、動的なルート(`[slug]` など)は対象外であることを、一時的なページで確認した。
 - **Rationale**: 既定(`crawlLinks: true`)のままメニューに未移植パス(例: `/f2l/f2l`)を置くと、`nuxt generate` が `[404] Page not found: /f2l/f2l` で失敗した(`Exiting due to prerender errors`)。
   この Spec では、未移植ページへのリンクを残す前提(Spec の Assumptions)なので、リンクのクロールを止める必要がある。`crawlLinks: false` と `routes: ['/']` で、`nuxt generate` は成功し、`CNAME` を含む出力が得られた。
 - **Alternatives considered**:

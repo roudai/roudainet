@@ -69,7 +69,7 @@ description: "サイト基盤の実装タスク一覧"
 - [X] T014 [P] [US1] `app/components/IconGithub.vue` を作成する。現行の SVG(`legacy/components/NavBar.vue` と `FooterBar.vue` のもの)を使い、`fill` の色を `prop` で指定できるようにする(ヘッダーは白、フッターは黒)
 - [X] T015 [US1] `app/components/AppFooter.vue` を作成する。「© 2012-{年} roudai.net」と、`https://github.com/roudai/roudainet` へのリンクの GitHub アイコン(黒)を中央寄せで表示する。年は、ビルド時の年で描画し、マウント後に現在の年へ更新する(research.md の 9。T014 に依存)
 - [X] T016 [US1] `app/components/AppHeader.vue` を作成する。ダーク背景のナビバーに、サイト名リンク(`/`)、`navigation.ts` から描画したカテゴリのドロップダウン(1024px 以上で横並び。ポインターを重ねる `group-hover` と、キーボードの `focus-within` で開く)、右端の GitHub アイコン(白)を置く。外部リンク(`https://` で始まる `to`)は通常の `<a>` で、内部リンクは `NuxtLink` で描画する。この時点では、1024px 未満の挙動は US2 で作る(T013、T014 に依存)
-- [X] T017 [US1] `app/layouts/default.vue` を作成する。現行のレイアウトを再現する。769px 以上で左寄せの 10/12 幅の本文領域に、ヘッダー、`<slot />` を入れた本文(余白付きの `.content`)、フッターを縦に並べる。幅の切り替えは、Tailwind の `md`(768px)との 1px の差が見た目に出るなら、`@theme` でブレークポイントを調整する(T015、T016 に依存)
+- [X] T017 [US1] `app/layouts/default.vue` を作成する。現行のレイアウトを再現する。769px 以上で中央寄せの 10/12 幅(最大幅は 960 / 1152 / 1344px)の本文領域に、ヘッダー、`<slot />` を入れた本文(余白付きの `.content`)、フッターを縦に並べる。幅の切り替えは、Tailwind の `md`(768px)との 1px の差が見た目に出るなら、`@theme` でブレークポイントを調整する(T015、T016 に依存)
 - [X] T018 [US1] `pnpm dev` で、メニューを `legacy/components/NavBar.vue` と突き合わせる。9 カテゴリ、26 項目(内部 21、外部 5)の表示名、リンク先、順序に、過不足と相違がないことを確認する。Tab キーでドロップダウンが開くことも確認する(SC-001、SC-002)
 - [X] T019 [US1] 幅 1440px で、`https://roudai.net`(現行)と並べて、ヘッダーとフッターの色、余白、ドロップダウンの挙動を比較し、気づく相違があれば `main.css` や各コンポーネントを直す(SC-003)。あわせて、広告表示を前提にした余白や枠が、レイアウトに残っていないことを確認する(FR-014、原則 III)。`pnpm lint` と `pnpm typecheck` も通す
 
@@ -141,9 +141,9 @@ description: "サイト基盤の実装タスク一覧"
 
 ### Implementation for User Story 5
 
-- [ ] T037 [US5] `app/pages/index.vue` に、トップページの骨組みを作る。サイト名の見出しと、「準備中」であることが分かる短い本文だけを置く。現行のコンテンツの移植は、後続の Spec で行う(FR-006)
-- [ ] T038 [US5] `nuxt.config.ts` の prerender 設定を、存在するページのパスを集める形にする。`pages:extend` フックで静的なページのパスを集め、`nitro.prerender.routes` に渡す。`crawlLinks` は `false` のままにする(未移植パスへのリンクがあっても `nuxt generate` が失敗しないため。research.md の 4)。フックで実現できなければ、`routes` へ明示的に列挙する(T005 に依存)
-- [ ] T039 [US5] `pnpm dev` と `pnpm generate`(出力は `pnpm preview` で配信)の両方で、`/` がエラーなく表示され、ヘッダーとフッターが含まれることを確認する。ブラウザーのコンソールにエラーが出ていないことも確認する
+- [X] T037 [US5] `app/pages/index.vue` に、トップページの骨組みを作る。サイト名の見出しと、「準備中」であることが分かる短い本文だけを置く。現行のコンテンツの移植は、後続の Spec で行う(FR-006)
+- [X] T038 [US5] 存在するページだけを prerender する仕組みを作る。ローカルモジュール `modules/prerender-pages.ts` で、`pages:resolved` のフックで静的なページのパスを集め、`nitro:build:before` で `nitro.prerender.routes` へ足す。`nuxt.config.ts` の `crawlLinks` は `false` のままにする(未移植パスへのリンクがあっても `nuxt generate` が失敗しないため。research.md の 4)。一時的なページ(静的、入れ子、動的)で、静的と入れ子だけが出力されることを確認する(T005 に依存)
+- [X] T039 [US5] `pnpm dev` と `pnpm generate`(出力は `pnpm preview` で配信)の両方で、`/` がエラーなく表示され、ヘッダーとフッターが含まれることを確認する。ブラウザーのコンソールにエラーが出ていないことも確認する
 
 **Checkpoint**: すべてのユーザーストーリーが、単独で動く
 
