@@ -106,7 +106,7 @@ description: "サイト基盤の実装タスク一覧"
 - [X] T025 [US3] PR 用の `.github/workflows/ci.yml` を新しく作成する。トリガーは `pull_request`(`branches: [main, nuxt4-rebuild]`)。複合アクションの後に、`pnpm lint`、`pnpm typecheck`、`pnpm generate` を実行する。さらに、ワークフローの構文を静的に検証する工程(`rhysd/actionlint`。バージョンは実装時に確認して固定)を加え、`deploy.yml` の誤りを、`main` へのマージ前に検出する。デプロイはしない(`pages` や `id-token` の権限も付けない。T024 で名前を空けた後に作る)
 - [X] T026 [US3] `README.md` に、運用ルールの節を追加する。「全移植と切り替えチェックリストが完了するまで `main` へマージしない」「`nuxt4-rebuild` を統合ブランチとし、機能ごとの作業ブランチは `nuxt4-rebuild` へ PR でマージする」「PR の CI(Lint、型チェック、ビルド確認。デプロイなし)」を、日本語で書く。`README.md` の全面更新は、切り替え時のチェックリスト項目のため、ここではしない(FR-012)
 - [X] T027 [US3] `README.md` に、リポジトリの外で行う設定の節を追加する。`main` の初回デプロイ前に Settings > Pages の Source を「GitHub Actions」へ切り替えること、Custom domain が `roudai.net` のままであることの確認、`main` と `nuxt4-rebuild` への PR で CI を必須にするブランチ保護(FR-010)。手順だけを書き、設定自体は運営者が行う(T026 に依存)。設定の完了を確認するため、README の節に「設定済みの確認項目」のチェックリスト(Pages の Source、Custom domain、ブランチ保護の 3 項目)を付ける。あわせて、「`main` の初回デプロイは、`deploy.yml` を本番では事前に試せないため、失敗しうる。失敗時は Actions のログを確認して直す」と一文を書く
-- [ ] T028 [US3] `nuxt4-rebuild` 宛ての PR で `ci.yml` を確認する(quickstart の 4)。結果が PR に表示される、15 分以内に終わる(SC-004)、デプロイが実行されない(SC-005)、意図的に Lint か型チェックを失敗させた変更でジョブが失敗する。ブランチ保護が設定済みなら、失敗した PR がマージできないことも確認する(FR-010。未設定なら、設定後に確認する項目として残す)。`main` 宛ての PR は、誤ってマージするおそれがあるので作らず、`ci.yml` の `branches` に `main` が入っていることを目視で確認する。**ブランチの push と PR の作成は外部へ公開する操作なので、実行前にユーザーへ確認する**
+- [ ] T028 [US3] `nuxt4-rebuild` 宛ての PR で `ci.yml` を確認する(quickstart の 4)。結果が PR に表示される、15 分以内に終わる(SC-004)、デプロイが実行されない(SC-005)、意図的に Lint か型チェックを失敗させた変更でジョブが失敗する。ブランチ保護が設定済みなら、失敗した PR がマージできないことも確認する(FR-010。未設定なら、設定後に確認する項目として残す)。`main` 宛ての PR は、誤ってマージするおそれがあるので作らず、`ci.yml` の `branches` に `main` が入っていることを目視で確認する。**ブランチの push と PR の作成は外部へ公開する操作なので、実行前にユーザーへ確認する** **【未実施】** 無人での実行中は、外部へ公開する操作(push、PR の作成)の確認が取れないため実施していない。実施するときは、ユーザーに確認してから行う。
 
 **Checkpoint**: PR の CI が動き、デプロイが `main` のみになっている
 
@@ -153,8 +153,8 @@ description: "サイト基盤の実装タスク一覧"
 
 **Purpose**: 全体の確認と、Constitution への準拠の最終確認
 
-- [ ] T040 [P] リポジトリのルートに、`yarn.lock` と `package-lock.json` が存在しないことを確認する(FR-015、原則 V)。`git diff --stat nuxt4-rebuild...HEAD -- legacy` が空で、このブランチで `legacy/` が変更されていないことも確認する(FR-016、原則 VI。コミット済みの変更も対象にするため、ブランチの基点と比較する)
-- [ ] T041 [quickstart.md](./quickstart.md) の手順 1〜5 を、通しで実行して確認する。Success Criteria SC-001〜SC-007 に未達がないこと、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` が、クリーンな環境(`rm -rf node_modules .nuxt .output` の後の `pnpm install --frozen-lockfile`)で、すべて成功することを確認する
+- [X] T040 [P] リポジトリのルートに、`yarn.lock` と `package-lock.json` が存在しないことを確認する(FR-015、原則 V)。`git diff --stat nuxt4-rebuild...HEAD -- legacy` が空で、このブランチで `legacy/` が変更されていないことも確認する(FR-016、原則 VI。コミット済みの変更も対象にするため、ブランチの基点と比較する)
+- [ ] T041 [quickstart.md](./quickstart.md) の手順 1〜5 を、通しで実行して確認する。Success Criteria SC-001〜SC-007 に未達がないこと、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` が、クリーンな環境(`rm -rf node_modules .nuxt .output` の後の `pnpm install --frozen-lockfile`)で、すべて成功することを確認する **【一部未了】** 手順 1〜3、5 と SC-001〜SC-003、SC-006、SC-007 は確認済み。手順 4(CI の実行)と SC-004、SC-005 は、T028 の実施後に確認する。
 
 ---
 

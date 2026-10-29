@@ -51,7 +51,7 @@ grep -ril "adsbygoogle\|google-adsense\|google_ad_client" .output/public || echo
 
 ```sh
 pnpm dev                          # http://localhost:3000
-pnpm preview                      # generate の出力を配信して、同じ確認をもう一度行う
+pnpm generate && pnpm preview     # generate の出力を静的に配信して、同じ確認をもう一度行う(http://localhost:3000)
 ```
 
 ブラウザーで次を確認する。`dev` と `generate` の出力の両方で行う(原則 VIII)。
@@ -63,6 +63,7 @@ pnpm preview                      # generate の出力を配信して、同じ�
 5. 現行サイト(`https://roudai.net`)を並べて開き、色、余白、メニューの挙動に、気づく相違がない(SC-003)。幅 1440px、1024px、390px の 3 通りで比較する。
 
 メニューの未移植パスは、この時点では 404 になる。これは想定どおりである。
+`pnpm dev` では、未移植のリンクについて、vue-router の警告(`No match found for location with path ...`)がコンソールに出る。これも想定どおりで、生成した出力(`pnpm preview`)では出ない。
 
 ## 4. CI のワークフロー(US3、SC-004、SC-005)
 
