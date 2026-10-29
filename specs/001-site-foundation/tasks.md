@@ -31,14 +31,14 @@ description: "サイト基盤の実装タスク一覧"
 
 **Purpose**: プロジェクトの初期化と、ツール設定(Node、pnpm、Nuxt、TypeScript、ESLint、Prettier)
 
-- [ ] T001 [P] Node 24 を固定する `.nvmrc` を作成する(内容は `24`)
-- [ ] T002 `package.json` を作成する。`name`、`private: true`、`type: "module"`、`packageManager: "pnpm@10.33.2"`、`engines.node`(`^24.15.0`)、scripts(`dev`、`generate`、`preview`、`postinstall: nuxt prepare`、`lint`: ESLint と `prettier --check .`、`typecheck`: `nuxt typecheck`)を定義する(research.md の 1、3、5、6)
-- [ ] T003 `pnpm add` で依存を入れ、`pnpm-lock.yaml` を生成する。`nuxt@4.6.3`、`vue`、`vue-router`、`tailwindcss@4.3.3`、`@tailwindcss/vite@4.3.3`、dev に `typescript@^5`(7 未満)、`vue-tsc`、`@nuxt/eslint`、`eslint`、`prettier`、`eslint-config-prettier`。pnpm のビルドスクリプトの警告(`esbuild`)が出たら、`pnpm-workspace.yaml` の `onlyBuiltDependencies` に明示する(T002 に依存)
-- [ ] T004 [P] `.gitignore` を作成する(`node_modules`、`.nuxt`、`.output`、`.data`、`.env*`、`dist`、ログ、OS の一時ファイル)
-- [ ] T005 [P] `nuxt.config.ts` を作成する。`compatibilityDate`、`ssr: true`、`nitro.prerender`(`crawlLinks: false`、`routes: ['/']`)、`css: ['~/assets/css/main.css']`、`vite.plugins: [tailwindcss()]`、`app.head`(`lang: ja`、title `roudainet`、description `roudai.net`、charset、viewport、`format-detection`、favicon)。AdSense 関連のモジュールは入れない(原則 III)
-- [ ] T006 [P] `tsconfig.json` を作成する。`files: []` と、`.nuxt/tsconfig.app.json`、`.nuxt/tsconfig.server.json`、`.nuxt/tsconfig.shared.json`、`.nuxt/tsconfig.node.json` への `references`。`legacy/` が型チェックの対象に入っていないことは、T012 で確認する(research.md の 3、5)
-- [ ] T007 [P] `eslint.config.mjs` を作成する。`@nuxt/eslint` のフラットコンフィグ + `eslint-config-prettier`。`ignores` に `legacy/`、`.output/`、`.nuxt/` を入れる(原則 VI)
-- [ ] T008 [P] `.prettierrc`(`semi: false`、`singleQuote: true`、`printWidth: 120`。`legacy/.prettierrc` を引き継ぐ)と、`.prettierignore`(`legacy/`、`.output/`、`.nuxt/`、`pnpm-lock.yaml`、`public/app-ads.txt`、`public/CNAME`、`specs/`、`.specify/`、`.claude/`、`CLAUDE.md`)を作成する。Spec Kit の文書と生成物は、整形の対象にしない
+- [X] T001 [P] Node 24 を固定する `.nvmrc` を作成する(内容は `24`)
+- [X] T002 `package.json` を作成する。`name`、`private: true`、`type: "module"`、`packageManager: "pnpm@10.33.2"`、`engines.node`(`^24.15.0`)、scripts(`dev`、`generate`、`preview`、`postinstall: nuxt prepare`、`lint`: ESLint と `prettier --check .`、`typecheck`: `nuxt typecheck`)を定義する(research.md の 1、3、5、6)
+- [X] T003 `pnpm add` で依存を入れ、`pnpm-lock.yaml` を生成する。`nuxt@4.6.3`、`vue`、`vue-router`、`tailwindcss@4.3.3`、`@tailwindcss/vite@4.3.3`、dev に `typescript@^5`(7 未満)、`vue-tsc`、`@nuxt/eslint`、`eslint`、`prettier`、`eslint-config-prettier`。pnpm のビルドスクリプトの警告(`esbuild`)が出たら、`pnpm-workspace.yaml` の `onlyBuiltDependencies` に明示する(T002 に依存)
+- [X] T004 [P] `.gitignore` を作成する(`node_modules`、`.nuxt`、`.output`、`.data`、`.env*`、`dist`、ログ、OS の一時ファイル)
+- [X] T005 [P] `nuxt.config.ts` を作成する。`compatibilityDate`、`ssr: true`、`nitro.prerender`(`crawlLinks: false`、`routes: ['/']`)、`css: ['~/assets/css/main.css']`、`vite.plugins: [tailwindcss()]`、`app.head`(`lang: ja`、title `roudainet`、description `roudai.net`、charset、viewport、`format-detection`、favicon)。AdSense 関連のモジュールは入れない(原則 III)
+- [X] T006 [P] `tsconfig.json` を作成する。`files: []` と、`.nuxt/tsconfig.app.json`、`.nuxt/tsconfig.server.json`、`.nuxt/tsconfig.shared.json`、`.nuxt/tsconfig.node.json` への `references`。`legacy/` が型チェックの対象に入っていないことは、T012 で確認する(research.md の 3、5)
+- [X] T007 [P] `eslint.config.mjs` を作成する。`@nuxt/eslint` のフラットコンフィグ + `eslint-config-prettier`。`ignores` に `legacy/`、`.output/`、`.nuxt/` を入れる(原則 VI)
+- [X] T008 [P] `.prettierrc`(`semi: false`、`singleQuote: true`、`printWidth: 120`。`legacy/.prettierrc` を引き継ぐ)と、`.prettierignore`(`legacy/`、`.output/`、`.nuxt/`、`pnpm-lock.yaml`、`public/app-ads.txt`、`public/CNAME`、`specs/`、`.specify/`、`.claude/`、`CLAUDE.md`)を作成する。Spec Kit の文書と生成物は、整形の対象にしない
 
 ---
 
@@ -48,10 +48,10 @@ description: "サイト基盤の実装タスク一覧"
 
 **⚠️ CRITICAL**: このフェーズが終わるまで、ユーザーストーリーの作業は始めない
 
-- [ ] T009 `app/assets/css/main.css` を作成する。`@import "tailwindcss"` と、Bulma の見た目を再現するための `@theme`(ナビの背景色 `#363636`、ナビの内側の余白 `0.5rem`、フッターの背景色 `#fafafa` など。値は、現行サイトの表示を確認して決める)、Bulma の `.content` 相当の自前スタイル(見出し、段落、リスト、リンク。Preflight が消す既定スタイルの補い。`@tailwindcss/typography` は使わない)を定義する(research.md の 2)
-- [ ] T010 [P] `app/app.vue` を作成する(`<NuxtLayout><NuxtPage /></NuxtLayout>`)
-- [ ] T011 [P] `app/pages/index.vue` を、空の骨組み(中身なし)で作成する。レイアウトの確認に、ルートのページが必要なため。内容は US5 で作る
-- [ ] T012 `pnpm lint`、`pnpm typecheck`、`pnpm generate` が、骨格の状態ですべて終了コード 0 になることを確認する。`legacy/` が検査対象に入っていないこと、`.output/public` に `index.html` が出力されることも確認する(T003〜T011 に依存)
+- [X] T009 `app/assets/css/main.css` を作成する。`@import "tailwindcss"` と、Bulma の見た目を再現するための `@theme`(ナビの背景色 `#363636`、ナビの内側の余白 `0.5rem`、フッターの背景色 `#fafafa` など。値は、現行サイトの表示を確認して決める)、Bulma の `.content` 相当の自前スタイル(見出し、段落、リスト、リンク。Preflight が消す既定スタイルの補い。`@tailwindcss/typography` は使わない)を定義する(research.md の 2)
+- [X] T010 [P] `app/app.vue` を作成する(`<NuxtLayout><NuxtPage /></NuxtLayout>`)
+- [X] T011 [P] `app/pages/index.vue` を、空の骨組み(中身なし)で作成する。レイアウトの確認に、ルートのページが必要なため。内容は US5 で作る
+- [X] T012 `pnpm lint`、`pnpm typecheck`、`pnpm generate` が、骨格の状態ですべて終了コード 0 になることを確認する。`legacy/` が検査対象に入っていないこと、`.output/public` に `index.html` が出力されることも確認する(T003〜T011 に依存)
 
 **Checkpoint**: 骨格が動き、品質ゲートのコマンドがすべて通る。ユーザーストーリーの作業を始められる
 

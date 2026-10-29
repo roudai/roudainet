@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+
+/*
+ * 現行サイト(Nuxt 2 + Buefy/Bulma)の見た目を再現するための定義。
+ * 値は Bulma 0.9 の標準値に合わせている(原則 IV: パリティ優先)。
+ */
+@theme {
+  /* Bulma の既定のフォントスタック */
+  --font-sans:
+    BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --color-bulma-text: #4a4a4a;
+  --color-bulma-text-strong: #363636;
+  --color-bulma-link: #485fc7;
+  --color-bulma-nav: #363636;
+  --color-bulma-footer: #fafafa;
+  --color-bulma-border: #dbdbdb;
+  --color-bulma-code: #da1039;
+  --color-bulma-code-bg: #f5f5f5;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #fff;
+    color: var(--color-bulma-text);
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+/* Bulma の .content 相当(Preflight が消す、見出しやリストの既定スタイルを補う) */
+@layer components {
+  .content {
+    & li + li {
+      margin-top: 0.25em;
+    }
+
+    & p:not(:last-child),
+    & dl:not(:last-child),
+    & ol:not(:last-child),
+    & ul:not(:last-child),
+    & blockquote:not(:last-child),
+    & pre:not(:last-child),
+    & table:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      color: var(--color-bulma-text-strong);
+      font-weight: 600;
+      line-height: 1.125;
+    }
+
+    & h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+    & h1:not(:first-child) {
+      margin-top: 1em;
+    }
+    & h2 {
+      font-size: 1.75em;
+      margin-bottom: 0.5714em;
+    }
+    & h2:not(:first-child) {
+      margin-top: 1.1428em;
+    }
+    & h3 {
+      font-size: 1.5em;
+      margin-bottom: 0.6666em;
+    }
+    & h3:not(:first-child) {
+      margin-top: 1.3333em;
+    }
+    & h4 {
+      font-size: 1.25em;
+      margin-bottom: 0.8em;
+    }
+    & h5 {
+      font-size: 1.125em;
+      margin-bottom: 0.8888em;
+    }
+    & h6 {
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+
+    & strong {
+      color: var(--color-bulma-text-strong);
+      font-weight: 700;
+    }
+
+    & a:not(.button) {
+      color: var(--color-bulma-link);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    & a:not(.button):hover {
+      color: var(--color-bulma-text-strong);
+    }
+
+    & ul {
+      list-style: disc outside;
+      margin-left: 2em;
+      margin-top: 1em;
+    }
+    & ol {
+      list-style: decimal outside;
+      margin-left: 2em;
+      margin-top: 1em;
+    }
+    & ul ul {
+      list-style-type: circle;
+      margin-top: 0.5em;
+    }
+    & ul ul ul {
+      list-style-type: square;
+    }
+
+    & blockquote {
+      background-color: var(--color-bulma-code-bg);
+      border-left: 5px solid var(--color-bulma-border);
+      padding: 1.25em 1.5em;
+    }
+
+    & code {
+      background-color: var(--color-bulma-code-bg);
+      color: var(--color-bulma-code);
+      font-size: 0.875em;
+      font-weight: normal;
+      padding: 0.25em 0.5em;
+    }
+    & pre {
+      background-color: var(--color-bulma-code-bg);
+      color: var(--color-bulma-text);
+      font-size: 0.875em;
+      overflow-x: auto;
+      padding: 1.25em 1.5em;
+      white-space: pre;
+      word-wrap: normal;
+    }
+    & pre code {
+      background-color: transparent;
+      color: currentColor;
+      font-size: 1em;
+      padding: 0;
+    }
+
+    & table {
+      width: 100%;
+    }
+    & table td,
+    & table th {
+      border: 1px solid var(--color-bulma-border);
+      border-width: 0 0 1px;
+      padding: 0.5em 0.75em;
+      vertical-align: top;
+    }
+    & table th {
+      color: var(--color-bulma-text-strong);
+    }
+    & table th:not([align]) {
+      text-align: inherit;
+    }
+
+    & img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+}
