@@ -22,7 +22,7 @@
 
   --color-bulma-text: #4a4a4a;
   --color-bulma-text-strong: #363636;
-  --color-bulma-link: #485fc7;
+  --color-bulma-link: #7957d5; /* Buefy のプライマリ色(現行サイトの実測値) */
   --color-bulma-nav: #363636;
   --color-bulma-footer: #fafafa;
   --color-bulma-border: #dbdbdb;
