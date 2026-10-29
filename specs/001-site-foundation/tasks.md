@@ -120,14 +120,14 @@ description: "サイト基盤の実装タスク一覧"
 
 ### Implementation for User Story 4
 
-- [ ] T029 [P] [US4] `legacy/static/CNAME` を、バイト単位で同一のまま `public/CNAME` へコピーする(`cp`。内容は `roudai.net`)
-- [ ] T030 [P] [US4] `legacy/pages/app-ads.txt` を、バイト単位で同一のまま `public/app-ads.txt` へコピーする(`cp` で行い、整形や改行の追加をしない。`legacy/` は変更しない)
-- [ ] T031 [P] [US4] `legacy/static/favicon.ico` を `public/favicon.ico` へコピーする。`legacy/static/ads.txt` は、コピーしない(原則 III)
-- [ ] T032 [US4] `scripts/verify-output.mjs` を作成する。`.output/public` を調べ、`CNAME`(内容 `roudai.net`)、`app-ads.txt`、`favicon.ico` の存在、`ads.txt` の不在、全 HTML に `adsbygoogle`、`google-adsense`、`google_ad_client` などの広告関連の文字列がないこと、`legacy/` が存在する間は `app-ads.txt` が `legacy/pages/app-ads.txt` と同一であることを確認する。失敗時は理由を表示して終了コード 1 にする(research.md の 8)
-- [ ] T033 [US4] `package.json` の scripts に、`verify`(`node scripts/verify-output.mjs`)を追加する(T032 に依存)
-- [ ] T034 [P] [US4] `.github/workflows/ci.yml` の `pnpm generate` の後に、`pnpm verify` の工程を追加する(T025、T033 に依存)
-- [ ] T035 [P] [US4] `.github/workflows/deploy.yml` の `build` ジョブで、`pnpm generate` の後、アップロードの前に `pnpm verify` の工程を追加する(T024、T033 に依存)
-- [ ] T036 [US4] `pnpm generate && pnpm verify` が成功することを確認する。その後、確認のため `public/ads.txt` を一時的に置いて `pnpm verify` が失敗することを確認し、元に戻す(コミットしない)。`.output/public/app-ads.txt` が `legacy/pages/app-ads.txt` と `cmp` で一致することも確認する(SC-006)
+- [X] T029 [P] [US4] `legacy/static/CNAME` を、バイト単位で同一のまま `public/CNAME` へコピーする(`cp`。内容は `roudai.net`)
+- [X] T030 [P] [US4] `legacy/pages/app-ads.txt` を、バイト単位で同一のまま `public/app-ads.txt` へコピーする(`cp` で行い、整形や改行の追加をしない。`legacy/` は変更しない)
+- [X] T031 [P] [US4] `legacy/static/favicon.ico` を `public/favicon.ico` へコピーする。`legacy/static/ads.txt` は、コピーしない(原則 III)
+- [X] T032 [US4] `scripts/verify-output.mjs` を作成する。`.output/public` を調べ、`CNAME`(内容 `roudai.net`)、`app-ads.txt`、`favicon.ico` の存在、`ads.txt` の不在、全 HTML に `adsbygoogle`、`google-adsense`、`google_ad_client` などの広告関連の文字列がないこと、`legacy/` が存在する間は `app-ads.txt` が `legacy/pages/app-ads.txt` と同一であることを確認する。失敗時は理由を表示して終了コード 1 にする(research.md の 8)
+- [X] T033 [US4] `package.json` の scripts に、`verify`(`node scripts/verify-output.mjs`)を追加する(T032 に依存)
+- [X] T034 [P] [US4] `.github/workflows/ci.yml` の `pnpm generate` の後に、`pnpm verify` の工程を追加する(T025、T033 に依存)
+- [X] T035 [P] [US4] `.github/workflows/deploy.yml` の `build` ジョブで、`pnpm generate` の後、アップロードの前に `pnpm verify` の工程を追加する(T024、T033 に依存)
+- [X] T036 [US4] `pnpm generate && pnpm verify` が成功することを確認する。その後、確認のため `public/ads.txt` を一時的に置いて `pnpm verify` が失敗することを確認し、元に戻す(コミットしない)。`.output/public/app-ads.txt` が `legacy/pages/app-ads.txt` と `cmp` で一致することも確認する(SC-006)
 
 **Checkpoint**: 出力の検証が自動化され、`CNAME`、`app-ads.txt`、広告なしが CI で保証される
 

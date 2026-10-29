@@ -26,6 +26,9 @@ jobs:
       - name: 静的サイトを生成
         run: pnpm generate
 
+      - name: 出力を検証(CNAME、app-ads.txt、広告なし)
+        run: pnpm verify
+
   # ワークフロー自体の誤りを、main へのマージ前に見つける(deploy.yml は本番でしか動かせないため)
   actionlint:
     runs-on: ubuntu-latest

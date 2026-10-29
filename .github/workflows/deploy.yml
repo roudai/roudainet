@@ -24,6 +24,9 @@ jobs:
       - name: 静的サイトを生成
         run: pnpm generate
 
+      - name: 出力を検証(CNAME、app-ads.txt、広告なし)
+        run: pnpm verify
+
       - uses: actions/upload-pages-artifact@v5
         with:
           path: .output/public
