@@ -10,6 +10,16 @@
     BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+  /*
+   * Bulma のブレークポイント。
+   * Tailwind 既定の lg(64rem)と px の独自値を混ぜると、出力順が崩れて max-width が上書きされる。
+   * そのため、すべて px の独自名で定義し、lg は使わない。
+   */
+  --breakpoint-tablet: 769px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-widescreen: 1216px;
+  --breakpoint-fullhd: 1408px;
+
   --color-bulma-text: #4a4a4a;
   --color-bulma-text-strong: #363636;
   --color-bulma-link: #485fc7;
