@@ -1,35 +1,38 @@
-name: cd
+name: ci
 
+# PR の品質ゲート。Lint、型チェック、ビルド確認までを行い、デプロイはしない(原則 V、VII)
 on:
-  push:
-    branches: [main]
+  pull_request:
+    branches: [main, nuxt4-rebuild]
+
+permissions:
+  contents: read
 
 jobs:
-  cd:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [16]
-
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
+      - uses: actions/checkout@v7
 
-      - name: Setup node env
-        uses: actions/setup-node@v3
+      - uses: ./.github/actions/setup
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: 型チェック
+        run: pnpm typecheck
+
+      - name: 静的サイトを生成
+        run: pnpm generate
+
+  # ワークフロー自体の誤りを、main へのマージ前に見つける(deploy.yml は本番でしか動かせないため)
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker://rhysd/actionlint:1.7.12
         with:
-          node-version: ${{ matrix.node }}
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Generate
-        run: yarn run generate
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          args: -color
