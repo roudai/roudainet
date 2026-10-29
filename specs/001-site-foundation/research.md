@@ -11,7 +11,8 @@ spike(原則 VIII)は、リポジトリの外(scratchpad)で、`nuxt dev` と `n
 - **Rationale**: 原則 I(最新の安定版、SSG のみ)。spike で `nuxt generate` が成功し、`.output/public` に静的ファイルが出力されることを確認した。
 - **Alternatives considered**: Nuxt 3(`3x` タグ、3.21.x)。最新の安定版という原則 I に反するため採用しない。
 - **注意**: Nuxt 4.6.3 は Node `^22.21.0 || ^24.11.0 || >=26.0.0` を要求する。手元の Node 22.15.0 では「未対応」の警告が出た(動作はした)。
-  CI と開発環境は Node 24(LTS)に固定する(`.nvmrc` と `engines`)。
+  なお、`nuxt` パッケージ自体の `engines` は `^22.22.3 || ^24.15.0 || >=26.0.0` で、CLI の警告(`^22.21.0 || ^24.11.0`)より厳しい。
+  厳しいほうに合わせて、CI と開発環境は Node 24(LTS)、`engines.node` は `^24.15.0` に固定する(`.nvmrc` は `24`)。
 
 ## 2. CSS: Buefy の代替(spike 結果)
 

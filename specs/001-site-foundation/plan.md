@@ -49,7 +49,7 @@ Buefy は使わない。spike(`nuxt dev` と `nuxt generate`)で、Tailwind が�
 
 | 原則 | 判定 | 根拠 |
 |------|------|------|
-| I. 最新の安定版 Nuxt、TypeScript、静的生成のみ | ✅ 合格 | Nuxt 4.6.3(`latest`)、TypeScript、`nuxt generate` のみ。サーバーランタイムなし。TypeScript は 5.9 に固定するが、TypeScript 7 が `vue-tsc` と非互換のためで、research.md に理由を記録した(「最新の安定版 Nuxt」の要件は満たす) |
+| I. 最新の安定版 Nuxt、TypeScript、静的生成のみ | ⚠ 逸脱(正当化あり) | Nuxt は 4.6.3(`latest`)、静的生成のみで、サーバーランタイムなし。ただし TypeScript は 5.9 に固定しており、最新の安定版(7.0.2)ではない。TypeScript 7 は `vue-tsc` 3.3.13 と非互換で、型チェックが動かないため(research.md の 3)。Complexity Tracking に理由と解除条件を記載した |
 | II. URL の互換性 | ✅ 合格(この Spec では影響なし) | メニューのパスを現行と同一にした(contracts)。全ルートの突き合わせは、切り替え時のチェックリストで行う。この Spec の出力には、トップ以外のページがない |
 | III. Web サイトに広告を含めない、配信用ファイルは CNAME と app-ads.txt | ✅ 合格 | AdSense モジュールを含めない。`ads.txt` はコピーしない。`CNAME` と `app-ads.txt` を `public/` に置き、検証スクリプトで確認する |
 | IV. 機能パリティを最優先 | ✅ 合格 | 見た目と挙動を現行の Bulma に合わせる(切り替え幅 1024px、本文幅 10/12 など)。デザイン刷新と機能追加はしない |
@@ -58,7 +58,7 @@ Buefy は使わない。spike(`nuxt dev` と `nuxt generate`)で、Tailwind が�
 | VII. 本番デプロイは `main` からのみ | ✅ 合格 | `deploy.yml` は `main` への push のみで起動。`ci.yml` はデプロイしない。ワークフローは Pages デプロイ方式へ書き直す |
 | VIII. 依存ライブラリは spike で検証 | ✅ 合格 | Buefy の代替(Tailwind)を、`nuxt dev` と `nuxt generate` の両方で spike 検証した。`sr-puzzlegen` と `sr-visualizer` は、この Spec では使わず、使う Spec の Plan で検証する |
 
-**事前ゲート**: 違反なし。**Phase 1 後の再評価**: 違反なし。Complexity Tracking に記載する項目はない。
+**事前ゲート**: 原則 I に逸脱が 1 件(TypeScript のバージョン)。Complexity Tracking に正当化を記載した。**Phase 1 後の再評価**: 同じ(新たな違反なし)。
 
 ## Project Structure
 
@@ -111,6 +111,7 @@ eslint.config.mjs              # @nuxt/eslint + eslint-config-prettier。legacy/
 .nvmrc                         # Node 24
 package.json                   # packageManager、engines、scripts(lint、typecheck、generate、dev、preview)
 pnpm-lock.yaml                 # ロックファイルはこれ1つ
+pnpm-workspace.yaml            # 必要な場合のみ(onlyBuiltDependencies で esbuild などのビルドを許可)
 legacy/                        # 読み取り専用(変更しない)
 ```
 
@@ -130,4 +131,8 @@ legacy/                        # 読み取り専用(変更しない)
 
 ## Complexity Tracking
 
-Constitution Check に違反がないため、記載する項目はない。
+| Violation | Why Needed | Simpler Alternative Rejected Because |
+|-----------|------------|-------------------------------------|
+| 原則 I: TypeScript を最新の安定版(7.0.2)ではなく 5.9.x に固定する | `vue-tsc` 3.3.13 が TypeScript 7 と非互換で(`ERR_PACKAGE_PATH_NOT_EXPORTED`)、`nuxt typecheck` が動かない。型チェックは原則 V の必須ゲートである(spike で確認。research.md の 3) | TypeScript 7 を使うと、原則 V の型チェックを満たせない。型チェックを外す案は、原則 V に反する |
+
+**解除条件**: `vue-tsc` が TypeScript 7 に対応した時点で、TypeScript を 7 系へ上げ、この行を削除する。確認は、`vue-tsc` のリリースごとに行う。
