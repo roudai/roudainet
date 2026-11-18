@@ -99,8 +99,8 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 ### Implementation for User Story 3
 
-- [ ] T017 [US3] `pnpm verify` を実行し、`scripts/verify-output.mjs` が、`scripts/pages.mjs` の 21 パス(002 の 13 とこの Spec の 8)の `index.html` を確認して成功することを確認する。8 パスのうち 1 つの `index.html` を一時的に消すと失敗することも確認する(SC-001)
-- [ ] T018 [US3] preview を起動し、ヘッダーの Megaminx、Clock、Other のメニューの内部ページの全 8 項目を、広い画面(ホバー)と狭い画面(バーガーメニュー)の両方で選び、対応するページが表示されることを確認する。8 パスを、末尾のスラッシュの有無の両方で直接開き、200 が返ることを確認する(US3 の Acceptance Scenarios)。T011、T016 に依存する
+- [X] T017 [US3] `pnpm verify` を実行し、`scripts/verify-output.mjs` が、`scripts/pages.mjs` の 21 パス(002 の 13 とこの Spec の 8)の `index.html` を確認して成功することを確認する。8 パスのうち 1 つの `index.html` を一時的に消すと失敗することも確認する(SC-001)
+- [X] T018 [US3] preview を起動し、ヘッダーの Megaminx、Clock、Other のメニューの内部ページの全 8 項目を、広い画面(ホバー)と狭い画面(バーガーメニュー)の両方で選び、対応するページが表示されることを確認する。8 パスを、末尾のスラッシュの有無の両方で直接開き、200 が返ることを確認する(US3 の Acceptance Scenarios)。T011、T016 に依存する
 
 **Checkpoint**: Megaminx、Clock、Other のメニューの内部ページの項目が、すべて 404 でなくなる
 
@@ -114,8 +114,8 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 ### Implementation for User Story 4
 
-- [ ] T019 [US4] 8 ページの本文と見出しを読み、明らかな誤字・誤記を探す。直すものは、ページのファイル(`app/pages/{megaminx,clock,other}/*.vue`)を直し、`specs/003-megaminx-clock-pages/spec.md` の「現行の表記から直した箇所」の表に、ページ、場所、現行の表記、修正後の表記、理由を追記する。判断に迷うものは、直さずに「候補(直さない)」として追記する。spec.md の Assumptions にある「数字かできます」(`/clock/clock-no-flip`)は、ここで判断する。手順の文字列(`megacase`)は、記号の揺れを含め、直さない(FR-007)
-- [ ] T020 [US4] `pnpm generate` の後、`pnpm verify:parity` を実行し、21 パスのすべてで、spec.md の表にある修正だけが例外として報告され、ほかの差分が0件であることを確認する(SC-006)。T019 に依存する
+- [X] T019 [US4] 8 ページの本文と見出しを読み、明らかな誤字・誤記を探す。直すものは、ページのファイル(`app/pages/{megaminx,clock,other}/*.vue`)を直し、`specs/003-megaminx-clock-pages/spec.md` の「現行の表記から直した箇所」の表に、ページ、場所、現行の表記、修正後の表記、理由を追記する。判断に迷うものは、直さずに「候補(直さない)」として追記する。spec.md の Assumptions にある「数字かできます」(`/clock/clock-no-flip`)は、ここで判断する。手順の文字列(`megacase`)は、記号の揺れを含め、直さない(FR-007)
+- [X] T020 [US4] `pnpm generate` の後、`pnpm verify:parity` を実行し、21 パスのすべてで、spec.md の表にある修正だけが例外として報告され、ほかの差分が0件であることを確認する(SC-006)。T019 に依存する
 
 **Checkpoint**: 誤字の修正と候補が記録され、記録にない変更がない
 
