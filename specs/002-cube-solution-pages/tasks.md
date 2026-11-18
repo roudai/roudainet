@@ -35,9 +35,9 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 **Purpose**: 依存と静的ファイルの準備
 
-- [ ] T001 `pnpm add sr-visualizer@1.0.13` で、`sr-visualizer` を `package.json` の `dependencies` に追加し、`pnpm-lock.yaml` を更新する。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V)
-- [ ] T002 [P] `legacy/assets/images/pll/` の 13 ファイルを、ファイル名を変えずに `public/images/pll/` へコピーする(research.md の 2)
-- [ ] T003 [P] `legacy/assets/images/two-sided/` の 46 ファイルを、ファイル名を変えずに `public/images/two-sided/` へコピーする(research.md の 2)
+- [X] T001 `pnpm add sr-visualizer@1.0.13` で、`sr-visualizer` を `package.json` の `dependencies` に追加し、`pnpm-lock.yaml` を更新する。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V)
+- [X] T002 [P] `legacy/assets/images/pll/` の 13 ファイルを、ファイル名を変えずに `public/images/pll/` へコピーする(research.md の 2)
+- [X] T003 [P] `legacy/assets/images/two-sided/` の 46 ファイルを、ファイル名を変えずに `public/images/two-sided/` へコピーする(research.md の 2)
 
 ---
 
@@ -47,10 +47,10 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 **⚠️ CRITICAL**: このフェーズが終わるまで、ページの移植を始めない
 
-- [ ] T004 [P] `app/data/cube/types.ts` を作成し、data-model.md の `CubeDiagram`(`sr-visualizer` の `ICubeOptions` を使う)、`AlgorithmCase`、`AlgorithmSection`、`SolutionImage` の型を定義する
-- [ ] T005 `app/components/CubeImage.vue` を作成する。props で `CubeDiagram` と描画先の `id` を受け取り、サーバー側では、幅と高さを確保し、移植元の描画先と同じ `id`(`pll1`、`oll1`、`pochmann1` など)を持つ空の div だけを出力する。`onMounted` で `sr-visualizer` を動的に `import` し、`cubePNG` でその要素に描画する。描画の失敗は、その要素を空のままにして握りつぶし、ページの他の表示を妨げない(contracts/pages.md の「図の描画」)。T004 に依存する
-- [ ] T006 [P] `app/assets/css/main.css` の `@layer components` に、対象ページで使われている Bulma 0.9 のクラスだけを再現する: `columns`(769px 以上で flex、`margin: -0.75rem`、最後の要素以外は `margin-bottom: 0.75rem`)、`columns.is-mobile`(常に flex)、`is-vcentered`、`is-marginless`、`column`(`padding: 0.75rem`、`flex: 1 1 0`)、`column.is-1`〜`is-10`、`is-N-mobile`(768px 以下)、`is-N-tablet`(769px 以上)、`has-text-centered`、`p-0`、`box`、`table`、`is-striped`、`is-narrow`。値は Bulma 0.9 の CSS と同一にする(research.md の 3)。実際に使われている組み合わせは `grep -ohE 'class="[^"]*"' legacy/pages/{pll,oll,f2l,bld,fmc}/*.vue` で確認する
-- [ ] T007 [P] `scripts/verify-parity.mjs` を作成する(contracts/pages.md の「パリティの確認」)。13 パスについて、本番の `https://roudai.net/<パス>/` の HTML を `fetch` で取得し、`.output/public/<パス>/index.html` と比べる。比較の範囲は、両方とも本文の領域(`.content.m-3` の要素)の中だけで、ヘッダーとフッターは含めない。比較するのは、テキスト(見出し、段落、リストの項目、手順の文字列、表のセル。空白はまとめる)の並び、リンク先の URL、図の要素の数。図の要素は、`<英字><数字>` の id を持つ div(`cubePNG` の描画先)と、`<img>` として数える。spec.md の「現行の表記から直した箇所」の表を読み込み、その「現行の表記」→「修正後の表記」の差分は例外として報告し、失敗にしない。差分がなければ終了コード 0、あれば 1。`package.json` には `verify:parity` スクリプトとして追加する
+- [X] T004 [P] `app/data/cube/types.ts` を作成し、data-model.md の `CubeDiagram`(`sr-visualizer` の `ICubeOptions` を使う)、`AlgorithmCase`、`AlgorithmSection`、`SolutionImage` の型を定義する
+- [X] T005 `app/components/CubeImage.vue` を作成する。props で `CubeDiagram` と描画先の `id` を受け取り、サーバー側では、幅と高さを確保し、移植元の描画先と同じ `id`(`pll1`、`oll1`、`pochmann1` など)を持つ空の div だけを出力する。`onMounted` で `sr-visualizer` を動的に `import` し、`cubePNG` でその要素に描画する。描画の失敗は、その要素を空のままにして握りつぶし、ページの他の表示を妨げない(contracts/pages.md の「図の描画」)。T004 に依存する
+- [X] T006 [P] `app/assets/css/main.css` の `@layer components` に、対象ページで使われている Bulma 0.9 のクラスだけを再現する: `columns`(769px 以上で flex、`margin: -0.75rem`、最後の要素以外は `margin-bottom: 0.75rem`)、`columns.is-mobile`(常に flex)、`is-vcentered`、`is-marginless`、`column`(`padding: 0.75rem`、`flex: 1 1 0`)、`column.is-1`〜`is-10`、`is-N-mobile`(768px 以下)、`is-N-tablet`(769px 以上)、`has-text-centered`、`p-0`、`box`、`table`、`is-striped`、`is-narrow`。値は Bulma 0.9 の CSS と同一にする(research.md の 3)。実際に使われている組み合わせは `grep -ohE 'class="[^"]*"' legacy/pages/{pll,oll,f2l,bld,fmc}/*.vue` で確認する
+- [X] T007 [P] `scripts/verify-parity.mjs` を作成する(contracts/pages.md の「パリティの確認」)。13 パスについて、本番の `https://roudai.net/<パス>/` の HTML を `fetch` で取得し、`.output/public/<パス>/index.html` と比べる。比較の範囲は、両方とも本文の領域(`.content.m-3` の要素)の中だけで、ヘッダーとフッターは含めない。比較するのは、テキスト(見出し、段落、リストの項目、手順の文字列、表のセル。空白はまとめる)の並び、リンク先の URL、図の要素の数。図の要素は、`<英字><数字>` の id を持つ div(`cubePNG` の描画先)と、`<img>` として数える。spec.md の「現行の表記から直した箇所」の表を読み込み、その「現行の表記」→「修正後の表記」の差分は例外として報告し、失敗にしない。差分がなければ終了コード 0、あれば 1。`package.json` には `verify:parity` スクリプトとして追加する
 
 **Checkpoint**: 型、図のコンポーネント、CSS、確認のスクリプトがそろい、ページの移植を始められる
 

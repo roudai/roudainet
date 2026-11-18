@@ -14,11 +14,13 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint . && prettier --check .",
     "typecheck": "nuxt typecheck",
-    "verify": "node scripts/verify-output.mjs"
+    "verify": "node scripts/verify-output.mjs",
+    "verify:parity": "node scripts/verify-parity.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",
     "nuxt": "4.6.3",
+    "sr-visualizer": "1.0.13",
     "tailwindcss": "4.3.3",
     "vue": "^3.5.44",
     "vue-router": "^5.4.0"

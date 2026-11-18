@@ -190,3 +190,173 @@
     }
   }
 }
+
+/*
+ * 解法ページで使う Bulma 0.9.4 のクラス(specs/002-cube-solution-pages の research.md の 3)。
+ * 移植元のテンプレートのクラス名をそのまま使えるよう、実際に使われているものだけを、同じ値で再現する。
+ * ブレークポイント: mobile は 768px 以下、tablet は 769px 以上。
+ */
+@layer components {
+  .columns {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+
+    &:last-child {
+      margin-bottom: -0.75rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: calc(1.5rem - 0.75rem);
+    }
+    &.is-mobile {
+      display: flex;
+    }
+    &.is-vcentered {
+      align-items: center;
+    }
+  }
+
+  @media screen and (min-width: 769px), print {
+    .columns:not(.is-desktop) {
+      display: flex;
+    }
+  }
+
+  .column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+  }
+
+  /* is-mobile の中では、is-N は画面幅によらず効く */
+  .columns.is-mobile > .column {
+    &.is-1 {
+      flex: none;
+      width: 8.33333%;
+    }
+    &.is-2 {
+      flex: none;
+      width: 16.66667%;
+    }
+    &.is-3 {
+      flex: none;
+      width: 25%;
+    }
+    &.is-9 {
+      flex: none;
+      width: 75%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .column {
+      &.is-2-mobile {
+        flex: none;
+        width: 16.66667%;
+      }
+      &.is-3-mobile {
+        flex: none;
+        width: 25%;
+      }
+      &.is-8-mobile {
+        flex: none;
+        width: 66.66667%;
+      }
+      &.is-9-mobile {
+        flex: none;
+        width: 75%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 769px), print {
+    .column {
+      &.is-1,
+      &.is-1-tablet {
+        flex: none;
+        width: 8.33333%;
+      }
+      &.is-2,
+      &.is-2-tablet {
+        flex: none;
+        width: 16.66667%;
+      }
+      &.is-3 {
+        flex: none;
+        width: 25%;
+      }
+      &.is-9,
+      &.is-9-tablet {
+        flex: none;
+        width: 75%;
+      }
+      &.is-10-tablet {
+        flex: none;
+        width: 83.33333%;
+      }
+    }
+  }
+
+  .box {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow:
+      0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
+      0 0px 0 1px rgba(10, 10, 10, 0.02);
+    color: var(--color-bulma-text);
+    display: block;
+    padding: 1.25rem;
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .table {
+    background-color: white;
+    color: var(--color-bulma-text-strong);
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+    & td,
+    & th {
+      border: 1px solid var(--color-bulma-border);
+      border-width: 0 0 1px;
+      padding: 0.5em 0.75em;
+      vertical-align: top;
+    }
+    & th {
+      color: var(--color-bulma-text-strong);
+    }
+    & th:not([align]) {
+      text-align: left;
+    }
+    & thead td,
+    & thead th {
+      border-width: 0 0 2px;
+      color: var(--color-bulma-text-strong);
+    }
+    & tbody tr:last-child td,
+    & tbody tr:last-child th {
+      border-bottom-width: 0;
+    }
+    &.is-narrow td,
+    &.is-narrow th {
+      padding: 0.25em 0.5em;
+    }
+    &.is-striped tbody tr:not(.is-selected):nth-child(even) {
+      background-color: #fafafa;
+    }
+  }
+}
+
+/* Bulma の補助クラス(!important 付き)。p-0 は Tailwind のユーティリティをそのまま使う */
+@utility is-marginless {
+  margin: 0 !important;
+}
+@utility has-text-centered {
+  text-align: center !important;
+}
