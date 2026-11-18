@@ -2,6 +2,7 @@
 // 契約: specs/002-cube-solution-pages/contracts/pages.md の「パリティの確認」
 // 使い方: pnpm generate の後に `pnpm verify:parity [パス...]`(パスを省くと、移植済みの全ページ)
 // 本番サイトへのネットワーク接続が必要なため、CI では実行しない(research.md の 5)。
+import { createHash } from 'node:crypto'
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { migratedPages } from './pages.mjs'
@@ -74,15 +75,39 @@ function summarize(contentHtml) {
     .replace(/\s+/g, ' ')
     .trim()
   const links = [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"/gi)].map((m) => decode(m[1]))
-  const diagrams = [...html.matchAll(/<div\b[^>]*\bid="[A-Za-z]+\d+"/g)].length
-  const images = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]*)"/gi)].map((m) => imageName(decode(m[1])))
-  return { text, links, diagrams, images }
+  // cubePNG の描画先: id を持つ空の div(移植元も新サイトも、静的な HTML では空)
+  const diagrams = [...html.matchAll(/<div\b[^>]*\bid="[^"]+"[^>]*>\s*<\/div>/g)].length
+  const imageSources = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]*)"/gi)].map((m) => decode(m[1]))
+  return { text, links, diagrams, imageSources }
 }
 
-/** 画像の比較は、URL ではなくファイル名(ハッシュを除く)で行う(Constitution 1.1.1) */
-function imageName(src) {
-  const name = src.split('/').pop() ?? src
-  return name.replace(/\.[0-9a-f]{7,}(\.[a-z]+)$/i, '$1')
+/**
+ * 画像は、URL ではなく中身(SHA-256)で比べる(Constitution 1.1.1)。
+ * 現行サイトは、小さい画像を data URI でインライン化し、それ以外をハッシュ付きの URL で配信している。
+ * 新サイトは、/images/ 以下のファイルとして配信する。
+ */
+async function imageDigest(src, base) {
+  let bytes
+  if (src.startsWith('data:')) {
+    const [, meta, payload] = /^data:([^,]*),(.*)$/s.exec(src) ?? []
+    bytes = meta?.endsWith(';base64') ? Buffer.from(payload, 'base64') : Buffer.from(decodeURIComponent(payload ?? ''))
+  } else if (base === 'output') {
+    const file = join(outputDir, src)
+    if (!existsSync(file)) return `(ファイルがありません: ${src})`
+    bytes = readFileSync(file)
+  } else {
+    const response = await fetch(new URL(src, origin))
+    if (!response.ok) return `(取得に失敗しました: ${src})`
+    bytes = Buffer.from(await response.arrayBuffer())
+  }
+  const name = src.startsWith('data:') ? 'data URI' : src.split('/').pop()
+  return `${createHash('sha256').update(bytes).digest('hex').slice(0, 12)} (${name})`
+}
+
+async function imageDigests(sources, base) {
+  const digests = []
+  for (const src of sources) digests.push(await imageDigest(src, base))
+  return digests
 }
 
 /** 最初に食い違う位置の前後を示す */
@@ -134,7 +159,11 @@ async function verifyPage(page, corrections) {
 
   if (current.text !== next.text) errors.push(`本文のテキストが違います\n${firstDifference(current.text, next.text)}`)
   errors.push(...compareLists('リンク先', current.links, next.links))
-  errors.push(...compareLists('画像', current.images, next.images))
+  const currentImages = await imageDigests(current.imageSources, 'origin')
+  const nextImages = await imageDigests(next.imageSources, 'output')
+  // 表示名(ファイル名や data URI)は配信方法で変わるため、中身のハッシュだけで比べる
+  const hashOnly = (list) => list.map((item) => item.split(' ')[0])
+  errors.push(...compareLists('画像(中身)', hashOnly(currentImages), hashOnly(nextImages)))
   if (current.diagrams !== next.diagrams) {
     errors.push(`図の要素の数が違います(現行 ${current.diagrams}、新 ${next.diagrams})`)
   }

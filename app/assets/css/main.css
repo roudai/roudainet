@@ -188,6 +188,15 @@
       height: auto;
       max-width: 100%;
     }
+
+    /*
+     * Tailwind の Preflight は img を display: block にするが、Bulma では inline のまま。
+     * 解法ページの図は、inline であることで has-text-centered による中央寄せと、行の高さが現行と一致する。
+     */
+    & img {
+      display: inline;
+      vertical-align: baseline;
+    }
   }
 }
 

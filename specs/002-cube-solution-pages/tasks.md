@@ -64,21 +64,21 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 ### Implementation for User Story 1
 
-- [ ] T008 [P] [US1] `legacy/pages/pll/pll.vue` の `pllName`、`pll`、`pllArrow` と `mounted()` の指定から、21 ケースの `AlgorithmCase` を `app/data/cube/pll.ts` に作成する。図の `case` は、現行の `makeCase` と同じく、1つ目の手順の `：` より後ろの文字列にする
-- [ ] T009 [US1] `app/pages/pll/pll.vue` を作成し、`app/data/cube/pll.ts` から、見出し(h2「PLL手順」、各ケースの h3)、`CubeImage`、手順の文字列を、移植元と同じ `columns` の構造で描画する。T005、T006、T008 に依存する
-- [ ] T010 [P] [US1] `legacy/pages/pll/pll-view.vue` から、GIF 13 枚(`SolutionImage`、`src` は `/images/pll/<ファイル名>`)と `cubePNG` の指定を、`app/data/cube/pll-view.ts` に作成する
-- [ ] T011 [US1] `app/pages/pll/pll-view.vue` を作成し、移植元と同じ構造で、GIF と図を描画する。T005、T006、T010 に依存する
-- [ ] T012 [P] [US1] `legacy/pages/oll/oll.vue` のデータと `mounted()` の指定から、`app/data/cube/oll.ts` を作成する
-- [ ] T013 [US1] `app/pages/oll/oll.vue` を作成する。T005、T006、T012 に依存する
-- [ ] T014 [P] [US1] `legacy/pages/oll/coll.vue` の `COLLn21`〜`COLLn27` と 7 つの `cubePNG` の指定から、7 つの `AlgorithmSection` を `app/data/cube/coll.ts` に作成する
-- [ ] T015 [US1] `app/pages/oll/coll.vue` を作成し、7 つのまとまりを、見出し(`OLL n21 H Orientation` など)とともに描画する。T005、T006、T014 に依存する
-- [ ] T016 [P] [US1] `legacy/pages/f2l/f2l.vue` のデータと `mounted()` の指定から、`app/data/cube/f2l.ts` を作成する
-- [ ] T017 [US1] `app/pages/f2l/f2l.vue` を作成する。T005、T006、T016 に依存する
-- [ ] T018 [P] [US1] `legacy/pages/f2l/f2l-advanced.vue` の `advancedF2lth`(両手)、`advancedF2loh`(片手)と 2 つの `cubePNG` の指定から、2 つの `AlgorithmSection` を `app/data/cube/f2l-advanced.ts` に作成する
-- [ ] T019 [US1] `app/pages/f2l/f2l-advanced.vue` を作成する。ページの見出しは、spec.md の「現行の表記から直した箇所」に従い「発展形F2L」にする(現行は「発展系F2L」)。T005、T006、T018 に依存する
-- [ ] T020 [P] [US1] `legacy/pages/f2l/winter-variation.vue` の `winterVariation0`〜`winterVariation3` と 4 つの `cubePNG` の指定から、4 つの `AlgorithmSection` を `app/data/cube/winter-variation.ts` に作成する
-- [ ] T021 [US1] `app/pages/f2l/winter-variation.vue` を作成し、4 つのまとまり(コーナー反転なし〜3つ)を描画する。T005、T006、T020 に依存する
-- [ ] T022 [US1] US1 の 7 ページを確認する: `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify:parity` を実行し、7 ページに差分がない(「発展形F2L」は例外として報告される)ことを確認する。`pnpm preview` で 7 ページを開き、すべてのケースに図が表示され(SC-003)、現行サイトと並べて、広い画面と狭い画面で見た目に気づく相違がない(SC-004)ことを確認する。図の多い `/pll/pll` では、現行サイトと比べて、スクロールや操作を体感で遅いと感じないことも確認する(Spec の Edge Cases)
+- [X] T008 [P] [US1] `legacy/pages/pll/pll.vue` の `pllName`、`pll`、`pllArrow` と `mounted()` の指定から、21 ケースの `AlgorithmCase` を `app/data/cube/pll.ts` に作成する。図の `case` は、現行の `makeCase` と同じく、1つ目の手順の `：` より後ろの文字列にする
+- [X] T009 [US1] `app/pages/pll/pll.vue` を作成し、`app/data/cube/pll.ts` から、見出し(h2「PLL手順」、各ケースの h3)、`CubeImage`、手順の文字列を、移植元と同じ `columns` の構造で描画する。T005、T006、T008 に依存する
+- [X] T010 [P] [US1] `legacy/pages/pll/pll-view.vue` から、GIF 13 枚(`SolutionImage`、`src` は `/images/pll/<ファイル名>`)と `cubePNG` の指定を、`app/data/cube/pll-view.ts` に作成する
+- [X] T011 [US1] `app/pages/pll/pll-view.vue` を作成し、移植元と同じ構造で、GIF と図を描画する。T005、T006、T010 に依存する
+- [X] T012 [P] [US1] `legacy/pages/oll/oll.vue` のデータと `mounted()` の指定から、`app/data/cube/oll.ts` を作成する
+- [X] T013 [US1] `app/pages/oll/oll.vue` を作成する。T005、T006、T012 に依存する
+- [X] T014 [P] [US1] `legacy/pages/oll/coll.vue` の `COLLn21`〜`COLLn27` と 7 つの `cubePNG` の指定から、7 つの `AlgorithmSection` を `app/data/cube/coll.ts` に作成する
+- [X] T015 [US1] `app/pages/oll/coll.vue` を作成し、7 つのまとまりを、見出し(`OLL n21 H Orientation` など)とともに描画する。T005、T006、T014 に依存する
+- [X] T016 [P] [US1] `legacy/pages/f2l/f2l.vue` のデータと `mounted()` の指定から、`app/data/cube/f2l.ts` を作成する
+- [X] T017 [US1] `app/pages/f2l/f2l.vue` を作成する。T005、T006、T016 に依存する
+- [X] T018 [P] [US1] `legacy/pages/f2l/f2l-advanced.vue` の `advancedF2lth`(両手)、`advancedF2loh`(片手)と 2 つの `cubePNG` の指定から、2 つの `AlgorithmSection` を `app/data/cube/f2l-advanced.ts` に作成する
+- [X] T019 [US1] `app/pages/f2l/f2l-advanced.vue` を作成する。ページの見出しは、spec.md の「現行の表記から直した箇所」に従い「発展形F2L」にする(現行は「発展系F2L」)。T005、T006、T018 に依存する
+- [X] T020 [P] [US1] `legacy/pages/f2l/winter-variation.vue` の `winterVariation0`〜`winterVariation3` と 4 つの `cubePNG` の指定から、4 つの `AlgorithmSection` を `app/data/cube/winter-variation.ts` に作成する
+- [X] T021 [US1] `app/pages/f2l/winter-variation.vue` を作成し、4 つのまとまり(コーナー反転なし〜3つ)を描画する。T005、T006、T020 に依存する
+- [X] T022 [US1] US1 の 7 ページを確認する: `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify:parity` を実行し、7 ページに差分がない(「発展形F2L」は例外として報告される)ことを確認する。`pnpm preview` で 7 ページを開き、すべてのケースに図が表示され(SC-003)、現行サイトと並べて、広い画面と狭い画面で見た目に気づく相違がない(SC-004)ことを確認する。図の多い `/pll/pll` では、現行サイトと比べて、スクロールや操作を体感で遅いと感じないことも確認する(Spec の Edge Cases)
 
 **Checkpoint**: 手順の一覧ページ 7 つが、単独で確認できる(MVP)
 
@@ -92,16 +92,16 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 ### Implementation for User Story 2
 
-- [ ] T023 [P] [US2] `legacy/pages/pll/pll-chances.vue` の `data()` と、14 か所の `cubePNG` の指定(`UPermArrow` などの矢印、`colorScheme`)から、`app/data/cube/pll-chances.ts` を作成する
-- [ ] T024 [US2] `app/pages/pll/pll-chances.vue` を作成し、見出し(「PLLの確率」、「1. エッジ3点交換、コーナー3点交換」など)、本文、図、確率の表(`table is-striped is-narrow` など、移植元と同じクラス)を描画する。T005、T006、T023 に依存する
-- [ ] T025 [P] [US2] `legacy/pages/pll/two-sided-pll.vue` の画像 46 枚(`SolutionImage`、`src` は `/images/two-sided/<ファイル名>`、`alt` は移植元と同一)と、9 か所の `cubePNG` の指定から、`app/data/cube/two-sided-pll.ts` を作成する
-- [ ] T026 [US2] `app/pages/pll/two-sided-pll.vue` を作成し、本文、判断パターンの画像と説明文、図、外部リンク(`http://cubing.pt/wp-content/uploads/2017/03/pll2side-20140531.pdf`、`https://roudai.github.io/PLLTrainer/`)を、移植元と同じ順序で描画する。T005、T006、T025 に依存する
-- [ ] T027 [P] [US2] `legacy/pages/bld/old-pochmann-corner.vue` の 11 か所の `cubePNG` の指定から、`app/data/cube/old-pochmann-corner.ts` を作成する
-- [ ] T028 [US2] `app/pages/bld/old-pochmann-corner.vue` を作成し、見出し(「Old Pochmann method（corner）」、「基本」、「発展」、「M2 + Old Pochmann」)、本文、手順、図を描画する。T005、T006、T027 に依存する
-- [ ] T029 [P] [US2] `app/pages/bld/bld-introduction.vue` を作成し、`legacy/pages/bld/bld-introduction.vue` の本文と外部リンク(`https://togetter.com/li/135461`)をテンプレートにそのまま写す
-- [ ] T030 [P] [US2] `app/pages/bld/bld-method.vue` を作成し、`legacy/pages/bld/bld-method.vue` の本文と外部リンク(`https://www.stefan-pochmann.info/spocc/blindsolving/M2R2/`)をテンプレートにそのまま写す
-- [ ] T031 [P] [US2] `app/pages/fmc/intro-fmc.vue` を作成し、`legacy/pages/fmc/intro-fmc.vue` の本文と外部リンク(`https://cubevoyage.net/how-to-solve/intermediate/notation/`)をテンプレートにそのまま写す
-- [ ] T032 [US2] US2 の 6 ページを確認する: `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify:parity` を実行し、6 ページに差分がないことを確認する。`pnpm preview` で 6 ページを開き、現行サイトと並べて、本文、表、図、画像に気づく相違がないこと、図の多い `/pll/pll-chances` の操作が、現行サイトと比べて体感で遅くないこと、外部リンクが contracts/pages.md の URL と一致すること(SC-005)を確認する
+- [X] T023 [P] [US2] `legacy/pages/pll/pll-chances.vue` の `data()` と、14 か所の `cubePNG` の指定(`UPermArrow` などの矢印、`colorScheme`)から、`app/data/cube/pll-chances.ts` を作成する
+- [X] T024 [US2] `app/pages/pll/pll-chances.vue` を作成し、見出し(「PLLの確率」、「1. エッジ3点交換、コーナー3点交換」など)、本文、図、確率の表(`table is-striped is-narrow` など、移植元と同じクラス)を描画する。T005、T006、T023 に依存する
+- [X] T025 [P] [US2] `legacy/pages/pll/two-sided-pll.vue` の画像 46 枚(`SolutionImage`、`src` は `/images/two-sided/<ファイル名>`、`alt` は移植元と同一)と、9 か所の `cubePNG` の指定から、`app/data/cube/two-sided-pll.ts` を作成する
+- [X] T026 [US2] `app/pages/pll/two-sided-pll.vue` を作成し、本文、判断パターンの画像と説明文、図、外部リンク(`http://cubing.pt/wp-content/uploads/2017/03/pll2side-20140531.pdf`、`https://roudai.github.io/PLLTrainer/`)を、移植元と同じ順序で描画する。T005、T006、T025 に依存する
+- [X] T027 [P] [US2] `legacy/pages/bld/old-pochmann-corner.vue` の 11 か所の `cubePNG` の指定から、`app/data/cube/old-pochmann-corner.ts` を作成する
+- [X] T028 [US2] `app/pages/bld/old-pochmann-corner.vue` を作成し、見出し(「Old Pochmann method（corner）」、「基本」、「発展」、「M2 + Old Pochmann」)、本文、手順、図を描画する。T005、T006、T027 に依存する
+- [X] T029 [P] [US2] `app/pages/bld/bld-introduction.vue` を作成し、`legacy/pages/bld/bld-introduction.vue` の本文と外部リンク(`https://togetter.com/li/135461`)をテンプレートにそのまま写す
+- [X] T030 [P] [US2] `app/pages/bld/bld-method.vue` を作成し、`legacy/pages/bld/bld-method.vue` の本文と外部リンク(`https://www.stefan-pochmann.info/spocc/blindsolving/M2R2/`)をテンプレートにそのまま写す
+- [X] T031 [P] [US2] `app/pages/fmc/intro-fmc.vue` を作成し、`legacy/pages/fmc/intro-fmc.vue` の本文と外部リンク(`https://cubevoyage.net/how-to-solve/intermediate/notation/`)をテンプレートにそのまま写す
+- [X] T032 [US2] US2 の 6 ページを確認する: `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify:parity` を実行し、6 ページに差分がないことを確認する。`pnpm preview` で 6 ページを開き、現行サイトと並べて、本文、表、図、画像に気づく相違がないこと、図の多い `/pll/pll-chances` の操作が、現行サイトと比べて体感で遅くないこと、外部リンクが contracts/pages.md の URL と一致すること(SC-005)を確認する
 
 **Checkpoint**: 解説ページ 6 つが、単独で確認できる
 
