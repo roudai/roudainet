@@ -18,6 +18,8 @@
 | `puzzle.scheme` | 面ごとの配色(`value` と `name`) | EP、CP |
 | `puzzle.arrows` | 矢印の始点と終点(面とステッカーの番号) | EP、CP |
 
+**型(実装時の補足、2026-11-19)**: `sr-puzzlegen` の `MegaminxOptions` の配色(`IColor`)は `value` と `stroke` だけを持つ。移植元の配色は、ライブラリが使わない `name` も持つため、`MegaminxDiagram` の `scheme` は `name` を許す独自の型にした(`app/data/megaminx/types.ts`)。値は移植元のまま写している。
+
 **検証ルール**: 値は、移植元の `mounted()` が `PNG` に渡した値と同一である(FR-003)。変換スクリプトで、呼び出しの時点の値をディープコピーして記録するため、手による差異はない。
 
 ## ページのデータ(`app/data/megaminx/<ページ名>.ts`)

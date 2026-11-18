@@ -125,9 +125,9 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 **Purpose**: 全体の確認と仕上げ
 
-- [ ] T021 [P] `git diff --stat nuxt4-rebuild -- legacy/` の出力が空であることを確認する(FR-012、原則 VI)
-- [ ] T022 クリーンな環境(`rm -rf node_modules .nuxt .output && pnpm install --frozen-lockfile`)から、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify`、`pnpm verify:parity` を実行し、すべて成功することを確認する(quickstart.md の 1〜3、SC-007)
-- [ ] T023 実装中に設計を変えた場合は、plan.md、research.md、data-model.md、contracts/pages.md を、実装に合わせて更新する
+- [X] T021 [P] `git diff --stat nuxt4-rebuild -- legacy/` の出力が空であることを確認する(FR-012、原則 VI)
+- [X] T022 クリーンな環境(`rm -rf node_modules .nuxt .output && pnpm install --frozen-lockfile`)から、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify`、`pnpm verify:parity` を実行し、すべて成功することを確認する(quickstart.md の 1〜3、SC-007)
+- [X] T023 実装中に設計を変えた場合は、plan.md、research.md、data-model.md、contracts/pages.md を、実装に合わせて更新する
 - [ ] T024 `003-megaminx-clock-pages` を push し、`nuxt4-rebuild` 宛ての PR を作成する。`check` と `actionlint` が成功し、`deploy.yml` が実行されないことを確認する。`gh api repos/roudai/roudainet/pulls/<番号>` で `stack` が `null` であることを確認し、stack の場合は、マージ前に GitHub の画面で Unstack してもらう(原則 VII)。push、PR の作成、マージは、運営者の確認を得てから行う
 
 ---

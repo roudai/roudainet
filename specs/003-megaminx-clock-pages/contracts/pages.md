@@ -23,7 +23,7 @@
 
 ## 図(`MegaminxView.vue` と `MegaminxImage.vue`)
 
-- `MegaminxView` の入力: `image`(描画先の id。移植元と同じ `megacase1` など)、`algorithm`(手順の文字列の配列。1 つ目を表示する)、`diagram`(図の指定。data-model.md の MegaminxDiagram)。
+- `MegaminxView` の入力: `image`(描画先の id。移植元と同じ `megacase1` など)、`algorithm`(手順の文字列の配列。1 つ目を表示する)、`diagram`(図の指定。data-model.md の MegaminxDiagram)。`algorithm` と `diagram` は、データの索引の型(`noUncheckedIndexedAccess`)が `undefined` を含むため、型の上では省略可にしている(実装時の変更、2026-11-19)。
 - `MegaminxView` が出力する HTML の構造とクラス名は、移植元の `legacy/components/MegaminxView.vue` と同一である。
 - `MegaminxImage` は、サーバー側(prerender)では、その id を持つ空の div だけを出力する。ブラウザーで、`sr-puzzlegen` の `PNG` により、`megaminx-top` の図を描画する。描画前に図の大きさは確保しない(002 と同じ理由)。
 - 図の指定が見つからない場合や、描画に失敗した場合は、コンソールにエラーを出し、その図だけを空のままにする。手順の文字列と他の図は表示する。
