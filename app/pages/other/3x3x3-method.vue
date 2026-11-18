@@ -52,8 +52,8 @@
       <li>上面CO</li>
       <li>下面CO</li>
       <li>全CP</li>
-      <li>上面３エッジ</li>
-      <li>下面３エッジ</li>
+      <li>上面3エッジ</li>
+      <li>下面3エッジ</li>
       <li>上面or下面ラストエッジ</li>
       <li>上面or下面ラストエッジ＋中段EO</li>
       <li>上段EP</li>
