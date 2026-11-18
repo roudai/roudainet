@@ -1,19 +1,15 @@
 <!--
 Sync Impact Report
-- Version change: (template, unversioned) → 1.0.0
-- Modified principles: none (initial ratification; all placeholders replaced).
-  Before the first commit, III was redefined from "keep deployment assets incl. ads" to
-  "no Google ads on the site; keep CNAME and app-ads.txt", and II/IV got exceptions. Version stays 1.0.0 because
-  1.0.0 was never committed or published.
-- Added sections: Core Principles I–VIII, Technology & Delivery Constraints,
-  Migration Workflow, Governance
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: IV (added an exception allowing obvious typos and mistakes to be fixed,
+  with the change recorded in the Spec).
+- Added sections: none
 - Removed sections: none
 - Templates requiring updates:
   - .specify/templates/plan-template.md ✅ no change (Constitution Check is generic)
   - .specify/templates/spec-template.md ✅ no change
-  - .specify/templates/tasks-template.md ✅ no change (tests stay OPTIONAL)
+  - .specify/templates/tasks-template.md ✅ no change
   - README.md ⚠ pending (still the Nuxt 2 boilerplate; rewrite after cutover)
-  - CLAUDE.md ✅ language rule added (Spec Kit documents are written in Japanese)
 - Follow-up TODOs: none
 -->
 # roudai.net Constitution
@@ -54,6 +50,9 @@ Web サイトの広告とは切り離して維持する。AdSense の管理画�
 最初の目標は、現行のページと挙動の再現である。対象ページのパリティを確認するまで、
 デザイン刷新や機能追加に着手してはならない(MUST NOT)。それらは、パリティ確認後に
 別の機能として Spec を作成する。広告の廃止(原則 III)は、パリティの対象外とする。
+例外: 表示名や本文の明らかな誤字・誤記(例: `Tooks` → `Tools`)は、移植時に直してよい。
+直した箇所は、該当する Spec に、現行の表記と修正後の表記を記録しなければならない(MUST)。
+URL のパスは、誤記に見えても原則 II に従い変更しない。
 
 ### V. CI による品質ゲート
 Lint と TypeScript の型チェックを CI で実行し、`main` へのマージ前にパスしなければならない
@@ -108,4 +107,4 @@ Vue 3 や SSG で動かない可能性のある外部ライブラリ(Buefy の�
 準拠状況は、各 Plan の Constitution Check と、切り替え時のチェックリストで確認する。
 逸脱する場合は、Plan の複雑さの追跡(complexity tracking)に理由を記載しなければならない。
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-10-29
+**Version**: 1.1.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-11-18

@@ -77,8 +77,8 @@ export const navigation: NavGroup[] = [
     ],
   },
   {
-    // 表示名の `Tooks` は現行の表記のまま(パリティ優先)
-    label: 'Tooks',
+    // 現行の表記は `Tooks`。明らかな誤字のため直した(原則 IV の例外、contracts/navigation.md に記録)
+    label: 'Tools',
     items: [
       { label: 'VisualCube Editor', to: 'https://visualcube.roudai.net/' },
       { label: 'Megaminx Image editor', to: 'https://roudai.github.io/MegaminxImageEditor/' },

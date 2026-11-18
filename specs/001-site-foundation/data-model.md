@@ -20,7 +20,7 @@
 
 | フィールド | 型 | 説明 |
 |------------|----|------|
-| `label` | 文字列 | カテゴリ名(`F2L`、`OLL`、`PLL`、`BLD`、`Megaminx`、`FMC`、`Clock`、`Other`、`Tooks`) |
+| `label` | 文字列 | カテゴリ名(`F2L`、`OLL`、`PLL`、`BLD`、`Megaminx`、`FMC`、`Clock`、`Other`、`Tools`) |
 | `items` | `NavItem` の配列 | そのカテゴリのドロップダウンに並ぶ項目。順序に意味がある |
 
 - 関係: ヘッダーは、`NavGroup` の配列(順序固定)から作られる。1つの `NavGroup` は、1つ以上の `NavItem` を持つ。

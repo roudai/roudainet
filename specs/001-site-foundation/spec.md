@@ -20,7 +20,7 @@
 
 **Acceptance Scenarios**:
 
-1. **Given** 訪問者がトップページを開いている、**When** ヘッダーを見る、**Then** サイト名リンク、F2L / OLL / PLL / BLD / Megaminx / FMC / Clock / Other / Tooks の各メニュー、GitHub リンクが現行サイトと同じ並びで表示される。
+1. **Given** 訪問者がトップページを開いている、**When** ヘッダーを見る、**Then** サイト名リンク、F2L / OLL / PLL / BLD / Megaminx / FMC / Clock / Other / Tools の各メニュー、GitHub リンクが現行サイトと同じ並びで表示される。
 2. **Given** 訪問者がデスクトップ幅で閲覧している、**When** カテゴリのメニューにポインターを重ねる、**Then** そのカテゴリのドロップダウンが開き、現行サイトと同じ項目が並ぶ。
 3. **Given** 訪問者が任意のページを開いている、**When** ページ下部までスクロールする、**Then** 現行サイトと同じ内容のフッターが表示される。
 4. **Given** 訪問者がメニューの外部リンク(competition.roudai.net、blog.roudai.net、各ツールのサイトなど)を選ぶ、**When** リンクを開く、**Then** 現行サイトと同じ外部の URL へ移動する。
@@ -105,7 +105,7 @@
 ### Functional Requirements
 
 - **FR-001**: サイトは、すべてのページで共通のヘッダーとフッターを表示しなければならない(MUST)。
-- **FR-002**: ヘッダーは、サイト名リンク、F2L / OLL / PLL / BLD / Megaminx / FMC / Clock / Other / Tooks のドロップダウンメニュー、GitHub リンクを、現行サイトと同じ項目と順序で含まなければならない(MUST)。
+- **FR-002**: ヘッダーは、サイト名リンク、F2L / OLL / PLL / BLD / Megaminx / FMC / Clock / Other / Tools のドロップダウンメニュー、GitHub リンクを、現行サイトと同じ項目と順序で含まなければならない(MUST)。
 - **FR-003**: メニューの各項目のリンク先は、現行サイト(`legacy/components/NavBar.vue`)と同じパスまたは同じ外部 URL でなければならない(MUST)。
 - **FR-004**: 狭い画面では、メニューはバーガーボタンで開閉でき、デスクトップ幅と同じ項目を含まなければならない(MUST)。
 - **FR-005**: ヘッダーとフッターの見た目(色、余白、メニューの挙動)は、現行サイトと同等でなければならない(MUST)。デザインの刷新を行ってはならない(MUST NOT)。
@@ -123,7 +123,7 @@
 
 ### Key Entities *(include if feature involves data)*
 
-- **メニュー構成**: ヘッダーに表示するカテゴリ(F2L、OLL、PLL、BLD、Megaminx、FMC、Clock、Other、Tooks)と、各カテゴリに属する項目(表示名、リンク先)の並び。リンク先は、サイト内のパスか外部の URL のどちらかである。
+- **メニュー構成**: ヘッダーに表示するカテゴリ(F2L、OLL、PLL、BLD、Megaminx、FMC、Clock、Other、Tools)と、各カテゴリに属する項目(表示名、リンク先)の並び。リンク先は、サイト内のパスか外部の URL のどちらかである。
 - **公開物のルートファイル**: 生成したサイトのルートに置く `CNAME` と `app-ads.txt`。独自ドメインの維持と、アプリの広告配信元の検証に使う。
 
 ## Success Criteria *(mandatory)*

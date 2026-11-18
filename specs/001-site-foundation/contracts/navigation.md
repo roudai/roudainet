@@ -4,12 +4,12 @@
 
 この Spec の公開インターフェースは、訪問者に見えるメニュー構成と、生成したサイトのルートファイルである。
 メニューの表示名、リンク先、順序は、現行サイトと同一でなければならない(FR-002、FR-003、SC-001)。
-表示名には、現行の表記(例: `Tooks`)をそのまま使う。誤記に見えても、直さない(パリティ優先、原則 IV)。
+表示名には、現行の表記をそのまま使う(パリティ優先、原則 IV)。ただし、明らかな誤字は原則 IV の例外として直し、下の「現行の表記から直した箇所」に記録する。
 
 ## ヘッダー
 
 - 左端: サイト名リンク `roudai.net` → `/`
-- メニュー(左から順に): F2L、OLL、PLL、BLD、Megaminx、FMC、Clock、Other、Tooks
+- メニュー(左から順に): F2L、OLL、PLL、BLD、Megaminx、FMC、Clock、Other、Tools
 - 右端: GitHub アイコン → `https://github.com/roudai/roudainet`(白)
 
 ## メニュー項目
@@ -39,9 +39,9 @@
 | Other | 続ける意味について | `/other/advent-calendar2014` | 内部 |
 | Other | ルービックキューブの世界 | `https://competition.roudai.net` | 外部 |
 | Other | ブログ版ろーだいねっと | `https://blog.roudai.net` | 外部 |
-| Tooks | VisualCube Editor | `https://visualcube.roudai.net/` | 外部 |
-| Tooks | Megaminx Image editor | `https://roudai.github.io/MegaminxImageEditor/` | 外部 |
-| Tooks | PLL Trainer | `https://roudai.github.io/PLLTrainer/` | 外部 |
+| Tools | VisualCube Editor | `https://visualcube.roudai.net/` | 外部 |
+| Tools | Megaminx Image editor | `https://roudai.github.io/MegaminxImageEditor/` | 外部 |
+| Tools | PLL Trainer | `https://roudai.github.io/PLLTrainer/` | 外部 |
 
 合計: 9 カテゴリ、26 項目(内部 21、外部 5)。
 
@@ -71,3 +71,11 @@
 | `/ads.txt` | 存在しない(404) |
 | `/` | トップページの骨組み。共通のヘッダーとフッターを含む |
 | 全 HTML | AdSense のスクリプト、広告枠、広告用の meta タグを含まない |
+
+## 現行の表記から直した箇所
+
+原則 IV の例外(明らかな誤字・誤記)により、次の表示名を直した。
+
+| 場所 | 現行の表記 | 修正後の表記 | 理由 |
+|---|---|---|---|
+| ヘッダーのカテゴリ名 | `Tooks` | `Tools` | 「Tools」の誤字。リンク先と項目は変更しない |
