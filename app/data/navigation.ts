@@ -60,7 +60,8 @@ export const navigation: NavGroup[] = [
   },
   {
     label: 'FMC',
-    items: [{ label: '最小手数競技の紹介', to: '/fmc/intro-fmc' }],
+    // 現行の表記は「最小手数競技の紹介」。ページ本文の「最少手数競技」に合わせて直した(原則 IV の例外、contracts/navigation.md に記録)
+    items: [{ label: '最少手数競技の紹介', to: '/fmc/intro-fmc' }],
   },
   {
     label: 'Clock',
