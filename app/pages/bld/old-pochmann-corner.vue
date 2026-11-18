@@ -50,7 +50,7 @@ import { diagrams } from '~/data/cube/old-pochmann-corner'
       </div>
     </div>
 
-    <p>1回目 : ULB → RDFに移動します。これはOld Pochmannの基本系なので、そのまま手順をします。</p>
+    <p>1回目 : ULB → RDFに移動します。これはOld Pochmannの基本形なので、そのまま手順をします。</p>
     <p><b>R U' R' U' R U R' F' R U R' U' R' F R</b></p>
     <p>このとき、エッジのUBとULも交換されています。</p>
     <p>2回目 : ULB → FLDに移動します。FLDは、DをすることでRDFにセットアップすることができます。</p>
