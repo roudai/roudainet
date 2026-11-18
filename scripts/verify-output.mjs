@@ -1,7 +1,9 @@
 // `nuxt generate` の出力(.output/public)が、公開物の要件を満たしているかを確認する。
 // 要件: specs/001-site-foundation/spec.md の FR-013、FR-014(原則 III)
+//       specs/002-cube-solution-pages/spec.md の FR-001、FR-004(移植済みのページと画像)
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { extname, join } from 'node:path'
+import { migratedPages } from './pages.mjs'
 
 const outputDir = '.output/public'
 const legacyAppAds = 'legacy/pages/app-ads.txt'
@@ -41,6 +43,31 @@ if (existsSync(join(outputDir, 'ads.txt'))) {
   errors.push('ads.txt が含まれています(含めてはならない)')
 }
 
+// 移植済みのページ: すべてのパスの index.html があること(原則 II)
+for (const page of migratedPages) {
+  if (!existsSync(join(outputDir, page, 'index.html'))) errors.push(`${page} のページ(${page}/index.html)がありません`)
+}
+
+// 解法の画像: 移植元と同じファイル名で、内容が同一であること(Constitution 1.1.1)
+const imageDirs = [
+  { legacy: 'legacy/assets/images/pll', output: 'images/pll', count: 13 },
+  { legacy: 'legacy/assets/images/two-sided', output: 'images/two-sided', count: 46 },
+]
+for (const { legacy, output, count } of imageDirs) {
+  const dir = join(outputDir, output)
+  const files = existsSync(dir) ? readdirSync(dir) : []
+  if (files.length !== count) errors.push(`${output} のファイル数が ${files.length} です(${count} のはず)`)
+  // legacy/ が残っている間だけ、移植元との同一性を確認する(legacy/ は移行完了後に削除される)
+  if (!existsSync(legacy)) continue
+  for (const name of readdirSync(legacy)) {
+    const file = join(dir, name)
+    if (!existsSync(file)) errors.push(`${output}/${name} がありません`)
+    else if (!readFileSync(file).equals(readFileSync(join(legacy, name)))) {
+      errors.push(`${output}/${name} が ${legacy}/${name} と一致しません`)
+    }
+  }
+}
+
 // 広告のスクリプト、広告枠、広告用の meta タグが含まれていないこと
 const textExtensions = new Set(['.html', '.js', '.mjs', '.css', '.json'])
 const walk = (dir) =>
@@ -62,4 +89,6 @@ if (errors.length > 0) {
   process.exit(1)
 }
 
-console.log('出力の検証に成功しました(CNAME、app-ads.txt、favicon.ico があり、ads.txt と広告の痕跡がない)')
+console.log(
+  `出力の検証に成功しました(CNAME、app-ads.txt、favicon.ico、移植済みの ${migratedPages.length} ページと解法の画像があり、ads.txt と広告の痕跡がない)`,
+)

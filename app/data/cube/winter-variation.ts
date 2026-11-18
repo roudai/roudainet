@@ -1,0 +1,235 @@
+// 移植元: legacy/pages/f2l/winter-variation.vue
+// data() の値と、mounted() で cubePNG に渡している値を、変換スクリプトでそのまま写した(FR-002、FR-003)。
+import type { CubeDiagram } from './types'
+
+export const winterVariation0: Record<string, string[]> = {
+  WV1: ["U' L' U2 R U' R' U2 L"],
+}
+
+export const winterVariation1: Record<string, string[]> = {
+  WV2: ["U R U' R'"],
+  WV3: ["R' F R U R U' R' F'"],
+  WV4: ["U R2 D R' U' R D' R2"],
+  WV5: ["U R U' R' U R' U' R U' R' U2 R"],
+  WV6: ["R U' R' U2 R U' R' U2 R U R'"],
+  WV7: ["U R U R' U' R U' R'"],
+}
+
+export const winterVariation2: Record<string, string[]> = {
+  WV8: ["U2 R U' R' U R U2 R'"],
+  WV9: ["U2 F' R U2 R' U2 R' F R"],
+  WV10: ["R' F R2 U R' U' R U R' U' F'"],
+  WV11: ["U2 R' U' R2 U' R2 U2 R"],
+  WV12: ["R' F2 R F2 U L' U L"],
+  WV13: ["U2 R U2 R2 U' R U' R' U2 R"],
+  WV14: ["U2 R2 D R' U2 R D' R2"],
+  WV15: ["L' U R U' R' L"],
+  WV16: ["U2 L' R U R' U' L R U2 R'"],
+  WV17: ["U2 R U2 R'"],
+  WV18: ["R' F' R U2 R U2 R' F"],
+  WV19: ["R' F2 R2 U' R' U' R U R' F2"],
+}
+
+export const winterVariation3: Record<string, string[]> = {
+  WV20: ["U R U' R' U' R U R' U R U2 R'"],
+  WV21: ["U R U' R2 U2 R U R' U R"],
+  WV22: ["U R2 D R' U R D' R' U2 R'"],
+  WV23: ["R2 U R' U R' U' R U R U2 R2"],
+  WV24: ["U2 R U' R' U R U' R' U R U2 R'"],
+  WV25: ["U2 R U2 R2 U2 R U R' U R"],
+  WV26: ["U R U' R2 U' R U' R' U2 R"],
+  WV27: ["U R U R' U' R U R' U' R U' R'"],
+}
+
+/** 図の指定。キーは、移植元の描画先の id */
+export const diagrams: Record<string, CubeDiagram> = {
+  winterVariation0WV1: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U' L' U2 R U' R' U2 L",
+  },
+  winterVariation1WV2: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U' R'",
+  },
+  winterVariation1WV3: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R' F R U R U' R' F'",
+  },
+  winterVariation1WV4: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R2 D R' U' R D' R2",
+  },
+  winterVariation1WV5: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U' R' U R' U' R U' R' U2 R",
+  },
+  winterVariation1WV6: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R U' R' U2 R U' R' U2 R U R'",
+  },
+  winterVariation1WV7: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U R' U' R U' R'",
+  },
+  winterVariation2WV8: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R U' R' U R U2 R'",
+  },
+  winterVariation2WV9: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 F' R U2 R' U2 R' F R",
+  },
+  winterVariation2WV10: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R' F R2 U R' U' R U R' U' F'",
+  },
+  winterVariation2WV11: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R' U' R2 U' R2 U2 R",
+  },
+  winterVariation2WV12: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R' F2 R F2 U L' U L",
+  },
+  winterVariation2WV13: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R U2 R2 U' R U' R' U2 R",
+  },
+  winterVariation2WV14: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R2 D R' U2 R D' R2",
+  },
+  winterVariation2WV15: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "L' U R U' R' L",
+  },
+  winterVariation2WV16: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 L' R U R' U' L R U2 R'",
+  },
+  winterVariation2WV17: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R U2 R'",
+  },
+  winterVariation2WV18: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R' F' R U2 R U2 R' F",
+  },
+  winterVariation2WV19: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R' F2 R2 U' R' U' R U R' F2",
+  },
+  winterVariation3WV20: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U' R' U' R U R' U R U2 R'",
+  },
+  winterVariation3WV21: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U' R2 U2 R U R' U R",
+  },
+  winterVariation3WV22: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R2 D R' U R D' R' U2 R'",
+  },
+  winterVariation3WV23: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "R2 U R' U R' U' R U R U2 R2",
+  },
+  winterVariation3WV24: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R U' R' U R U' R' U R U2 R'",
+  },
+  winterVariation3WV25: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U2 R U2 R2 U2 R U R' U R",
+  },
+  winterVariation3WV26: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U' R2 U' R U' R' U2 R",
+  },
+  winterVariation3WV27: {
+    mask: 'wv',
+    view: 'plan',
+    width: 80,
+    height: 80,
+    case: "U R U R' U' R U R' U' R U' R'",
+  },
+}

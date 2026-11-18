@@ -32,7 +32,7 @@
 | Megaminx | Megaminx CO | `/megaminx/megaminx-co` | 内部 |
 | Megaminx | Megaminx EP | `/megaminx/megaminx-ep` | 内部 |
 | Megaminx | Megaminx CP | `/megaminx/megaminx-cp` | 内部 |
-| FMC | 最小手数競技の紹介 | `/fmc/intro-fmc` | 内部 |
+| FMC | 最少手数競技の紹介 | `/fmc/intro-fmc` | 内部 |
 | Clock | No-Flip Method | `/clock/clock-no-flip` | 内部 |
 | Other | 各種解法 | `/other/3x3x3-method` | 内部 |
 | Other | 知っておいてほしいこと | `/other/for-non-cubers` | 内部 |
@@ -79,3 +79,4 @@
 | 場所 | 現行の表記 | 修正後の表記 | 理由 |
 |---|---|---|---|
 | ヘッダーのカテゴリ名 | `Tooks` | `Tools` | 「Tools」の誤字。リンク先と項目は変更しない |
+| FMC の項目の表示名 | `最小手数競技の紹介` | `最少手数競技の紹介` | 競技名は「最少手数」(fewest moves)。リンク先のページ本文の表記とも不一致だった。2026-11-19、002 の作業中に修正 |

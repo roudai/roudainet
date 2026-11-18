@@ -1,0 +1,548 @@
+// 移植元: legacy/pages/oll/coll.vue
+// data() の値と、mounted() で cubePNG に渡している値を、変換スクリプトでそのまま写した(FR-002、FR-003)。
+import type { CubeDiagram } from './types'
+
+export const COLLn21: Record<string, string[]> = {
+  'n21-1': ["(U) F R U R' U' R U R' U' R U R' U' F'"],
+  'n21-2': ["(U) R U2 R' U' R U R' U' R U' R'"],
+  'n21-3': ["R U R' U R U L' U R' U' L"],
+  'n21-4': ["F R U' R' U R U2 R' U' R U R' U' F'"],
+}
+
+export const COLLn22: Record<string, string[]> = {
+  'n22-1': ["R U2 R2 U' R2 U' R2 U2 R"],
+  'n22-2': ["R U D' R U R' D R2 U' R' U' R2 U2 R"],
+  'n22-3': ["R U' Rw' F R' F Rw U Rw' F Rw"],
+  'n22-4': ["(U) F U R U' R' U R U2 R' U' R U R' F'"],
+  'n22-5': ["R U R' U' R' F R2 U R' U' R U R' U' F'"],
+  'n22-6': ["R' F2 R U2 R U2 R' F2 U' R U' R'"],
+}
+
+export const COLLn23: Record<string, string[]> = {
+  'n23-1': ["R' F R U' R' U' R U R' F' R U R' U' R' F R F' R"],
+  'n23-2': ["(U) R U R2 U' R' F R U R2 U' R' F'"],
+  'n23-3': ["R' U' R U' R' U2 R2 U R' U R U2 R'"],
+  'n23-4': ["R' U2 R F U' R' U' R U F'"],
+  'n23-5': ["R2 D' R U2 R' D R U2 R"],
+  'n23-6': ["x' R U' R' D R U2 R' D' R U' R' x"],
+}
+
+export const COLLn24: Record<string, string[]> = {
+  'n24-1': ["R U2 R' U' R U' R'2 U2 R U R' U R"],
+  'n24-2': ["R' U R2 D Rw' U2 Rw D' R2 U' R"],
+  'n24-3': ["R' U2 R U' R' F R U R' U' R' F' R U' R"],
+  'n24-4': ["R' U R U2 L' R' U R U' L"],
+  'n24-5': ["(U') Rw U R' U' Rw' F R F'"],
+  'n24-6': ["(U2) x' R U R' D R U' R' D' x"],
+}
+
+export const COLLn25: Record<string, string[]> = {
+  'n25-1': ["F R' F' Rw U R U' Rw'"],
+  'n25-2': ["(U) F' Rw U R' U' Rw' F R"],
+  'n25-3': ["(U') R' U2 R' D' R U2 R' D R2"],
+  'n25-4': ["R U2 R D R' U2 R D' R2"],
+  'n25-5': ["Rw U2 R'2 F R F' R U2 Rw'"],
+  'n25-6': ["(U) R' U' R U' R' U R U' R' U R U' R' U2 R"],
+}
+
+export const COLLn26: Record<string, string[]> = {
+  'n26-1': ["R U R' U R U2' R'"],
+  'n26-2': ["F' R U2' R' U2 R' F2 R U R U' R' F'"],
+  'n26-3': ["R U' L' U R' U' L"],
+  'n26-4': ["L' R U R' U' L U2 R U2' R'"],
+  'n26-5': ["L' U2 L U2' R U' L' U L R'"],
+  'n26-6': ["(U') R U R' U R U' R D R' U' R D' R2'"],
+}
+
+export const COLLn27: Record<string, string[]> = {
+  'n27-1': ["R' U' R U' R' U2 R"],
+  'n27-2': ["R U' R' U2 R U' R' U2 R' D' R U R' D R"],
+  'n27-3': ["R' U L U' R U L'"],
+  'n27-4': ["L R' U' R U L' U2 R' U2 R"],
+  'n27-5': ["R' U' R U R' F R U R' U' R' F' R2"],
+  'n27-6': ["(U) R' U' R U' R' U R' D' R U R' D R2"],
+}
+
+/** 図の指定。キーは、移植元の描画先の id */
+export const diagrams: Record<string, CubeDiagram> = {
+  'COLLn21n21-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) F R U R' U' R U R' U' R U R' U' F'",
+  },
+  'COLLn21n21-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) R U2 R' U' R U R' U' R U' R'",
+  },
+  'COLLn21n21-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U R' U R U L' U R' U' L",
+  },
+  'COLLn21n21-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "F R U' R' U R U2 R' U' R U R' U' F'",
+  },
+  'COLLn22n22-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U2 R2 U' R2 U' R2 U2 R",
+  },
+  'COLLn22n22-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U D' R U R' D R2 U' R' U' R2 U2 R",
+  },
+  'COLLn22n22-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U' Rw' F R' F Rw U Rw' F Rw",
+  },
+  'COLLn22n22-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) F U R U' R' U R U2 R' U' R U R' F'",
+  },
+  'COLLn22n22-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U R' U' R' F R2 U R' U' R U R' U' F'",
+  },
+  'COLLn22n22-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' F2 R U2 R U2 R' F2 U' R U' R'",
+  },
+  'COLLn23n23-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R",
+  },
+  'COLLn23n23-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) R U R2 U' R' F R U R2 U' R' F'",
+  },
+  'COLLn23n23-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U' R U' R' U2 R2 U R' U R U2 R'",
+  },
+  'COLLn23n23-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U2 R F U' R' U' R U F'",
+  },
+  'COLLn23n23-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R2 D' R U2 R' D R U2 R",
+  },
+  'COLLn23n23-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "x' R U' R' D R U2 R' D' R U' R' x",
+  },
+  'COLLn24n24-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U2 R' U' R U' R'2 U2 R U R' U R",
+  },
+  'COLLn24n24-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U R2 D Rw' U2 Rw D' R2 U' R",
+  },
+  'COLLn24n24-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U2 R U' R' F R U R' U' R' F' R U' R",
+  },
+  'COLLn24n24-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U R U2 L' R' U R U' L",
+  },
+  'COLLn24n24-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U') Rw U R' U' Rw' F R F'",
+  },
+  'COLLn24n24-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U2) x' R U R' D R U' R' D' x",
+  },
+  'COLLn25n25-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "F R' F' Rw U R U' Rw'",
+  },
+  'COLLn25n25-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) F' Rw U R' U' Rw' F R",
+  },
+  'COLLn25n25-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U') R' U2 R' D' R U2 R' D R2",
+  },
+  'COLLn25n25-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U2 R D R' U2 R D' R2",
+  },
+  'COLLn25n25-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "Rw U2 R'2 F R F' R U2 Rw'",
+  },
+  'COLLn25n25-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) R' U' R U' R' U R U' R' U R U' R' U2 R",
+  },
+  'COLLn26n26-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U R' U R U2' R'",
+  },
+  'COLLn26n26-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "F' R U2' R' U2 R' F2 R U R U' R' F'",
+  },
+  'COLLn26n26-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U' L' U R' U' L",
+  },
+  'COLLn26n26-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "L' R U R' U' L U2 R U2' R'",
+  },
+  'COLLn26n26-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "L' U2 L U2' R U' L' U L R'",
+  },
+  'COLLn26n26-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U') R U R' U R U' R D R' U' R D' R2'",
+  },
+  'COLLn27n27-1': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U' R U' R' U2 R",
+  },
+  'COLLn27n27-2': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R U' R' U2 R U' R' U2 R' D' R U R' D R",
+  },
+  'COLLn27n27-3': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U L U' R U L'",
+  },
+  'COLLn27n27-4': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "L R' U' R U L' U2 R' U2 R",
+  },
+  'COLLn27n27-5': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "R' U' R U R' F R U R' U' R' F' R2",
+  },
+  'COLLn27n27-6': {
+    view: 'plan',
+    mask: 'coll',
+    viewportRotations: [
+      [1, 30],
+      [0, -34],
+      [2, 0],
+    ],
+    width: 80,
+    height: 80,
+    case: "(U) R' U' R U' R' U R' D' R U R' D R2",
+  },
+}
