@@ -1,63 +1,50 @@
 # Data Model: キューブ系の解法ページの移植
 
-**Feature**: `002-cube-solution-pages` | **Date**: 2026-11-18
+**Feature**: `002-cube-solution-pages` | **Date**: 2026-11-18(2026-11-19 に実装に合わせて更新)
 
 この機能のデータは、すべてビルド時に固定の、静的な定義である。保存や更新はない。
-型は `app/data/cube/types.ts` に置き、各ページのデータは `app/data/cube/` の下に置く(research.md の 4)。
+型は `app/data/cube/types.ts` に、各ページのデータは `app/data/cube/<ページ名>.ts` に置く(research.md の 4)。
+
+## 実装時の設計変更(2026-11-19)
+
+当初は、ケースを `AlgorithmCase`、`AlgorithmSection`、`SolutionImage` に組み直す設計だった。実装では、パリティを確実にするため、次のように変えた。
+
+- 各ページのデータは、移植元の `data()` の値を、**構造も名前もそのまま**写す(例: `pll`、`pllName`、`COLLn21`)。テンプレートも移植元と同じ参照のしかたで描画する。
+- 図の指定は、移植元の `mounted()` を実行して、`cubePNG` に渡された値を、**描画先の id ごと**に記録したもの(`diagrams`)にする。
+- 写しは、移植元の `data()` と `mounted()` を、`sr-visualizer` と `document` のスタブの上で実行する変換スクリプトで行った。手で写した値はない(355 個の図の指定、13 ページ)。
+- そのため、`AlgorithmCase`、`AlgorithmSection`、`SolutionImage` の型は使わず、削除した。画像は、テンプレートの `<img>` にファイルのパスを直接書く(移植元と同じ)。
 
 ## CubeDiagram(キューブの図の指定)
 
-`sr-visualizer` の `ICubeOptions` のうち、現行のページが使っている項目だけを持つ。`CubeImage.vue` に渡す。
+`sr-visualizer` の `ICubeOptions` と同じ値を持つ。データを素の値で書けるよう、列挙型の項目(`mask`、`viewportRotations`)だけ、値の型に置き換えている。
 
-| フィールド | 型 | 説明 |
+| 項目 | 説明 |
+|---|---|
+| `case` または `algorithm` | 図の状態を作る手順 |
+| `mask` | 塗りつぶしのマスク(使っている値は `pll`、`oll`、`coll`、`f2l`、`ll`、`wv`) |
+| `view` | 視点。`plan`(上から)か、省略(斜め) |
+| `viewportRotations` | 視点の回転。`[軸, 角度]` の並び |
+| `width`、`height` | 図の大きさ(px) |
+| `arrows` | 矢印の指定 |
+| `colorScheme` | 面ごとの配色 |
+
+**検証ルール**: 値は、移植元の `mounted()` で `cubePNG` に渡している値と同一である(FR-003)。変換スクリプトで機械的に写したので、手による差異はない。
+
+## ページのデータ(`app/data/cube/<ページ名>.ts`)
+
+| export | 型 | 説明 |
 |---|---|---|
-| `case` または `algorithm` | 文字列(任意) | 図の状態を作る手順。現行と同じ値を使う。`case` は、手順を逆に適用した状態を表す |
-| `mask` | 文字列(任意) | 塗りつぶしのマスク(`pll`、`oll`、`coll`、`f2l`、`ll`、`wv` など) |
-| `view` | 文字列(任意) | 視点。`plan`(上から)か、省略(斜め) |
-| `width`、`height` | 数値 | 図の大きさ(px)。現行の値(例: 80) |
-| `arrows` | 文字列(任意) | 矢印の指定(例: `U0U2,U2U6,U6U0`) |
-| `colorScheme` | 面ごとの色(任意) | 配色。現行で指定しているページだけ |
-| `stickerColors` など | (任意) | 現行のページが使っている、その他の項目。移植時に、現行の `mounted()` の指定をそのまま写す |
-
-**検証ルール**: 値は、現行の `legacy/pages/` の `mounted()` で `cubePNG` に渡している値と同一でなければならない(FR-003)。型は `ICubeOptions` を使い、独自の値を作らない。
-
-## AlgorithmCase(手順のケース)
-
-手順の一覧ページの1項目。
-
-| フィールド | 型 | 説明 |
-|---|---|---|
-| `name` | 文字列(任意) | ケースの見出し(例: PLL の `U-Perm`)。見出しのないページでは省略 |
-| `diagram` | `CubeDiagram` | そのケースの図 |
-| `algorithms` | 文字列の配列 | 手順の文字列。種類の接頭辞(`両手：`、`片手：`、`最少：` など)を含め、現行の表記のまま持つ。順序に意味がある |
+| 移植元の `data()` の項目のうち、テンプレートが参照するもの | `Record<string, string[]>`、`Record<string, string>`、数値 | 手順の文字列、ケースの名前、画像の幅と高さ。名前と構造は移植元と同一 |
+| `diagrams` | `Record<string, CubeDiagram>` | 図の指定。キーは、移植元の描画先の id(`pll1`、`COLLn21H1`、`UPermarrow1` など) |
 
 **検証ルール**:
 
-- ケースの数と順序は、現行と同一である(SC-002)。
-- 手順の文字列は、現行と同一である。全角のコロン(`：`)、全角の括弧、タブ、`′` などの記号も、現行のまま残す(誤字の修正として記録したものを除く)。
-- 現行の PLL では、図の状態を、1つ目の手順の `：` より後ろから作っている(`makeCase`)。移植後も、同じ文字列から同じ状態を作る。
-
-## AlgorithmSection(ケースのまとまり)
-
-1ページに複数のまとまりがあるページ(COLL の OLL n21〜n27、Winter Variation のコーナー反転の数、発展形 F2L の両手と片手)で使う。
-
-| フィールド | 型 | 説明 |
-|---|---|---|
-| `title` | 文字列 | まとまりの見出し(例: `OLL n21 H Orientation`) |
-| `cases` | `AlgorithmCase` の配列 | そのまとまりのケース |
-
-## SolutionImage(画像ファイルの図)
-
-| フィールド | 型 | 説明 |
-|---|---|---|
-| `src` | 文字列 | `/images/pll/…` または `/images/two-sided/…`。ファイル名は移植元と同一 |
-| `alt` | 文字列 | 現行の `alt` と同一(現行にない場合は空) |
-
-**検証ルール**: 画像ファイルは、`legacy/assets/images/` の同名のファイルと、バイト単位で同一でなければならない(FR-004)。
+- ケースの数と順序、手順の文字列は、移植元と同一である(SC-002)。`scripts/verify-parity.mjs` で、本番の現行サイトと比べて確認する。
+- `diagrams` のキーの集合は、テンプレートの描画先の id の集合と一致する(移植時に確認済み)。
 
 ## TypoCorrection(誤字の修正の記録)
 
-spec.md の「現行の表記から直した箇所」の表の1行。コードには持たず、文書だけで管理する。`scripts/verify-parity.mjs` は、この表の「現行の表記」と「修正後の表記」の組を、差分の例外として扱う。
+spec.md の「現行の表記から直した箇所」の表の1行。コードには持たず、文書だけで管理する。`scripts/verify-parity.mjs` は、この表の「現行の表記」と「修正後の表記」の組を、差分の例外として扱う。理由に「候補」と書いた行は、直していないため例外にしない。
 
 | フィールド | 説明 |
 |---|---|
@@ -69,18 +56,18 @@ spec.md の「現行の表記から直した箇所」の表の1行。コード�
 
 ## ページとデータの対応
 
-| パス | データ | 図 |
-|---|---|---|
-| `/pll/pll` | `pll.ts`(21 ケース) | `CubeDiagram`(矢印つき) |
-| `/pll/pll-view` | `pll-view.ts` | `SolutionImage` 13 枚 + `CubeDiagram` |
-| `/pll/pll-chances` | `pll-chances.ts` | `CubeDiagram`、表 1 つ |
-| `/pll/two-sided-pll` | `two-sided-pll.ts` | `SolutionImage` 46 枚 + `CubeDiagram` |
-| `/oll/oll` | `oll.ts` | `CubeDiagram` |
-| `/oll/coll` | `coll.ts`(`AlgorithmSection` 7 つ) | `CubeDiagram` |
-| `/f2l/f2l` | `f2l.ts` | `CubeDiagram` |
-| `/f2l/f2l-advanced` | `f2l-advanced.ts`(`AlgorithmSection` 2 つ) | `CubeDiagram` |
-| `/f2l/winter-variation` | `winter-variation.ts`(`AlgorithmSection` 4 つ) | `CubeDiagram` |
-| `/bld/old-pochmann-corner` | `old-pochmann-corner.ts` | `CubeDiagram` |
-| `/bld/bld-introduction` | なし(テンプレートに本文) | なし |
-| `/bld/bld-method` | なし(テンプレートに本文) | なし |
-| `/fmc/intro-fmc` | なし(テンプレートに本文) | なし |
+| パス | データ | 図の数 | 画像 |
+|---|---|---|---|
+| `/pll/pll` | `pll.ts`(`pll`、`pllName`) | 21 | なし |
+| `/pll/pll-view` | `pll-view.ts`(`width`、`height`) | 13 | GIF 13 枚 |
+| `/pll/pll-chances` | `pll-chances.ts` | 72 | なし(表 1 つ) |
+| `/pll/two-sided-pll` | `two-sided-pll.ts`(`iwidth`、`iheight`) | 67 | PNG 46 枚 |
+| `/oll/oll` | `oll.ts`(`oll`) | 57 | なし |
+| `/oll/coll` | `coll.ts`(`COLLn21`〜`COLLn27`) | 40 | なし |
+| `/f2l/f2l` | `f2l.ts`(`f2l`) | 41 | なし |
+| `/f2l/f2l-advanced` | `f2l-advanced.ts`(`advancedF2lth`、`advancedF2loh`) | 6 | なし |
+| `/f2l/winter-variation` | `winter-variation.ts`(`winterVariation0`〜`3`) | 27 | なし |
+| `/bld/old-pochmann-corner` | `old-pochmann-corner.ts` | 11 | なし |
+| `/bld/bld-introduction` | なし(テンプレートに本文) | 0 | なし |
+| `/bld/bld-method` | なし(テンプレートに本文) | 0 | なし |
+| `/fmc/intro-fmc` | なし(テンプレートに本文) | 0 | なし |

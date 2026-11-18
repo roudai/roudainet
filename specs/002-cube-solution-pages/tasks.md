@@ -45,6 +45,8 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 **Purpose**: すべてのページが使う、型、図のコンポーネント、レイアウトの CSS、確認のスクリプト
 
+**実装時の変更(2026-11-19)**: T005 の「幅と高さを確保」は取りやめた(中央寄せが崩れるため)。US1、US2 のデータは、`AlgorithmCase` などに組み直さず、移植元の `data()` の構造のまま写した。詳細は data-model.md の「実装時の設計変更」と plan.md の「実装上の留意点」
+
 **⚠️ CRITICAL**: このフェーズが終わるまで、ページの移植を始めない
 
 - [X] T004 [P] `app/data/cube/types.ts` を作成し、data-model.md の `CubeDiagram`(`sr-visualizer` の `ICubeOptions` を使う)、`AlgorithmCase`、`AlgorithmSection`、`SolutionImage` の型を定義する
@@ -115,8 +117,8 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 ### Implementation for User Story 3
 
-- [ ] T033 [US3] `scripts/verify-output.mjs` に、13 パス(contracts/pages.md の表)の `index.html` が `.output/public` に存在することと、`.output/public/images/pll/`(13 ファイル)と `.output/public/images/two-sided/`(46 ファイル)が `legacy/assets/images/` の同名のファイルとバイト単位で一致することの確認を追加する。`legacy/` がない場合は、画像の一致の確認だけを省く(既存の `app-ads.txt` の確認と同じ扱い)。これにより、CI(`ci.yml` の「出力を検証」)でも確認される
-- [ ] T034 [US3] 13 パスへの到達を確認する: `pnpm generate` と `pnpm verify` が成功する。`pnpm preview` で、ヘッダーの F2L、OLL、PLL、BLD、FMC の全項目を選び、404 にならないこと、各パスをアドレスバーに直接入力しても表示されることを確認する(SC-001)
+- [X] T033 [US3] `scripts/verify-output.mjs` に、13 パス(contracts/pages.md の表)の `index.html` が `.output/public` に存在することと、`.output/public/images/pll/`(13 ファイル)と `.output/public/images/two-sided/`(46 ファイル)が `legacy/assets/images/` の同名のファイルとバイト単位で一致することの確認を追加する。`legacy/` がない場合は、画像の一致の確認だけを省く(既存の `app-ads.txt` の確認と同じ扱い)。これにより、CI(`ci.yml` の「出力を検証」)でも確認される
+- [X] T034 [US3] 13 パスへの到達を確認する: `pnpm generate` と `pnpm verify` が成功する。`pnpm preview` で、ヘッダーの F2L、OLL、PLL、BLD、FMC の全項目を選び、404 にならないこと、各パスをアドレスバーに直接入力しても表示されることを確認する(SC-001)
 
 **Checkpoint**: 13 パスへの到達が、CI と手動の両方で確認できる
 
