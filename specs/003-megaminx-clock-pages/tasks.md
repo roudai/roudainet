@@ -35,7 +35,7 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 **Purpose**: 依存の追加
 
-- [ ] T001 `pnpm add sr-puzzlegen@1.0.4` で、`sr-puzzlegen` を `package.json` の `dependencies` に追加し、`pnpm-lock.yaml` を更新する。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V)
+- [X] T001 `pnpm add sr-puzzlegen@1.0.4` で、`sr-puzzlegen` を `package.json` の `dependencies` に追加し、`pnpm-lock.yaml` を更新する。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V)
 
 ---
 
@@ -45,10 +45,10 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 **⚠️ CRITICAL**: このフェーズが終わるまで、Megaminx のページの移植を始めない(Clock と Other のページは、T005 の後なら始めてよい)
 
-- [ ] T002 [P] `app/data/megaminx/types.ts` を作成し、data-model.md の `MegaminxDiagram` を定義する。`sr-puzzlegen` の `PNGVisualizerOptions`(または `width`、`height` と `MegaminxOptions` の組み合わせ)をもとにし、データを素の値で書けるようにする。T001 に依存する
-- [ ] T003 `app/components/MegaminxImage.vue` を作成する。props で描画先の `id` と `MegaminxDiagram` を受け取り、サーバー側では、その id を持つ空の div だけを出力する(大きさは確保しない)。`onMounted` で `sr-puzzlegen` を動的に `import` し、`PNG(要素, Type.MEGAMINX_TOP, diagram)` で描画する。図の指定がない場合と、描画に失敗した場合は、コンソールにエラーを出し、その要素を空のままにする(contracts/pages.md の「図」)。002 の `app/components/CubeImage.vue` と同じ形にする。T002 に依存する
-- [ ] T004 `app/components/MegaminxView.vue` を作成する。テンプレートとクラス名は `legacy/components/MegaminxView.vue` と同一にし、描画先の `<div :id="image">` を `<MegaminxImage :id="image" :diagram="diagram" />` に置き換える。props は `image`(string)、`algorithm`(string[]。1 つ目を表示する)、`diagram`(MegaminxDiagram)。T003 に依存する
-- [ ] T005 [P] `scripts/pages.mjs` に、この Spec の 8 パスを `puzzlePages`(megaminx 4、clock 1)と `otherPages`(other 3)として追加し、`migratedPages` に含める。`scripts/verify-parity.mjs` の `specFiles` に `specs/003-megaminx-clock-pages/spec.md` を追加する(research.md の 5)
+- [X] T002 [P] `app/data/megaminx/types.ts` を作成し、data-model.md の `MegaminxDiagram` を定義する。`sr-puzzlegen` の `PNGVisualizerOptions`(または `width`、`height` と `MegaminxOptions` の組み合わせ)をもとにし、データを素の値で書けるようにする。T001 に依存する
+- [X] T003 `app/components/MegaminxImage.vue` を作成する。props で描画先の `id` と `MegaminxDiagram` を受け取り、サーバー側では、その id を持つ空の div だけを出力する(大きさは確保しない)。`onMounted` で `sr-puzzlegen` を動的に `import` し、`PNG(要素, Type.MEGAMINX_TOP, diagram)` で描画する。図の指定がない場合と、描画に失敗した場合は、コンソールにエラーを出し、その要素を空のままにする(contracts/pages.md の「図」)。002 の `app/components/CubeImage.vue` と同じ形にする。T002 に依存する
+- [X] T004 `app/components/MegaminxView.vue` を作成する。テンプレートとクラス名は `legacy/components/MegaminxView.vue` と同一にし、描画先の `<div :id="image">` を `<MegaminxImage :id="image" :diagram="diagram" />` に置き換える。props は `image`(string)、`algorithm`(string[]。1 つ目を表示する)、`diagram`(MegaminxDiagram)。T003 に依存する
+- [X] T005 [P] `scripts/pages.mjs` に、この Spec の 8 パスを `puzzlePages`(megaminx 4、clock 1)と `otherPages`(other 3)として追加し、`migratedPages` に含める。`scripts/verify-parity.mjs` の `specFiles` に `specs/003-megaminx-clock-pages/spec.md` を追加する(research.md の 5)
 
 **Checkpoint**: 図のコンポーネントと確認のスクリプトの対象がそろい、ページの移植を始められる
 
@@ -62,12 +62,12 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 ### Implementation for User Story 1
 
-- [ ] T006 [US1] データの変換スクリプトを、scratchpad に作成して実行する(research.md の 2)。`legacy/pages/megaminx/*.vue` の 4 ファイルについて、`data()` と `mounted()` を、`sr-puzzlegen` の `PNG` と `Type` のスタブの上で実行し、`PNG` に渡された値を、呼び出しの時点でディープコピーして、セレクターから `#` を除いた id(`megacase1` など)ごとに記録する。手順の文字列(`megacase`、ある場合は `megacase_view`)は、移植元の構造と名前のまま出力する。出力先は `app/data/megaminx/eo.ts`、`co.ts`、`ep.ts`、`cp.ts`(data-model.md の対応表)。`diagrams` の数が EO 3、CO 16、EP 12、CP 15 であることを確認する。T002 に依存する
-- [ ] T007 [P] [US1] `app/pages/megaminx/megaminx-eo.vue` を作成する。`legacy/pages/megaminx/megaminx-eo.vue` のテンプレートを写し、`<megaminx-view image="X" :algorithm="...">` を `<MegaminxView image="X" :algorithm="..." :diagram="diagrams['X']" />` に置き換える。データは `app/data/megaminx/eo.ts` から import する。T004、T006 に依存する
-- [ ] T008 [P] [US1] `app/pages/megaminx/megaminx-co.vue` を、T007 と同じ方法で作成する(データは `co.ts`)。T004、T006 に依存する
-- [ ] T009 [P] [US1] `app/pages/megaminx/megaminx-ep.vue` を、T007 と同じ方法で作成する(データは `ep.ts`。`megacase_view` を参照する箇所は移植元のまま)。T004、T006 に依存する
-- [ ] T010 [P] [US1] `app/pages/megaminx/megaminx-cp.vue` を、T007 と同じ方法で作成する(データは `cp.ts`。`megacase_view` と `<h5>` は移植元のまま)。T004、T006 に依存する
-- [ ] T011 [US1] US1 の確認: `pnpm lint`、`pnpm typecheck`、`pnpm generate` が成功し、`pnpm verify:parity` で 4 パスの差分が0件であることを確認する。preview を起動し、本番と並べた撮影(1280px と 375px)で、4 ページの高さが一致し、空欄の図が0件であることを確認する(SC-002、SC-003、SC-004)。CO の 16 ケースで、表示が体感で遅くないことも確認する(Edge Cases)
+- [X] T006 [US1] データの変換スクリプトを、scratchpad に作成して実行する(research.md の 2)。`legacy/pages/megaminx/*.vue` の 4 ファイルについて、`data()` と `mounted()` を、`sr-puzzlegen` の `PNG` と `Type` のスタブの上で実行し、`PNG` に渡された値を、呼び出しの時点でディープコピーして、セレクターから `#` を除いた id(`megacase1` など)ごとに記録する。手順の文字列(`megacase`、ある場合は `megacase_view`)は、移植元の構造と名前のまま出力する。出力先は `app/data/megaminx/eo.ts`、`co.ts`、`ep.ts`、`cp.ts`(data-model.md の対応表)。`diagrams` の数が EO 3、CO 16、EP 12、CP 15 であることを確認する。T002 に依存する
+- [X] T007 [P] [US1] `app/pages/megaminx/megaminx-eo.vue` を作成する。`legacy/pages/megaminx/megaminx-eo.vue` のテンプレートを写し、`<megaminx-view image="X" :algorithm="...">` を `<MegaminxView image="X" :algorithm="..." :diagram="diagrams['X']" />` に置き換える。データは `app/data/megaminx/eo.ts` から import する。T004、T006 に依存する
+- [X] T008 [P] [US1] `app/pages/megaminx/megaminx-co.vue` を、T007 と同じ方法で作成する(データは `co.ts`)。T004、T006 に依存する
+- [X] T009 [P] [US1] `app/pages/megaminx/megaminx-ep.vue` を、T007 と同じ方法で作成する(データは `ep.ts`。`megacase_view` を参照する箇所は移植元のまま)。T004、T006 に依存する
+- [X] T010 [P] [US1] `app/pages/megaminx/megaminx-cp.vue` を、T007 と同じ方法で作成する(データは `cp.ts`。`megacase_view` と `<h5>` は移植元のまま)。T004、T006 に依存する
+- [X] T011 [US1] US1 の確認: `pnpm lint`、`pnpm typecheck`、`pnpm generate` が成功し、`pnpm verify:parity` で 4 パスの差分が0件であることを確認する。preview を起動し、本番と並べた撮影(1280px と 375px)で、4 ページの高さが一致し、空欄の図が0件であることを確認する(SC-002、SC-003、SC-004)。CO の 16 ケースで、表示が体感で遅くないことも確認する(Edge Cases)
 
 **Checkpoint**: Megaminx の 4 ページが、現行と同じに表示される
 
@@ -81,11 +81,11 @@ description: "Megaminx、Clock、Other のページの移植のタスク一覧"
 
 ### Implementation for User Story 2
 
-- [ ] T012 [P] [US2] `app/pages/clock/clock-no-flip.vue` を作成し、`legacy/pages/clock/clock-no-flip.vue` のテンプレートを写す(スクリプトなし)
-- [ ] T013 [P] [US2] `app/pages/other/3x3x3-method.vue` を作成し、`legacy/pages/other/3x3x3-method.vue` のテンプレートを写す(見出しの中の外部リンク 18 本を含む)
-- [ ] T014 [P] [US2] `app/pages/other/for-non-cubers.vue` を作成し、`legacy/pages/other/for-non-cubers.vue` のテンプレートを写す
-- [ ] T015 [P] [US2] `app/pages/other/advent-calendar2014.vue` を作成し、`legacy/pages/other/advent-calendar2014.vue` のテンプレートを写す
-- [ ] T016 [US2] US2 の確認: `pnpm generate` の後、`pnpm verify:parity` で 4 パスの差分が、記録した修正以外0件であることを確認する。本番と並べた撮影で、高さが一致し、`/other/3x3x3-method` の見出しの中のリンクの色が現行と同じであることを確認する(SC-002、SC-004、SC-005)
+- [X] T012 [P] [US2] `app/pages/clock/clock-no-flip.vue` を作成し、`legacy/pages/clock/clock-no-flip.vue` のテンプレートを写す(スクリプトなし)
+- [X] T013 [P] [US2] `app/pages/other/3x3x3-method.vue` を作成し、`legacy/pages/other/3x3x3-method.vue` のテンプレートを写す(見出しの中の外部リンク 18 本を含む)
+- [X] T014 [P] [US2] `app/pages/other/for-non-cubers.vue` を作成し、`legacy/pages/other/for-non-cubers.vue` のテンプレートを写す
+- [X] T015 [P] [US2] `app/pages/other/advent-calendar2014.vue` を作成し、`legacy/pages/other/advent-calendar2014.vue` のテンプレートを写す
+- [X] T016 [US2] US2 の確認: `pnpm generate` の後、`pnpm verify:parity` で 4 パスの差分が、記録した修正以外0件であることを確認する。本番と並べた撮影で、高さが一致し、`/other/3x3x3-method` の見出しの中のリンクの色が現行と同じであることを確認する(SC-002、SC-004、SC-005)
 
 **Checkpoint**: Clock と Other の 4 ページが、現行と同じに表示される
 

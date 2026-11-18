@@ -18,4 +18,15 @@ export const cubePages = [
   '/fmc/intro-fmc',
 ]
 
-export const migratedPages = [...cubePages]
+/** specs/003-megaminx-clock-pages の 8 ページ */
+export const puzzlePages = [
+  '/megaminx/megaminx-eo',
+  '/megaminx/megaminx-co',
+  '/megaminx/megaminx-ep',
+  '/megaminx/megaminx-cp',
+  '/clock/clock-no-flip',
+]
+
+export const otherPages = ['/other/3x3x3-method', '/other/for-non-cubers', '/other/advent-calendar2014']
+
+export const migratedPages = [...cubePages, ...puzzlePages, ...otherPages]
