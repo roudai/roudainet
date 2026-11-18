@@ -1,8 +1,10 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0
-- Modified principles: IV (added an exception allowing obvious typos and mistakes to be fixed,
-  with the change recorded in the Spec).
+- Version change: 1.1.0 → 1.1.1
+- Modified principles: none. Technology & Delivery Constraints clarified: image URLs that the
+  legacy build generated with content hashes (/_nuxt/img/<name>.<hash>.<ext>) are not covered by
+  "keep image URLs"; images are carried over with the same file names at fixed URLs.
+- Previous change (1.1.0): IV got an exception allowing obvious typos to be fixed and recorded.
 - Added sections: none
 - Removed sections: none
 - Templates requiring updates:
@@ -80,7 +82,10 @@ Vue 3 や SSG で動かない可能性のある外部ライブラリ(Buefy の�
 - 配信: `nuxt generate` の出力を、GitHub Pages の `https://roudai.net` で公開する。
 - 言語: TypeScript。Node と Nuxt のバージョンは、ロックファイルと CI で固定する。
 - コンテンツ: `legacy/assets/images` の解法画像は、原則 II のリダイレクト規則の対象でない限り、
-  URL を変えずに引き継ぐ。
+  URL を変えずに引き継ぐ。ただし、旧サイトのビルドがハッシュを付けて生成した URL
+  (`/_nuxt/img/<名前>.<ハッシュ>.<拡張子>`)は、ビルドごとに変わる値で、引き継ぎの対象外とする。
+  その場合は、同じファイル名のまま固定の URL(例: `/images/<カテゴリ>/<名前>.<拡張子>`)で配信し、
+  原則 II のルート比較でも、ページのルートとは別に扱う。
 - テストは、各 Spec で求められた場合のみ作成する(任意)。ただし、原則 V の Lint と型チェックは
   任意ではない。
 
@@ -107,4 +112,4 @@ Vue 3 や SSG で動かない可能性のある外部ライブラリ(Buefy の�
 準拠状況は、各 Plan の Constitution Check と、切り替え時のチェックリストで確認する。
 逸脱する場合は、Plan の複雑さの追跡(complexity tracking)に理由を記載しなければならない。
 
-**Version**: 1.1.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-11-18
+**Version**: 1.1.1 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-11-18

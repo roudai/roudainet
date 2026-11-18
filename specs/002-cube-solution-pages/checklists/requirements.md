@@ -32,5 +32,5 @@
 ## Notes
 
 - 技術名(`sr-visualizer`、静的生成)は、Constitution の原則 I と VIII、および移植元の特定のために、Assumptions と FR-010、FR-011 にだけ記載している。手段の選定は Plan で行う。
-- 画像の URL の扱い(移植元はハッシュ付きの URL)は、Constitution の「解法画像の URL を変えずに引き継ぐ」との関係を、Plan の Constitution Check で確認する。
+- 画像の URL の扱い(移植元はハッシュ付きの URL)は、Constitution 1.1.1 で、引き継ぎの対象外と明記した。
 - 「発展系F2L」は「発展形F2L」に直すことに決定し、spec.md の「現行の表記から直した箇所」に記録した。ほかの誤字は、移植の際に判断し、FR-008 に従って記録する。
