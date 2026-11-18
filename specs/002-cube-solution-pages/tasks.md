@@ -145,7 +145,7 @@ description: "キューブ系の解法ページの移植のタスク一覧"
 
 - [X] T037 [P] `legacy/` が変更されていないことを、`git diff --stat nuxt4-rebuild -- legacy/` の出力が空であることで確認する(FR-013)
 - [X] T038 [quickstart.md](./quickstart.md) の手順 1〜4 を通しで実行し、SC-001〜SC-007 に未達がないことを確認する。クリーンな環境(`rm -rf node_modules .nuxt .output` の後の `pnpm install --frozen-lockfile`)で、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` がすべて成功することも確認する
-- [ ] T039 `002-cube-solution-pages` を push し、`nuxt4-rebuild` 宛ての PR を作る。`check` と `actionlint` が成功し、`deploy.yml` が実行されないことを確認する(quickstart の 5)。マージの前に、PR が stack として扱われていないことを API(`gh api repos/roudai/roudainet/pulls/<番号>` の `stack` が `null`)で確認する。stack になっていれば、運営者に GitHub の画面で Unstack してもらう。`merge-async` や「Merge stack」は使わない(`main` への公開を防ぐため)
+- [X] T039 `002-cube-solution-pages` を push し、`nuxt4-rebuild` 宛ての PR を作る。`check` と `actionlint` が成功し、`deploy.yml` が実行されないことを確認する(quickstart の 5)。マージの前に、PR が stack として扱われていないことを API(`gh api repos/roudai/roudainet/pulls/<番号>` の `stack` が `null`)で確認する。stack になっていれば、運営者に GitHub の画面で Unstack してもらう。`merge-async` や「Merge stack」は使わない(`main` への公開を防ぐため) **【完了】** 2026-11-19 に push し、PR #7(`002-cube-solution-pages` → `nuxt4-rebuild`)を作成した。`check`(31 秒)と `actionlint`(7 秒)が成功し、`deploy.yml` は実行されなかった。API で `stack` が `null`(stack ではない)、`mergeable_state` が `clean` であることを確認した。
 
 ---
 
