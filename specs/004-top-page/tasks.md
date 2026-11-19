@@ -60,7 +60,7 @@ US1(移植)と US2(更新)は、同じファイル(`app/pages/index.vue`)を対�
 - [X] T008 [P] `git diff --stat nuxt4-rebuild -- legacy/` の出力が空であることを確認する(FR-010)
 - [X] T009 クリーンな環境(`rm -rf node_modules .nuxt .output && pnpm install --frozen-lockfile`)から、`pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify`、`pnpm verify:parity` を実行し、すべて成功することを確認する(SC-006)
 - [X] T010 実装中に設計を変えた場合は、plan.md、research.md、contracts/pages.md を更新する
-- [ ] T011 `004-top-page` を push し、`nuxt4-rebuild` 宛ての PR を作成する。`check` と `actionlint` が成功し、`deploy.yml` が実行されないこと、`stack` が `null` であることを確認する。push、PR の作成、マージは、運営者の確認を得てから行う
+- [X] T011 `004-top-page` を push し、`nuxt4-rebuild` 宛ての PR を作成する。`check` と `actionlint` が成功し、`deploy.yml` が実行されないこと、`stack` が `null` であることを確認する。push、PR の作成、マージは、運営者の確認を得てから行う **【完了】** 2026-11-19 に push し、PR #9(`004-top-page` → `nuxt4-rebuild`)を作成した。`check`(34 秒)と `actionlint`(7 秒)が成功し、`deploy.yml` は実行されなかった。`stack` が `null`、`mergeable_state` が `clean` であることを確認した。マージは運営者の指示を待つ。
 
 ---
 
