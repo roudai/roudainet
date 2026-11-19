@@ -37,7 +37,8 @@ const resolveFile = (pathname) => {
 }
 
 createServer((request, response) => {
-  const { pathname } = new URL(request.url ?? '/', 'http://localhost')
+  // `//` で始まるパスは、URL の解釈でホスト名として扱われ失敗するため、先頭のスラッシュを1つにまとめる
+  const { pathname } = new URL((request.url ?? '/').replace(/^\/{2,}/, '/'), 'http://localhost')
   const file = resolveFile(pathname)
   const status = file ? 200 : 404
   const target = file ?? join(root, '404.html')

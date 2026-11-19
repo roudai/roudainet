@@ -1,9 +1,11 @@
 <!--
 Sync Impact Report
-- Version change: 1.1.0 → 1.1.1
-- Modified principles: none. Technology & Delivery Constraints clarified: image URLs that the
-  legacy build generated with content hashes (/_nuxt/img/<name>.<hash>.<ext>) are not covered by
-  "keep image URLs"; images are carried over with the same file names at fixed URLs.
+- Version change: 1.1.1 → 1.2.0
+- Modified principles: IV (機能パリティを最優先) gained a second exception: outdated information
+  (dead or replaced external links, personal records and achievements) may be updated on the
+  operator's explicit instruction, and must be recorded in the Spec with the source of the new
+  information. Design changes and new features remain out of scope.
+- Previous change (1.1.1): image URLs with legacy content hashes are not carried over.
 - Previous change (1.1.0): IV got an exception allowing obvious typos to be fixed and recorded.
 - Added sections: none
 - Removed sections: none
@@ -55,6 +57,10 @@ Web サイトの広告とは切り離して維持する。AdSense の管理画�
 例外: 表示名や本文の明らかな誤字・誤記(例: `Tooks` → `Tools`)は、移植時に直してよい。
 直した箇所は、該当する Spec に、現行の表記と修正後の表記を記録しなければならない(MUST)。
 URL のパスは、誤記に見えても原則 II に従い変更しない。
+例外: 古くなった情報(提供が終わった、または移転した外部リンクの先、管理人の記録や実績)は、
+運営者が明示的に指示した場合に限り、移植時に更新してよい。更新した箇所は、該当する Spec に、
+現行の内容、更新後の内容、新しい情報の出典(URL と確認日)を記録しなければならない(MUST)。
+この例外は、デザインの刷新や機能の追加には適用しない。
 
 ### V. CI による品質ゲート
 Lint と TypeScript の型チェックを CI で実行し、`main` へのマージ前にパスしなければならない
@@ -112,4 +118,4 @@ Vue 3 や SSG で動かない可能性のある外部ライブラリ(Buefy の�
 準拠状況は、各 Plan の Constitution Check と、切り替え時のチェックリストで確認する。
 逸脱する場合は、Plan の複雑さの追跡(complexity tracking)に理由を記載しなければならない。
 
-**Version**: 1.1.1 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-11-18
+**Version**: 1.2.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-11-19

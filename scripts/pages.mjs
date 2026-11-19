@@ -29,4 +29,7 @@ export const puzzlePages = [
 
 export const otherPages = ['/other/3x3x3-method', '/other/for-non-cubers', '/other/advent-calendar2014']
 
-export const migratedPages = [...cubePages, ...puzzlePages, ...otherPages]
+/** specs/004-top-page のトップページ */
+export const topPages = ['/']
+
+export const migratedPages = [...cubePages, ...puzzlePages, ...otherPages, ...topPages]
