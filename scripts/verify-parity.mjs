@@ -9,7 +9,7 @@ import { migratedPages } from './pages.mjs'
 
 const origin = 'https://roudai.net'
 const outputDir = '.output/public'
-const specFiles = ['specs/002-cube-solution-pages/spec.md']
+const specFiles = ['specs/002-cube-solution-pages/spec.md', 'specs/003-megaminx-clock-pages/spec.md']
 
 /** spec.md の「現行の表記から直した箇所」の表から、ページごとの修正(現行の表記 → 修正後の表記)を読む */
 function loadCorrections() {
