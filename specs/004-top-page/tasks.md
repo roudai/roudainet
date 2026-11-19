@@ -46,10 +46,10 @@ description: "トップページの移植と情報の更新のタスク一覧"
 
 US1(移植)と US2(更新)は、同じファイル(`app/pages/index.vue`)を対象とするため、1 つのフェーズで行う。
 
-- [ ] T004 [US1] `app/pages/index.vue` を、`legacy/pages/index.vue` のテンプレートで置き換える(仮の案内文を削除する)。先頭に移植元のコメントを付け、スクリプトは持たない
-- [ ] T005 [US2] `app/pages/index.vue` に、spec.md の表の更新を反映する: tribox のリンク(文言と URL)、Issues のリンク先、Megaminx の平均(1:02.42)、「主な成績」の後のシニアランキングの見出しと 2 項目(research.md の 2 の文言。見出しの括弧は全角)。T004 に依存する
-- [ ] T006 [US1] [US2] `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` が成功し、`pnpm verify:parity` で 22 ページの差分が0件(`/` は表の更新だけが例外として報告される)であることを確認する。表の 1 行を一時的に外すと、`/` が失敗することも確認する(SC-002、SC-003、SC-004)。T005 に依存する
-- [ ] T007 [US1] [US2] preview を起動し、`/` を本番と並べて撮影(1280px と 375px)し、追加したシニアランキングの部分以外に、レイアウトの相違がないことを確認する。tribox、Issues、シニアランキングの 2 つのリンクの URL が指定どおりであること、ヘッダーのロゴから `/` に戻れることを確認する(SC-001、SC-005)。T006 に依存する
+- [X] T004 [US1] `app/pages/index.vue` を、`legacy/pages/index.vue` のテンプレートで置き換える(仮の案内文を削除する)。先頭に移植元のコメントを付け、スクリプトは持たない
+- [X] T005 [US2] `app/pages/index.vue` に、spec.md の表の更新を反映する: tribox のリンク(文言と URL)、Issues のリンク先、Megaminx の平均(1:02.42)、「主な成績」の後のシニアランキングの見出しと 2 項目(research.md の 2 の文言。見出しの括弧は全角)。T004 に依存する
+- [X] T006 [US1] [US2] `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` が成功し、`pnpm verify:parity` で 22 ページの差分が0件(`/` は表の更新だけが例外として報告される)であることを確認する。表の 1 行を一時的に外すと、`/` が失敗することも確認する(SC-002、SC-003、SC-004)。T005 に依存する
+- [X] T007 [US1] [US2] preview を起動し、`/` を本番と並べて撮影(1280px と 375px)し、追加したシニアランキングの部分以外に、レイアウトの相違がないことを確認する。tribox、Issues、シニアランキングの 2 つのリンクの URL が指定どおりであること、ヘッダーのロゴから `/` に戻れることを確認する(SC-001、SC-005)。T006 に依存する
 
 **Checkpoint**: トップページが移植され、更新が反映されている
 

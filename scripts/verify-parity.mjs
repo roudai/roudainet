@@ -15,13 +15,14 @@ const specFiles = [
   'specs/004-top-page/spec.md',
 ]
 
-/** spec.md の「現行の表記から直した箇所」の表から、ページごとの修正(現行の表記 → 修正後の表記)を読む */
+/** spec.md の「現行の表記から直した箇所」(004 は「現行の内容から更新した箇所」)の表から、ページごとの修正(現行の表記 → 修正後の表記)を読む */
 function loadCorrections() {
   const corrections = []
   for (const file of specFiles) {
     if (!existsSync(file)) continue
     const text = readFileSync(file, 'utf8')
-    const start = text.indexOf('## 現行の表記から直した箇所')
+    // 002、003 は「現行の表記から直した箇所」、004 は「現行の内容から更新した箇所」(Constitution 1.2.0)
+    const start = Math.max(text.indexOf('## 現行の表記から直した箇所'), text.indexOf('## 現行の内容から更新した箇所'))
     if (start === -1) continue
     const section = text.slice(start).split(/\n## /)[0]
     for (const line of section.split('\n')) {
