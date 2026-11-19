@@ -1,38 +1,37 @@
 {
   "name": "roudainet",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": "^24.15.0"
+  },
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
-    "lint:prettier": "prettier --check .",
-    "lint": "yarn lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "preview": "node scripts/preview.mjs",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint . && prettier --check .",
+    "typecheck": "nuxt typecheck",
+    "verify": "node scripts/verify-output.mjs",
+    "verify:parity": "node scripts/verify-parity.mjs"
   },
   "dependencies": {
-    "core-js": "^3.25.3",
-    "nuxt": "^2.15.8",
-    "nuxt-buefy": "^0.4.24",
-    "sr-puzzlegen": "^1.0.4",
-    "sr-visualizer": "^1.0.13",
-    "vue": "^2.7.10",
-    "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "@tailwindcss/vite": "4.3.3",
+    "nuxt": "4.6.3",
+    "sr-puzzlegen": "1.0.4",
+    "sr-visualizer": "1.0.13",
+    "tailwindcss": "4.3.3",
+    "vue": "^3.5.44",
+    "vue-router": "^5.4.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.19.1",
-    "@nuxt/types": "^2.15.8",
-    "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^11.0.0",
-    "@nuxtjs/eslint-module": "^3.1.0",
-    "@nuxtjs/google-adsense": "2.0.0",
-    "eslint": "^8.28.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-nuxt": "^4.0.0",
-    "eslint-plugin-vue": "^9.5.1",
-    "prettier": "^2.7.1"
+    "@nuxt/eslint": "^1.17.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.3.13"
   }
 }
