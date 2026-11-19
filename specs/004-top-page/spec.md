@@ -103,5 +103,5 @@ Constitution 1.2.0 の原則 IV の例外(運営者の指示による、古く�
 |---|---|---|---|---|
 | `/` | 「roudai.netとは」の2つ目の段落のリンク | TORIBO ファーストキューブセット(`https://toribo.jp/`) | tribox はじめてのスピードキューブ(`https://select.tribox.com/pages/start`) | 提供が終わったため、運営者の指示で更新。出典: `https://select.tribox.com/pages/start`(2026-11-19 確認) |
 | `/` | 「主な公式記録(平均)」 | Megaminx 1:14.18 | Megaminx 1:02.42 | 自己ベストの更新。出典: `https://www.worldcubeassociation.org/persons/2009ISHI01`(2026-11-19 確認、Ota Spring 2025) |
-| `/` | 「主な成績」の後(追加) | (なし) | シニアランキング(40歳以上)の Megaminx の単発と平均の順位 | 運営者の指示で追加。出典: `https://wca-seniors.org/Senior_Rankings.html#minx`、`#minx-average`(2026-11-18 更新のデータで、単発 52.87、平均 1:02.42、いずれも世界2位) |
+| `/` | 「主な成績」の後(追加) | 日本大会2016 最少手数3位 | 日本大会2016 最少手数3位 シニアランキング（40歳以上、2026年11月時点） Megaminx 単発 52.87 世界2位(`https://wca-seniors.org/Senior_Rankings.html#minx`) Megaminx 平均 1:02.42 世界2位(`https://wca-seniors.org/Senior_Rankings.html#minx-average`) | 運営者の指示で、見出しとリストを追加。「現行の表記」は直前の項目(追加の位置)。出典: `https://wca-seniors.org/Senior_Rankings.html#minx`、`#minx-average`(2026-11-18 更新のデータで、単発 52.87、平均 1:02.42、いずれも 40 歳以上の世界2位。文言は research.md の 2) |
 | `/` | 「roudai.netとは」の3つ目の段落のリンク | Issues(`https://github.com/roudai/roudai.net/issues`) | Issues(`https://github.com/roudai/roudainet/issues`) | リンク先が 404(リポジトリ名の変更による)のため、運営者の指示で更新。出典: `https://github.com/roudai/roudainet/issues`(2026-11-19 確認、200) |
