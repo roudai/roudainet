@@ -9,7 +9,11 @@ import { migratedPages } from './pages.mjs'
 
 const origin = 'https://roudai.net'
 const outputDir = '.output/public'
-const specFiles = ['specs/002-cube-solution-pages/spec.md', 'specs/003-megaminx-clock-pages/spec.md']
+const specFiles = [
+  'specs/002-cube-solution-pages/spec.md',
+  'specs/003-megaminx-clock-pages/spec.md',
+  'specs/004-top-page/spec.md',
+]
 
 /** spec.md の「現行の表記から直した箇所」の表から、ページごとの修正(現行の表記 → 修正後の表記)を読む */
 function loadCorrections() {
@@ -29,7 +33,7 @@ function loadCorrections() {
       const [page, , before, after, reason] = cells
       // 理由に「候補」とあるものは、直していないので例外にしない
       if (reason.includes('候補')) continue
-      corrections.push({ page: page.replaceAll('`', ''), before: unquote(before), after: unquote(after) })
+      corrections.push({ page: page.replaceAll('`', ''), ...splitCell('before', before), ...splitCell('after', after) })
     }
   }
   return corrections
@@ -37,6 +41,16 @@ function loadCorrections() {
 
 function unquote(cell) {
   return cell.replace(/^`(.*)`$/, '$1')
+}
+
+/**
+ * 表のセルを、テキストとリンク先に分ける。`テキスト(\`URL\`)` の形の URL をリンク先として取り出す(004 の情報の更新)。
+ * URL のないセルは、従来どおりテキストだけを返す。
+ */
+function splitCell(key, cell) {
+  const urls = [...cell.matchAll(/\(`([^`]+)`\)/g)].map((m) => m[1])
+  const text = unquote(cell.replace(/\(`[^`]+`\)/g, '').trim())
+  return { [key]: text, [`${key}Urls`]: urls }
 }
 
 /** 本文の領域(class に content と m-3 を持つ div)の HTML を取り出す */
@@ -138,7 +152,7 @@ async function verifyPage(page, corrections) {
   const nextContent = extractContent(readFileSync(outputFile, 'utf8'))
   if (nextContent === null) return { errors: ['新サイトの本文の領域が見つかりません'], notes }
 
-  const response = await fetch(`${origin}${page}/`)
+  const response = await fetch(page === '/' ? `${origin}/` : `${origin}${page}/`)
   if (!response.ok) return { errors: [`現行サイトの取得に失敗しました(HTTP ${response.status})`], notes }
   const currentContent = extractContent(await response.text())
   if (currentContent === null) return { errors: ['現行サイトの本文の領域が見つかりません'], notes }
@@ -147,13 +161,30 @@ async function verifyPage(page, corrections) {
   const next = summarize(nextContent)
 
   // 記録済みの誤字の修正は、現行の表記を修正後の表記に置き換えてから比べる
-  for (const { page: target, before, after } of corrections) {
+  for (const { page: target, before, after, beforeUrls, afterUrls } of corrections) {
     if (target !== page) continue
     if (current.text.includes(before)) {
       current.text = current.text.replaceAll(before, after)
-      notes.push(`記録済みの修正: 「${before}」→「${after}」`)
+      if (before !== after) notes.push(`記録済みの修正: 「${before}」→「${after}」`)
     } else {
       errors.push(`記録された修正の現行の表記「${before}」が、現行サイトに見つかりません`)
+    }
+    // リンク先の更新: 両方に URL があれば順に置き換え、修正後だけにあれば末尾に追加する
+    if (beforeUrls.length && beforeUrls.length === afterUrls.length) {
+      beforeUrls.forEach((url, i) => {
+        const index = current.links.indexOf(url)
+        if (index === -1) {
+          errors.push(`記録されたリンク先「${url}」が、現行サイトに見つかりません`)
+        } else {
+          current.links[index] = afterUrls[i]
+          notes.push(`記録済みのリンク先の更新: ${url} → ${afterUrls[i]}`)
+        }
+      })
+    } else if (!beforeUrls.length && afterUrls.length) {
+      current.links.push(...afterUrls)
+      for (const url of afterUrls) notes.push(`記録済みのリンクの追加: ${url}`)
+    } else if (beforeUrls.length) {
+      errors.push(`記録されたリンク先の数が、現行と修正後で一致しません(「${before}」)`)
     }
   }
 

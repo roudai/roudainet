@@ -30,9 +30,9 @@ description: "トップページの移植と情報の更新のタスク一覧"
 
 **Purpose**: 確認のスクリプトを、トップページとリンクの更新に対応させる
 
-- [ ] T001 `scripts/verify-parity.mjs` を拡張する(research.md の 3、contracts/pages.md の「パリティの確認」)。(1) パスが `/` のとき、現行サイトの URL を `https://roudai.net/` にする。(2) spec.md の表のセルから、`(\`URL\`)` の形の URL を取り出し、残りをテキストとして扱う。(3) 「現行の表記」と「修正後の表記」の両方に URL がある行は、現行のリンクの一覧の中で、順に置き換える。(4) 「現行の表記」に URL がなく「修正後の表記」に URL がある行は、追加されたリンクとして、現行のリンクの一覧の末尾に足す。(5) `specFiles` に `specs/004-top-page/spec.md` を追加する。リンクの例外を適用したときも、報告(`記録済みの修正`)に出す
-- [ ] T002 [P] `scripts/pages.mjs` に、`/` を `topPages` として追加し、`migratedPages` に含める
-- [ ] T003 T001 と T002 の後、`pnpm generate` と `pnpm verify:parity` を実行し、既存の 21 ページの結果が変わらない(差分0件)ことを確認する
+- [X] T001 `scripts/verify-parity.mjs` を拡張する(research.md の 3、contracts/pages.md の「パリティの確認」)。(1) パスが `/` のとき、現行サイトの URL を `https://roudai.net/` にする。(2) spec.md の表のセルから、`(\`URL\`)` の形の URL を取り出し、残りをテキストとして扱う。(3) 「現行の表記」と「修正後の表記」の両方に URL がある行は、現行のリンクの一覧の中で、順に置き換える。(4) 「現行の表記」に URL がなく「修正後の表記」に URL がある行は、追加されたリンクとして、現行のリンクの一覧の末尾に足す。(5) `specFiles` に `specs/004-top-page/spec.md` を追加する。リンクの例外を適用したときも、報告(`記録済みの修正`)に出す
+- [X] T002 [P] `scripts/pages.mjs` に、`/` を `topPages` として追加し、`migratedPages` に含める
+- [X] T003 T001 と T002 の後、`pnpm generate` と `pnpm verify:parity` を実行し、既存の 21 ページの結果が変わらない(差分0件)ことを確認する
 
 **Checkpoint**: トップページの移植を始められる
 
