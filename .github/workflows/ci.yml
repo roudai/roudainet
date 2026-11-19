@@ -1,9 +1,12 @@
 name: ci
 
-# PR の品質ゲート。Lint、型チェック、ビルド確認までを行い、デプロイはしない(原則 V、VII)
+# 品質ゲート。Lint、型チェック、ビルド確認までを行い、デプロイはしない(原則 V、VII)
+# main への直接の push でも実行する(公開は deploy.yml が並行して行い、ここの結果では止めない)
 on:
   pull_request:
     branches: [main, nuxt4-rebuild]
+  push:
+    branches: [main]
 
 permissions:
   contents: read

@@ -44,8 +44,8 @@ legacy/               # 旧 Nuxt 2 のソース(参照用)
 
 開発の原則は [`.specify/memory/constitution.md`](.specify/memory/constitution.md) にあります。主なものは次のとおりです。
 
-- **本番への公開は、`main` への push だけです**(`.github/workflows/deploy.yml`)。作業は別のブランチで行い、`main` へ PR でマージします。
-- **PR の CI**(`.github/workflows/ci.yml`)では、Lint、型チェック、静的生成、出力の検証、ワークフローの構文検査を行います。デプロイはしません。
+- **`main` へ push すると、本番に公開されます**(`.github/workflows/deploy.yml`)。小さな変更は `main` へ直接 push して構いません。公開の前に、手元で `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` を実行してください。
+- **CI**(`.github/workflows/ci.yml`)は、PR と `main` への push で、Lint、型チェック、静的生成、出力の検証、ワークフローの構文検査を行います。CI は公開を止めないため、`main` への push の後は、CI の結果も確認してください。
 - **広告は載せません。** `pnpm verify` が、広告の痕跡がないことを確認します。`app-ads.txt` は、アプリ(setlist-memo)の広告配信元の検証に使うため、内容を変えずに配信しています。
 
 ## 公開と GitHub の設定
