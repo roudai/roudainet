@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-24
 
-**Status**: Draft
+**Status**: Implemented
 
 **Input**: User description: "Megaminx のページ(/megaminx/megaminx-cp、-co、-ep、-eo の 4 ページ、計 46 個の図)の図の描画を、sr-puzzlegen から、運営者の自作ライブラリ megaminx-image@1.0.0(npm 公開済み、GitHub: roudai/megaminx-image)に置き換える。003-megaminx-clock-pages で移植元と同じにした図の見た目(FR-003:同じ視点・配色・マスク・矢印)を、意図して変える機能である(Constitution 原則 IV:パリティ確認後の別の Spec)。決定事項:(1) 図は nuxt generate のときに SVG を HTML に埋め込み、JavaScript が無くても図が表示されるようにする(ライブラリの svg() は環境によらず同じ文字列を返す)。(2) 4 ページ・46 個を一度に入れ替え、sr-puzzlegen を依存から外す。sr-visualizer はキューブの図で使っているので残す。(3) 配色はライブラリの既定に合わせる:cp・ep(現在は白い上面の配色と矢印)はライブラリの既定の配色 DEFAULT_SCHEME(上面は薄い灰色)、co・eo(現在は U 以外の全面をマスク)は ollScheme() の既定(上面は薄い灰色、ほかは濃い灰色)。(4) 矢印は描かない。データからも arrows を消す。(5) 図の大きさは size 100(今の見た目の大きさとほぼ同じ)。(6) 図の指定のデータ(app/data/megaminx/types.ts と cp・co・ep・eo.ts)は、ライブラリのオプションの形(case と、OLL 型かどうか)に書き換える。事前の調査で、46 個すべてで、同じ case から作った図の各ステッカーの面がいまの図と一致することを確かめた(手順の解釈は同じ)。scripts/verify-parity.mjs は図の要素を「id を持つ空の div」で数えているため、SVG を埋めると本番(現行)との比較で数が合わなくなる。この扱い(数え方の変更、または記録した例外)も対象に含める。原則 VIII により、megaminx-image を開発サーバーと nuxt generate の出力の両方で spike して検証する。"
 

@@ -113,7 +113,8 @@ package.json, pnpm-lock.yaml       # 変更: megaminx-image を追加、sr-puzzl
 - **`v-html`**:`vue/no-v-html` を、その行だけ無効にし、理由をコメントに書く(research.md の 6)。
 - **エラー**:`diagram` が無いときは今と同じくコンソールにエラーを出し、空の div を出す。`svg()` の例外は捕まえない(静的生成を失敗させる)。
 - **コメントの更新**:`MegaminxImage.vue` と `types.ts`、各データのファイルの先頭の説明は、`sr-puzzlegen` と「移植元と同じ値」の記述を、この Spec の内容に改める。003 の文書(spec、plan、contracts)は過去の記録として変えない。
-- **パリティの確認の既知の差分**:`/megaminx/megaminx-cp` の 3 件は、main でも出る既にある問題で、この Spec では直さない(research.md の 5)。
+- **SVG の表示の CSS(実装時の追加、2026-11-24)**:SVG を `.content img` と同じく inline にし、欄の幅まで縮める(contracts/diagrams.md の「図の SVG の表示」)。
+- **パリティの確認の既知の差分**:`/megaminx/megaminx-cp` の 3 件は、main でも出る既にある問題で、この Spec では直さない(research.md の 5)。全ページでは、同じ理由の差分が 9 ページで出る(実装時の追記)。
 
 ## Complexity Tracking
 

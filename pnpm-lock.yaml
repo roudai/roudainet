@@ -11,12 +11,12 @@ importers:
       '@tailwindcss/vite':
         specifier: 4.3.3
         version: 4.3.3(vite@8.3.5(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))
+      megaminx-image:
+        specifier: 1.0.0
+        version: 1.0.0
       nuxt:
         specifier: 4.6.3
         version: 4.6.3(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@oxc-project/types@0.156.0)(@vue/compiler-sfc@3.5.44)(acorn@8.19.0)(confbox@0.3.2)(db0@0.3.4)(dotenv@17.4.2)(esbuild@0.28.2)(eslint@10.13.0(jiti@2.7.0))(giget@3.3.1)(ioredis@5.11.1)(lightningcss@1.33.0)(mlly@1.8.2)(optionator@0.9.4)(rolldown@1.2.16)(rollup-plugin-visualizer@7.1.1(rolldown@1.2.16)(rollup@4.66.0))(rollup@4.66.0)(srvx@1.0.8)(terser@5.51.2)(typescript@5.9.3)(vite@8.3.5(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue-tsc@3.3.13(typescript@5.9.3))(yaml@2.9.1)
-      sr-puzzlegen:
-        specifier: 1.0.4
-        version: 1.0.4
       sr-visualizer:
         specifier: 1.0.13
         version: 1.0.13
@@ -2859,6 +2859,15 @@ packages:
   mdn-data@2.37.2:
     resolution: {integrity: sha512-rz9YOBGItdSbe7HcSArUbhiAv4SB/4DKRYg96CSFS2CcIYMbUvBtZlzA1NCbk2AdgbmYwMqwNblLpR441lLeiQ==}
 
+  megaminx-image@1.0.0:
+    resolution: {integrity: sha512-WAP3IYZ+qOlJz2ywRoYUfb6rM+Wm6CGqzHuo8A+I31AenVii0p9elp0KBdrUxjeyitFaK4cIVHPJ+hPOsNOxXA==}
+    engines: {node: '>=22.12'}
+    peerDependencies:
+      '@resvg/resvg-js': ^2.6.2
+    peerDependenciesMeta:
+      '@resvg/resvg-js':
+        optional: true
+
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -3457,9 +3466,6 @@ packages:
 
   spdx-license-ids@3.0.24:
     resolution: {integrity: sha512-cLS9TtWkIQFyLkJ3/5aFQAOHOSKTlOs/7WDut/XPSdjom1fJhUdkepeJAKXa9Y05+FabHd0sti+Et559vDtkpQ==}
-
-  sr-puzzlegen@1.0.4:
-    resolution: {integrity: sha512-n4UckgdOfdpOhHNL3bNXyogOSs2FDm/bwd1bYtf5ohmQejr0Qf6t6aF9zqEvzAHjbsjFUn31blcIP7DlasXsjQ==}
 
   sr-visualizer@1.0.13:
     resolution: {integrity: sha512-6/tivRwEttzIegF7jxtGBLpaQrYaBGNOmIpSGgp/9zYIH91rEGcpUG/TkmBqlqtxbWt6WF4y8cieUXE4V9F/Sw==}
@@ -7079,6 +7085,8 @@ snapshots:
 
   mdn-data@2.37.2: {}
 
+  megaminx-image@1.0.0: {}
+
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -7869,8 +7877,6 @@ snapshots:
       spdx-license-ids: 3.0.24
 
   spdx-license-ids@3.0.24: {}
-
-  sr-puzzlegen@1.0.4: {}
 
   sr-visualizer@1.0.13:
     dependencies:

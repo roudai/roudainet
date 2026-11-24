@@ -90,8 +90,8 @@ function summarize(contentHtml) {
     .replace(/\s+/g, ' ')
     .trim()
   const links = [...html.matchAll(/<a\b[^>]*\bhref="([^"]*)"/gi)].map((m) => decode(m[1]))
-  // cubePNG の描画先: id を持つ空の div(移植元も新サイトも、静的な HTML では空)
-  const diagrams = [...html.matchAll(/<div\b[^>]*\bid="[^"]+"[^>]*>\s*<\/div>/g)].length
+  // 図の描画先: id を持つ div。中身は空(cubePNG、静的な HTML では空)か、SVG 1 つ(megaminx-image、005)
+  const diagrams = [...html.matchAll(/<div\b[^>]*\bid="[^"]+"[^>]*>\s*(?:<svg\b[\s\S]*?<\/svg>\s*)?<\/div>/g)].length
   const imageSources = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]*)"/gi)].map((m) => decode(m[1]))
   return { text, links, diagrams, imageSources }
 }

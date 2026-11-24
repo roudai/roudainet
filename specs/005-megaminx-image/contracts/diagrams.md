@@ -43,3 +43,8 @@
 - 本文のテキスト、リンク、画像(`<img>`)の比較は変えない。SVG には文字も `<img>` も無いため、影響しない。
 - 図の見た目(配色、矢印)は比べない。spec.md の「現行の内容から変更した箇所」に記録し、quickstart の目視で確かめる。
 - 期待結果:Megaminx の 4 ページのうち、CO、EP、EO は差分 0 件。CP は、既にある 3 件(research.md の 5「既にある問題」)だけで、それ以外は 0 件。
+
+## 図の SVG の表示(実装時の追加、2026-11-24)
+
+- `MegaminxImage.vue` の scoped な CSS で、div の中の SVG に `display: inline`、`vertical-align: baseline`、`max-width: 100%`、`height: auto` を当てる(`main.css` の `.content img` と同じ値)。
+- 理由:Tailwind の Preflight は SVG を `display: block` にするため、そのままでは `has-text-centered` で中央に寄らず、モバイルの狭い欄(幅約 88px)で 100px のまま描かれ、手順の文字列に重なった。003 までの PNG の img と同じ扱いにすることで、広い画面では欄の中央に 100px、幅 375px の画面では本番と同じ 64px に縮んで表示される(FR-007、SC-005)。

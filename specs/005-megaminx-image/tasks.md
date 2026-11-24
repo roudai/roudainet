@@ -32,7 +32,7 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **Purpose**: 新しいライブラリの追加
 
-- [ ] T001 `pnpm add megaminx-image@1.0.0` で、`megaminx-image` を `package.json` の `dependencies` に `1.0.0`(固定)で追加し、`pnpm-lock.yaml` を更新する。`@resvg/resvg-js` は入れない。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V、research.md の 7)
+- [X] T001 `pnpm add megaminx-image@1.0.0` で、`megaminx-image` を `package.json` の `dependencies` に `1.0.0`(固定)で追加し、`pnpm-lock.yaml` を更新する。`@resvg/resvg-js` は入れない。`yarn.lock` や `package-lock.json` が作られていないことを確認する(原則 V、research.md の 7)
 
 ---
 
@@ -42,8 +42,8 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **⚠️ CRITICAL**: このフェーズが終わるまで、図の部品(US1)に着手しない
 
-- [ ] T002 `app/data/megaminx/types.ts` の `MegaminxDiagram` を、data-model.md の形(`case: string`、`oll?: true`)に置き換える。`sr-puzzlegen` の型の import を消し、先頭の説明を「megaminx-image の `svg()` に渡す図の指定。配色と大きさは `MegaminxImage.vue` で決める(005)」という内容に改める
-- [ ] T003 一度だけの変換スクリプト(scratchpad に置く。Node 24 は `.ts` の型を取り除いて読める)で、`app/data/megaminx/{cp,co,ep,eo}.ts` の `diagrams` を書き換える。T002 に依存する
+- [X] T002 `app/data/megaminx/types.ts` の `MegaminxDiagram` を、data-model.md の形(`case: string`、`oll?: true`)に置き換える。`sr-puzzlegen` の型の import を消し、先頭の説明を「megaminx-image の `svg()` に渡す図の指定。配色と大きさは `MegaminxImage.vue` で決める(005)」という内容に改める
+- [X] T003 一度だけの変換スクリプト(scratchpad に置く。Node 24 は `.ts` の型を取り除いて読める)で、`app/data/megaminx/{cp,co,ep,eo}.ts` の `diagrams` を書き換える。T002 に依存する
   - 書き換え前のファイルを import し、各図の `puzzle.case` をそのまま `case` に、`puzzle.mask` があれば `oll: true` にする。`width`、`height`、`scheme`、`mask`、`arrows` は書き出さない
   - `megacase` と `megacase_view` の部分、キー(`megacase1` など)とその順は変えない。文字列は今の書き方(単一引用符、`'` を含むものは二重引用符)に合わせ、Prettier の形にする
   - 各ファイルの先頭の説明は、「手順の文字列は移植元からそのまま写した(003)。図の指定は 005 で megaminx-image の形に書き換えた」という内容に改める
@@ -59,13 +59,13 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **Independent Test**: `pnpm generate` の後、4 ページの HTML に SVG が計 46 個あり、スクリプトを無効にしたブラウザーで 46 個すべてが表示される(quickstart の 2、3)
 
-- [ ] T004 [US1] `app/components/MegaminxImage.vue` を、contracts/diagrams.md の「図」の形に書き換える。T003 に依存する
+- [X] T004 [US1] `app/components/MegaminxImage.vue` を、contracts/diagrams.md の「図」の形に書き換える。T003 に依存する
   - `megaminx-image` から `svg` を import し、`computed` で `svg({ case: diagram.case, size: 100 })` の文字列を作り、`<div :id="id" v-html="markup"></div>` で出す(配色の切り替えは US2 の T006 で足す)
   - `diagram` が `undefined` のときは、空の文字列を出し、コンソールに `図(${id})の指定が見つかりません` のエラーを出す(今と同じ文言)。`svg()` の例外は捕まえない
   - `onMounted` と `sr-puzzlegen` の動的な import、try/catch を消す
   - `v-html` の行の直前に `<!-- eslint-disable-next-line vue/no-v-html -- 中身は megaminx-image が作る SVG で、入力はサイトのデータの手順だけ(訪問者の入力を含まない) -->` を置く(research.md の 6)
   - 先頭の説明を、「megaminx-image の `svg()` で SVG を作り、静的生成した HTML に含める。サーバー側とブラウザーで同じ文字列になる(005)」という内容に改める
-- [ ] T005 [US1] `pnpm typecheck` と `pnpm generate` を実行し、quickstart の 2 の数え方で、`.output/public/megaminx/megaminx-{cp,co,ep,eo}/index.html` に SVG が CP 15、CO 16、EP 12、EO 3(計 46)含まれることを確かめる。続けて `pnpm preview` と `pnpm dev` で 4 ページを開き、スクリプトの有効と無効の両方で 46 個すべてが表示され、コンソールに警告とエラー(ハイドレーションの不一致を含む)が無いことを確かめる(quickstart の 3)。T004 に依存する
+- [X] T005 [US1] `pnpm typecheck` と `pnpm generate` を実行し、quickstart の 2 の数え方で、`.output/public/megaminx/megaminx-{cp,co,ep,eo}/index.html` に SVG が CP 15、CO 16、EP 12、EO 3(計 46)含まれることを確かめる。続けて `pnpm preview` と `pnpm dev` で 4 ページを開き、スクリプトの有効と無効の両方で 46 個すべてが表示され、コンソールに警告とエラー(ハイドレーションの不一致を含む)が無いことを確かめる(quickstart の 3)。T004 に依存する
 
 **Checkpoint**: US1 だけで、図が HTML に含まれて表示される(CO と EO は、この時点ではまだ既定の配色)
 
@@ -77,8 +77,8 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **Independent Test**: 4 ページを開き、CP と EP がライブラリの既定の配色、CO と EO が上面は薄い灰色・ほかは濃い灰色で、矢印が無く、幅 100px であることを目で確かめる(quickstart の 4)
 
-- [ ] T006 [US2] `app/components/MegaminxImage.vue` で、`diagram.oll` が `true` のときだけ `scheme: ollScheme()`(引数なし)を `svg()` に渡す。`oll` が無いときは `scheme` を渡さない(`scheme: undefined` も渡さない)。`ollScheme` は `megaminx-image` から import する(contracts/diagrams.md の表)。T004 に依存する
-- [ ] T007 [US2] `pnpm generate` と `pnpm preview` の後、quickstart の 4 のとおり、4 ページの図の配色、矢印が無いこと、幅 100px、図と手順の文字列の並びを、狭い画面(幅 375px 程度)と広い画面の両方で目で確かめる。キューブ系のページ(`/pll/pll` など)の図が今までどおり表示されることも確かめる。T006 に依存する
+- [X] T006 [US2] `app/components/MegaminxImage.vue` で、`diagram.oll` が `true` のときだけ `scheme: ollScheme()`(引数なし)を `svg()` に渡す。`oll` が無いときは `scheme` を渡さない(`scheme: undefined` も渡さない)。`ollScheme` は `megaminx-image` から import する(contracts/diagrams.md の表)。T004 に依存する
+- [X] T007 [US2] `pnpm generate` と `pnpm preview` の後、quickstart の 4 のとおり、4 ページの図の配色、矢印が無いこと、幅 100px、図と手順の文字列の並びを、狭い画面(幅 375px 程度)と広い画面の両方で目で確かめる。キューブ系のページ(`/pll/pll` など)の図が今までどおり表示されることも確かめる。T006 に依存する
 
 **Checkpoint**: US1 と US2 で、訪問者に見える変更がすべてそろう
 
@@ -90,9 +90,9 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **Independent Test**: `pnpm verify:parity` で、Megaminx の 4 ページに図の数の差分が無く、既知の 3 件以外の差分が 0 件。`package.json` に `sr-puzzlegen` が無く、`sr-visualizer` がある(quickstart の 2、5)
 
-- [ ] T008 [P] [US3] `pnpm remove sr-puzzlegen` で、`sr-puzzlegen` を `package.json` と `pnpm-lock.yaml` から外す。`app/` と `scripts/` に `sr-puzzlegen` の参照が残っていないことを `grep -rn sr-puzzlegen app scripts nuxt.config.ts` で確かめる。`sr-visualizer` は残す(FR-010)。T004 に依存する
-- [ ] T009 [P] [US3] `scripts/verify-parity.mjs` の `summarize()` の図の数え方を、id を持ち、中身が空か SVG 1 つだけの div を数える正規表現(`/<div\b[^>]*\bid="[^"]+"[^>]*>\s*(?:<svg\b[\s\S]*?<\/svg>\s*)?<\/div>/g`)に変え、直前のコメントを「図の描画先: id を持つ div。中身は空(cubePNG)か、SVG 1 つ(megaminx-image、005)」という内容に改める(contracts/diagrams.md の「パリティの確認」)
-- [ ] T010 [US3] `pnpm generate` の後、`pnpm verify:parity` を実行し、Megaminx の 4 ページで図の要素の数の差分が無いこと、差分が `/megaminx/megaminx-cp` の既知の 3 件(「並行交換(1)」「並行交換(2)」「コーナー2セットが並行移動」が現行サイトに見つからない)だけであることを確かめる(quickstart の 5)。`grep -rl "megaminx-top" .output/public/_nuxt/` が何も出さないことも確かめる。T008、T009 に依存する
+- [X] T008 [P] [US3] `pnpm remove sr-puzzlegen` で、`sr-puzzlegen` を `package.json` と `pnpm-lock.yaml` から外す。`app/` と `scripts/` に `sr-puzzlegen` の参照が残っていないことを `grep -rn sr-puzzlegen app scripts nuxt.config.ts` で確かめる。`sr-visualizer` は残す(FR-010)。T004 に依存する
+- [X] T009 [P] [US3] `scripts/verify-parity.mjs` の `summarize()` の図の数え方を、id を持ち、中身が空か SVG 1 つだけの div を数える正規表現(`/<div\b[^>]*\bid="[^"]+"[^>]*>\s*(?:<svg\b[\s\S]*?<\/svg>\s*)?<\/div>/g`)に変え、直前のコメントを「図の描画先: id を持つ div。中身は空(cubePNG)か、SVG 1 つ(megaminx-image、005)」という内容に改める(contracts/diagrams.md の「パリティの確認」)
+- [X] T010 [US3] `pnpm generate` の後、`pnpm verify:parity` を実行し、Megaminx の 4 ページで図の要素の数の差分が無いこと、差分が `/megaminx/megaminx-cp` の既知の 3 件(「並行交換(1)」「並行交換(2)」「コーナー2セットが並行移動」が現行サイトに見つからない)だけであることを確かめる(quickstart の 5)。`grep -rl "megaminx-top" .output/public/_nuxt/` が何も出さないことも確かめる。T008、T009 に依存する
 
 **Checkpoint**: すべてのユーザーストーリーがそろう
 
@@ -102,8 +102,8 @@ description: "Megaminx の図を自作ライブラリで描くタスク一覧"
 
 **Purpose**: 品質ゲートと文書の仕上げ
 
-- [ ] T011 `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` を実行し、すべて成功し、lint に警告が無いことを確かめる(SC-007、quickstart の 1)
-- [ ] T012 [P] `specs/005-megaminx-image/spec.md` の **Status** を `Implemented` にし、実装中に契約や手順から変えた点があれば、`plan.md`、`contracts/diagrams.md`、`quickstart.md` に「(実装時の変更、日付)」として追記する
+- [X] T011 `pnpm lint`、`pnpm typecheck`、`pnpm generate`、`pnpm verify` を実行し、すべて成功し、lint に警告が無いことを確かめる(SC-007、quickstart の 1)
+- [X] T012 [P] `specs/005-megaminx-image/spec.md` の **Status** を `Implemented` にし、実装中に契約や手順から変えた点があれば、`plan.md`、`contracts/diagrams.md`、`quickstart.md` に「(実装時の変更、日付)」として追記する
 
 ---
 

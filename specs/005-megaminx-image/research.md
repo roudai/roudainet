@@ -73,6 +73,7 @@
 
 - `/megaminx/megaminx-cp` では、main のままでも、`verify-parity.mjs` が「記録された修正の現行の表記「並行交換(1)」が、現行サイトに見つかりません」など 3 件の差分を出す。003 の誤字の修正の記録は、本番が移植元(Nuxt 2)だった時点を前提にしているが、本番はすでに直した表記の新サイトになっているためである。
 - この Spec の変更とは関係が無いため、ここでは直さない。quickstart では、この 3 件を既知の差分として扱う。直すかどうかは、運営者が別に判断する。
+- (実装時の追記、2026-11-24)全ページで `pnpm verify:parity` を実行すると、同じ理由で、CP を含む 9 ページ(`/f2l/f2l-advanced`、`/bld/bld-method`、`/bld/old-pochmann-corner`、`/megaminx/megaminx-cp`、`/clock/clock-no-flip`、`/other/3x3x3-method`、`/other/for-non-cubers`、`/other/advent-calendar2014`、`/`)で差分が出る。いずれも「記録された修正の現行の表記(またはリンク先)が、現行サイトに見つかりません」と、トップページで 004 の記録済みの追加が二重に当たること(本文のテキストとリンク先の数)だけで、図の数と画像の差分は 0 件である。
 
 ## 6. `v-html` の lint の警告
 
