@@ -33,3 +33,6 @@ export const otherPages = ['/other/3x3x3-method', '/other/for-non-cubers', '/oth
 export const topPages = ['/']
 
 export const migratedPages = [...cubePages, ...puzzlePages, ...otherPages, ...topPages]
+
+/** specs/006-megaminx-pll の新しいページ。本番に無いため、パリティの確認(verify-parity.mjs)の対象にしない */
+export const newPages = ['/megaminx/megaminx-pll']

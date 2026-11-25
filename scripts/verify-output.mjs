@@ -3,7 +3,7 @@
 //       specs/002-cube-solution-pages/spec.md の FR-001、FR-004(移植済みのページと画像)
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { extname, join } from 'node:path'
-import { migratedPages } from './pages.mjs'
+import { migratedPages, newPages } from './pages.mjs'
 
 const outputDir = '.output/public'
 const legacyAppAds = 'legacy/pages/app-ads.txt'
@@ -43,8 +43,8 @@ if (existsSync(join(outputDir, 'ads.txt'))) {
   errors.push('ads.txt が含まれています(含めてはならない)')
 }
 
-// 移植済みのページ: すべてのパスの index.html があること(原則 II)
-for (const page of migratedPages) {
+// 移植済みのページと新しいページ(006 から): すべてのパスの index.html があること(原則 II)
+for (const page of [...migratedPages, ...newPages]) {
   if (!existsSync(join(outputDir, page, 'index.html'))) errors.push(`${page} のページ(${page}/index.html)がありません`)
 }
 
@@ -90,5 +90,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-  `出力の検証に成功しました(CNAME、app-ads.txt、favicon.ico、移植済みの ${migratedPages.length} ページと解法の画像があり、ads.txt と広告の痕跡がない)`,
+  `出力の検証に成功しました(CNAME、app-ads.txt、favicon.ico、移植済みの ${migratedPages.length} ページと新しい ${newPages.length} ページ、解法の画像があり、ads.txt と広告の痕跡がない)`,
 )

@@ -56,6 +56,8 @@ export const navigation: NavGroup[] = [
       { label: 'Megaminx CO', to: '/megaminx/megaminx-co' },
       { label: 'Megaminx EP', to: '/megaminx/megaminx-ep' },
       { label: 'Megaminx CP', to: '/megaminx/megaminx-cp' },
+      // 006 で足した新しいページ(現行サイトには無い)
+      { label: 'Megaminx PLL', to: '/megaminx/megaminx-pll' },
     ],
   },
   {

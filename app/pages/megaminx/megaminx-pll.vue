@@ -1,0 +1,175 @@
+<script setup lang="ts">
+import { PLL_CASES } from 'megaminx-image/cases'
+import { pllBasics } from '~/data/megaminx/pll-basics'
+import { pllRecognition, pllStageNotes } from '~/data/megaminx/pll-recognition'
+import { pllGroupNotes, pllStages } from '~/data/megaminx/pll-stages'
+
+/**
+ * Megaminx PLL の判断基準のページ(006)。
+ * 先頭の「基礎知識」と、覚える順の 27 段階をタブで切り替える。すべてのタブの中身を静的生成した HTML に含め、
+ * 選んでいないタブは v-show で隠す。データの誤り(ケース名の打ち間違いなど)は、ここで例外にして静的生成を失敗させる。
+ */
+
+/**
+ * データの誤りで静的生成を失敗させる。例外のメッセージは静的生成のログに出ず「[500] Server Error」だけになるため、
+ * 同じメッセージをコンソールにも出す(ログに残る)
+ */
+function fail(message: string): never {
+  console.error(message)
+  throw new Error(message)
+}
+
+const caseByName = new Map(PLL_CASES.map((c) => [c.name, c]))
+
+// 検証: 段階が 151 件をちょうど 1 回ずつ含む
+const staged = pllStages.flatMap((s) => s.cases)
+const unknownStaged = staged.filter((name) => !caseByName.has(name))
+const duplicated = staged.filter((name, i) => staged.indexOf(name) !== i)
+const missing = PLL_CASES.map((c) => c.name).filter((name) => !staged.includes(name))
+if (unknownStaged.length || duplicated.length || missing.length) {
+  fail(
+    `pll-stages.ts の段階が PLL の 151 ケースと一致しません(不明: ${unknownStaged.join(', ') || 'なし'}、重複: ${duplicated.join(', ') || 'なし'}、不足: ${missing.join(', ') || 'なし'})`,
+  )
+}
+
+// 検証: 判断基準のキーは PLL のケース名だけ
+const unknownRecognition = Object.keys(pllRecognition).filter((name) => !caseByName.has(name))
+if (unknownRecognition.length) {
+  fail(`pll-recognition.ts に、PLL に無いケース名があります: ${unknownRecognition.join(', ')}`)
+}
+
+// 検証: 段階の一言のキーは段階の名前だけ
+const unknownStageNotes = Object.keys(pllStageNotes).filter((label) => !pllStages.some((s) => s.label === label))
+if (unknownStageNotes.length) {
+  fail(`pll-recognition.ts の pllStageNotes に、段階に無い名前があります: ${unknownStageNotes.join(', ')}`)
+}
+
+/** タブ。hash は URL のハッシュに使う値(段階の名前の – を - に) */
+const stages = pllStages.map((stage) => {
+  const group = caseByName.get(stage.cases[0]!)!.group
+  const note = pllGroupNotes[group]
+  if (!note) fail(`pll-stages.ts の段階 ${stage.label} のグループ ${group} に、説明がありません`)
+  return {
+    label: stage.label,
+    hash: stage.label.replaceAll('–', '-'),
+    heading: `${stage.label} (${note})`,
+    intro: pllStageNotes[stage.label] ?? '',
+    cases: stage.cases.map((name) => ({
+      name,
+      alg: caseByName.get(name)!.alg,
+      recognition: pllRecognition[name] ?? [],
+    })),
+  }
+})
+
+/** 基礎知識の節。例の図は、PLL のケース名なら PLL_CASES の手順に置き換える */
+const basics = pllBasics.map((section) => ({
+  title: section.title,
+  paragraphs: section.paragraphs,
+  examples: (section.examples ?? []).map((example) => {
+    if ((example.pll === undefined) === (example.case === undefined)) {
+      fail(`pll-basics.ts の節「${section.title}」の例には、pll か case のどちらか一方だけを書いてください`)
+    }
+    if (example.pll !== undefined) {
+      const found = caseByName.get(example.pll)
+      if (!found) fail(`pll-basics.ts の節「${section.title}」の例に、PLL に無いケース名があります: ${example.pll}`)
+      return { alg: found.alg, label: example.label }
+    }
+    return { alg: example.case!, label: example.label }
+  }),
+}))
+
+const tabs = [{ label: '基礎知識', hash: 'basics' }, ...stages.map(({ label, hash }) => ({ label, hash }))]
+
+/** 選んでいるタブ。サーバー側とハイドレーションの時点では、常に基礎知識 */
+const active = ref('basics')
+
+/** URL のハッシュ(`#K2` など)からタブを選ぶ。知らないハッシュなら基礎知識 */
+function selectFromHash(hash: string) {
+  const name = decodeURIComponent(hash.slice(1))
+  active.value = tabs.some((tab) => tab.hash === name) ? name : 'basics'
+}
+
+function onHashChange() {
+  selectFromHash(location.hash)
+}
+
+/** タブを押したとき。ページの先頭へ飛ばないよう、ハッシュは replaceState で書き換える */
+function select(hash: string) {
+  active.value = hash
+  history.replaceState(history.state, '', `#${hash}`)
+}
+
+const route = useRoute()
+
+onMounted(() => {
+  // 読み込みの直後は、Nuxt のルーターが location のハッシュを一時的に外している。ルートのハッシュは残っているので、そちらを読む
+  selectFromHash(route.hash)
+  window.addEventListener('hashchange', onHashChange)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('hashchange', onHashChange)
+})
+</script>
+
+<template>
+  <div>
+    <h2>Megaminx PLL</h2>
+
+    <div role="tablist" aria-label="Megaminx PLL のタブ" class="my-4 flex flex-wrap gap-1">
+      <button
+        v-for="tab in tabs"
+        :key="tab.hash"
+        type="button"
+        role="tab"
+        :aria-selected="active === tab.hash"
+        :aria-controls="`pll-tab-${tab.hash}`"
+        class="cursor-pointer rounded border px-2 py-1 text-sm"
+        :class="
+          active === tab.hash
+            ? 'border-bulma-link bg-bulma-link text-white'
+            : 'border-bulma-border text-bulma-text hover:border-bulma-link'
+        "
+        @click="select(tab.hash)"
+      >
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <div v-show="active === 'basics'" id="pll-tab-basics" role="tabpanel">
+      <template v-for="(section, i) in basics" :key="section.title">
+        <h3>{{ section.title }}</h3>
+        <template v-if="section.paragraphs.length">
+          <p v-for="(paragraph, k) in section.paragraphs" :key="k">{{ paragraph }}</p>
+        </template>
+        <p v-else class="text-[#7a7a7a]">準備中</p>
+        <div v-if="section.examples.length" class="flex flex-wrap gap-4">
+          <figure v-for="(example, j) in section.examples" :key="j" class="text-center">
+            <MegaminxImage :id="`pll-basics-${i}-${j}`" :diagram="{ case: example.alg }" />
+            <figcaption v-if="example.label">{{ example.label }}</figcaption>
+          </figure>
+        </div>
+      </template>
+    </div>
+
+    <div
+      v-for="stage in stages"
+      v-show="active === stage.hash"
+      :id="`pll-tab-${stage.hash}`"
+      :key="stage.hash"
+      role="tabpanel"
+    >
+      <h3>{{ stage.heading }}</h3>
+      <p v-if="stage.intro">{{ stage.intro }}</p>
+      <p v-else class="text-[#7a7a7a]">準備中</p>
+      <MegaminxPllCase
+        v-for="c in stage.cases"
+        :key="c.name"
+        :name="c.name"
+        :alg="c.alg"
+        :recognition="c.recognition"
+      />
+    </div>
+  </div>
+</template>
