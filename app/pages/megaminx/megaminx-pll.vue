@@ -125,8 +125,10 @@ function select(hash: string) {
 const route = useRoute()
 
 onMounted(() => {
-  // 読み込みの直後は、Nuxt のルーターが location のハッシュを一時的に外している。ルートのハッシュは残っているので、そちらを読む
-  selectFromHash(route.hash)
+  // 読み込みの直後は、Nuxt のルーターが location のハッシュを一時的に外している。そのときは、残っているルートのハッシュを読む。
+  // タブを押したときは location だけを書き換え(ルートは最初のハッシュのまま)なので、location にハッシュがあればそちらを優先する
+  // (pnpm dev のホットリロードで作り直したときに、最初に開いたタブへ戻らないように)
+  selectFromHash(location.hash || route.hash)
   window.addEventListener('hashchange', onHashChange)
 })
 
