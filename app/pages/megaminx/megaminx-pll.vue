@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PLL_CASES } from 'megaminx-image/cases'
-import { pllBasics, type PllExample } from '~/data/megaminx/pll-basics'
+import { pllBasics, pllBasicsIntro, type PllExample } from '~/data/megaminx/pll-basics'
 import { pllRecognition, pllStageNotes } from '~/data/megaminx/pll-recognition'
 import { pllGroupNotes, pllStages } from '~/data/megaminx/pll-stages'
 
@@ -81,17 +81,14 @@ function resolveExamples(examples: PllExample[] | undefined, where: string) {
   })
 }
 
-/** 基礎知識の節。compare があれば左右の欄も組み立てる */
-const basics = pllBasics.map((section) => ({
-  title: section.title,
-  paragraphs: section.paragraphs,
-  examples: resolveExamples(section.examples, `節「${section.title}」`),
-  compare: section.compare?.map((column) => ({
-    title: column.title,
-    paragraphs: column.paragraphs,
-    examples: resolveExamples(column.examples, `節「${section.title}」の欄「${column.title}」`),
+/** 基礎知識の枠の行。例の図は手順に置き換える */
+const basics = pllBasics.map((row) =>
+  row.map((box) => ({
+    title: box.title,
+    paragraphs: box.paragraphs,
+    examples: resolveExamples(box.examples, `枠「${box.title}」`),
   })),
-}))
+)
 
 const tabs = [{ label: '基礎知識', hash: 'basics' }, ...stages.map(({ label, hash }) => ({ label, hash }))]
 
@@ -152,31 +149,24 @@ onBeforeUnmount(() => {
     </div>
 
     <div v-show="active === 'basics'" id="pll-tab-basics" role="tabpanel">
-      <template v-for="(section, i) in basics" :key="section.title">
-        <h3>{{ section.title }}</h3>
-        <MegaminxPllBasicsBlock
-          :id-prefix="`pll-basics-${i}`"
-          :paragraphs="section.paragraphs"
-          :examples="section.examples"
-          :pending="!section.compare"
-        />
-        <!-- 左右に比べる欄。狭い画面では縦に積む -->
-        <div v-if="section.compare" class="mb-6 grid gap-4 md:grid-cols-2">
-          <div
-            v-for="(column, c) in section.compare"
-            :key="column.title"
-            class="rounded border border-bulma-border p-4"
-          >
-            <h4>{{ column.title }}</h4>
-            <MegaminxPllBasicsBlock
-              :id-prefix="`pll-basics-${i}-${c}`"
-              :paragraphs="column.paragraphs"
-              :examples="column.examples"
-              :pending="true"
-            />
-          </div>
+      <MegaminxPllBasicsBlock
+        id-prefix="pll-basics-intro"
+        :paragraphs="pllBasicsIntro"
+        :examples="[]"
+        :pending="true"
+      />
+      <!-- 枠の行。広い画面で 2 列、狭い画面では縦に積む。枠が 1 つの行も、同じ幅の枠にする -->
+      <div v-for="(row, i) in basics" :key="i" class="mb-4 grid gap-4 md:grid-cols-2">
+        <div v-for="(box, c) in row" :key="box.title" class="rounded border border-bulma-border p-4">
+          <h4>{{ box.title }}</h4>
+          <MegaminxPllBasicsBlock
+            :id-prefix="`pll-basics-${i}-${c}`"
+            :paragraphs="box.paragraphs"
+            :examples="box.examples"
+            :pending="true"
+          />
         </div>
-      </template>
+      </div>
     </div>
 
     <div
