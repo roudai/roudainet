@@ -21,7 +21,7 @@
 
 **Language/Version**:TypeScript 5.9.x(001 と同じ。7 未満に固定)、Node 24(LTS)
 
-**Primary Dependencies**:Nuxt 4.6.3、Vue 3、Tailwind CSS 4.3.3、megaminx-image 1.0.0(005 から。`megaminx-image/cases` を新たに使う)。新しい依存は無い
+**Primary Dependencies**:Nuxt 4.6.3、Vue 3、Tailwind CSS 4.3.3、megaminx-image 1.0.0(005 から。`megaminx-image/cases` を新たに使う)。新しい依存は無い。(実装の後の記録)基礎知識の例の図のため、megaminx-image を 1.1.0(オプション `show` を足した版)に上げた(data-model.md)
 
 **Storage**:N/A(静的なデータ定義のみ。[data-model.md](./data-model.md))
 

@@ -14,13 +14,6 @@ const props = defineProps<{
   diagram?: MegaminxDiagram
 }>()
 
-/** 側面のステッカー(11〜25)のうち、show に無いものを濃い灰色にする上書き(006) */
-function grayExcept(show: number[]): Record<number, 'd'> {
-  const stickers: Record<number, 'd'> = {}
-  for (let i = 11; i <= 25; i++) if (!show.includes(i)) stickers[i] = 'd'
-  return stickers
-}
-
 const markup = computed(() => {
   if (!props.diagram) {
     console.error(`図(${props.id})の指定が見つかりません`)
@@ -33,7 +26,7 @@ const markup = computed(() => {
     size: 100,
     ...(oll && { scheme: ollScheme() }),
     ...(rotate !== undefined && { rotate }),
-    ...(show && { stickers: grayExcept(show) }),
+    ...(show && { show }),
   })
 })
 </script>

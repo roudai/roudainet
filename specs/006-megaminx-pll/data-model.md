@@ -93,7 +93,7 @@ export const pllBasics: PllBasicsSection[] = [
 ]
 ```
 
-- 例の図の `rotate`(上面を時計回りに回す回数)と `show`(色を残すステッカーの番号。megaminx-image の Sticker order。回した後の位置)は任意。`show` があると、それ以外の側面(11〜25)を濃い灰色にする(FR-017)。`MegaminxDiagram`(types.ts)にも同じ 2 つを足し、`MegaminxImage` が `svg()` の `rotate` と `stickers` に渡す。どちらも無い図(005 の 4 ページ)の SVG は変わらない。
+- 例の図の `rotate`(上面を時計回りに回す回数)と `show`(色を残すステッカーの番号。megaminx-image の Sticker order。回した後の位置)は任意。`show` があると、それ以外の側面(11〜25)を濃い灰色にする(FR-017)。`MegaminxDiagram`(types.ts)にも同じ 2 つを足し、`MegaminxImage` が `svg()` の `rotate` と `show` にそのまま渡す(`show` は megaminx-image 1.1.0 の機能。当初はサイトの側で「`show` に無い側面を 'd' にする `stickers`」を作って渡していたが、同じ機能をライブラリに足した 1.1.0 に上げて置き換えた。置き換えの前後で、Megaminx の 5 ページの図の SVG 204 個が 1 バイトも変わらないことを確かめた)。どちらも無い図(005 の 4 ページ)の SVG は変わらない。
 - ステッカーの番号:側面 k(0〜4。下の面 F は 2)の上の列は、左のコーナー 11+3k、エッジ 12+3k、右のコーナー 13+3k。面 k の右と面 k+1 の左が同じコーナー(151 ケースで確かめた)。最初の例は、下の面と両隣のコーナー(16〜20)、ブロックは右隣の面のエッジ(21)まで見せる。
 - 規則:例の図(節と欄のどちらでも)は、`pll` と `case` のちょうど一方を持つ。`show` の番号は 0〜25 の整数。`pll` は `PLL_CASES` の名前。節は書いた順に表示する。
 
