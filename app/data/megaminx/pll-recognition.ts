@@ -35,6 +35,23 @@ export const pllStageNotes: Record<string, string> = {
   X: '',
 }
 
+/** 判断の図の 1 つ */
+export interface PllMark {
+  /** 色を残すステッカーの番号(megaminx-image の README の Sticker order)。ほかの側面は濃い灰色 */
+  show: number[]
+  /** 図の下に添える説明('バー'、'偽ペア' など)。無くてもよい */
+  label?: string
+}
+
+/**
+ * 各ケースの図の横に並べる、判断の図。運営者が書き足していく。
+ *
+ * - 書くのは、図を出したいケースだけ(キーはケース名。'A1+' など)
+ * - 図はそのケースの手順から作り、横のケースの図と同じ向きで描く。show に書いたステッカーだけ色を残す
+ * - 番号は、側面の上の列が 11〜25(下の面は左から 17・18・19)。上面(0〜10)は灰色にしない
+ */
+export const pllMarks: Record<string, PllMark[]> = {}
+
 /**
  * Megaminx PLL のページの、各ケースの判断基準(006)。運営者が書き足していく。
  *

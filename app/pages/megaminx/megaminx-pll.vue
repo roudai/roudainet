@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PLL_CASES } from 'megaminx-image/cases'
 import { pllBasics, pllBasicsIntro, type PllExample } from '~/data/megaminx/pll-basics'
-import { pllRecognition, pllStageNotes } from '~/data/megaminx/pll-recognition'
+import { pllMarks, pllRecognition, pllStageNotes } from '~/data/megaminx/pll-recognition'
 import { pllGroupNotes, pllStages } from '~/data/megaminx/pll-stages'
 
 /**
@@ -38,6 +38,16 @@ if (unknownRecognition.length) {
   fail(`pll-recognition.ts に、PLL に無いケース名があります: ${unknownRecognition.join(', ')}`)
 }
 
+// 検証: 判断の図のキーは PLL のケース名だけ。show は 0〜25 の整数
+for (const [name, marks] of Object.entries(pllMarks)) {
+  if (!caseByName.has(name)) fail(`pll-recognition.ts の pllMarks に、PLL に無いケース名があります: ${name}`)
+  for (const mark of marks) {
+    const bad = mark.show.filter((n) => !Number.isInteger(n) || n < 0 || n > 25)
+    if (bad.length)
+      fail(`pll-recognition.ts の pllMarks の ${name} の show に、0〜25 でない番号があります: ${bad.join(', ')}`)
+  }
+}
+
 // 検証: 段階の一言のキーは段階の名前だけ
 const unknownStageNotes = Object.keys(pllStageNotes).filter((label) => !pllStages.some((s) => s.label === label))
 if (unknownStageNotes.length) {
@@ -58,6 +68,7 @@ const stages = pllStages.map((stage) => {
       name,
       alg: caseByName.get(name)!.alg,
       recognition: pllRecognition[name] ?? [],
+      marks: pllMarks[name] ?? [],
     })),
   }
 })
@@ -186,6 +197,7 @@ onBeforeUnmount(() => {
         :name="c.name"
         :alg="c.alg"
         :recognition="c.recognition"
+        :marks="c.marks"
       />
     </div>
   </div>
