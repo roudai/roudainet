@@ -154,6 +154,7 @@ onBeforeUnmount(() => {
         :paragraphs="pllBasicsIntro"
         :examples="[]"
         :pending="true"
+        class="mb-4"
       />
       <!-- 枠の行。広い画面で 2 列、狭い画面では縦に積む。枠が 1 つの行も、同じ幅の枠にする -->
       <div v-for="(row, i) in basics" :key="i" class="mb-4 grid gap-4 md:grid-cols-2">

@@ -34,21 +34,57 @@ export interface PllBasicsBox {
 }
 
 /** タブの最初に載せる一言(1 つの文字列が 1 段落)。空なら「準備中」 */
-export const pllBasicsIntro: string[] = []
+export const pllBasicsIntro: string[] = [
+  'ペア、バー、ブロック、ヘッドライトをもとに判断します。ペア・バー・ブロックには「偽」もあります。',
+]
 
 /** 枠の行。1 行に 1 つか 2 つ */
 export const pllBasics: ([PllBasicsBox] | [PllBasicsBox, PllBasicsBox])[] = [
   [
-    { title: 'ペア', paragraphs: [], examples: [{ pll: 'F1+', rotate: 4, show: [18, 19, 20] }] },
-    { title: '偽ペア', paragraphs: [], examples: [{ pll: 'A1+', rotate: 0, show: [18, 19, 20] }] },
+    {
+      title: 'ペア',
+      paragraphs: ['エッジとコーナーが繋がっている(2x1)'],
+      examples: [{ pll: 'F1+', rotate: 4, show: [18, 19, 20] }],
+    },
+    {
+      title: '偽ペア',
+      paragraphs: ['エッジと同じ色が、隣のコーナーの反対側の面にある。コーナーの配色が逆だったらペアになれる。'],
+      examples: [{ pll: 'A1+', rotate: 0, show: [18, 19, 20] }],
+    },
   ],
   [
-    { title: 'バー', paragraphs: [], examples: [{ pll: 'F1+', rotate: 3, show: [16, 17, 18, 19, 20] }] },
-    { title: '偽バー', paragraphs: [], examples: [{ pll: 'E1', rotate: 1, show: [16, 17, 18, 19, 20] }] },
+    {
+      title: 'バー',
+      paragraphs: ['1面の色が一直線に繋がっている(3x1)'],
+      examples: [{ pll: 'F1+', rotate: 3, show: [16, 17, 18, 19, 20] }],
+    },
+    {
+      title: '偽バー',
+      paragraphs: [
+        'エッジと同じ色が、左右のコーナーの反対側の面にある。コーナーの配色がどちらも逆だったらバーになれる。',
+      ],
+      examples: [{ pll: 'E1', rotate: 1, show: [16, 17, 18, 19, 20] }],
+    },
   ],
   [
-    { title: 'ブロック', paragraphs: [], examples: [{ pll: 'A1+', rotate: 2, show: [18, 19, 20, 21] }] },
-    { title: '偽ブロック', paragraphs: [], examples: [{ pll: 'Z1', rotate: 0, show: [18, 19, 20, 21] }] },
+    {
+      title: 'ブロック',
+      paragraphs: ['隣り合う2面で、エッジ・コーナー・エッジが繋がっている(2x2)'],
+      examples: [{ pll: 'A1+', rotate: 2, show: [18, 19, 20, 21] }],
+    },
+    {
+      title: '偽ブロック',
+      paragraphs: [
+        '2面のエッジと同じ色が、間のコーナーのそれぞれ反対側の面にある。コーナーの配色が逆だったらブロックになれる。',
+      ],
+      examples: [{ pll: 'Z1', rotate: 0, show: [18, 19, 20, 21] }],
+    },
   ],
-  [{ title: 'ヘッドライト', paragraphs: [], examples: [{ pll: 'F1+', rotate: 0, show: [16, 17, 18, 19, 20] }] }],
+  [
+    {
+      title: 'ヘッドライト',
+      paragraphs: ['1面の両端のコーナー2つが同じ色で、間のエッジだけ違う色'],
+      examples: [{ pll: 'F1+', rotate: 0, show: [16, 17, 18, 19, 20] }],
+    },
+  ],
 ]
