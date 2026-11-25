@@ -6,7 +6,7 @@
  * - HTML は書けない(文字列のまま表示する)
  */
 export const pllStageNotes: Record<string, string> = {
-  F1: '',
+  F1: 'Megaminx PLLでは一番短い7手のケース。1つのバーと2つのペアがある。',
   A: '',
   E: '',
   H: '',
@@ -50,7 +50,17 @@ export interface PllMark {
  * - 図はそのケースの手順から作り、横のケースの図と同じ向きで描く。show に書いたステッカーだけ色を残す
  * - 番号は、側面の上の列が 11〜25(下の面は左から 17・18・19)。上面(0〜10)は灰色にしない
  */
-export const pllMarks: Record<string, PllMark[]> = {}
+export const pllMarks: Record<string, PllMark[]> = {
+  // F1 (3x1 and 2x1(s))
+  'F1+': [
+    { show: [25, 11, 12, 13, 14], label: 'バー' },
+    { show: [15, 16, 17, 19, 20, 21], label: 'ペア' },
+  ],
+  'F1-': [
+    { show: [13, 14, 15, 16, 17], label: 'バー' },
+    { show: [25, 11, 12, 21, 22, 23], label: 'ペア' },
+  ],
+}
 
 /**
  * Megaminx PLL のページの、各ケースの判断基準(006)。運営者が書き足していく。
@@ -62,8 +72,10 @@ export const pllMarks: Record<string, PllMark[]> = {}
  */
 export const pllRecognition: Record<string, string[]> = {
   // F1 (3x1 and 2x1(s))
-  'F1+': [],
-  'F1-': [],
+  'F1+': ['バーが左上。手前のエッジの色が変わらないのでAUFの判断も簡単。'],
+  'F1-': [
+    'バーが左下。手前のエッジの色が変わらないのはF1+と一緒。左手のダブルトリガーでU面が回せてこっちの方が回しやすい。',
+  ],
   // A (3 corner CP)
   'A1+': [],
   'A1-': [],
