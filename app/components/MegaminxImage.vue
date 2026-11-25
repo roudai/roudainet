@@ -14,14 +14,27 @@ const props = defineProps<{
   diagram?: MegaminxDiagram
 }>()
 
+/** 側面のステッカー(11〜25)のうち、show に無いものを濃い灰色にする上書き(006) */
+function grayExcept(show: number[]): Record<number, 'd'> {
+  const stickers: Record<number, 'd'> = {}
+  for (let i = 11; i <= 25; i++) if (!show.includes(i)) stickers[i] = 'd'
+  return stickers
+}
+
 const markup = computed(() => {
   if (!props.diagram) {
     console.error(`図(${props.id})の指定が見つかりません`)
     return ''
   }
   // OLL 型の図は ollScheme() の既定(上面は薄い灰色、ほかは濃い灰色)。それ以外はライブラリの既定の配色
-  const { case: alg, oll } = props.diagram
-  return svg(oll ? { case: alg, size: 100, scheme: ollScheme() } : { case: alg, size: 100 })
+  const { case: alg, oll, rotate, show } = props.diagram
+  return svg({
+    case: alg,
+    size: 100,
+    ...(oll && { scheme: ollScheme() }),
+    ...(rotate !== undefined && { rotate }),
+    ...(show && { stickers: grayExcept(show) }),
+  })
 })
 </script>
 

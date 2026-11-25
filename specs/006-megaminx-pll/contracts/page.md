@@ -33,13 +33,22 @@
 `pllBasics` の節ごとに、書いた順で:
 
 ```html
-<h3>偽ペア</h3>
-<p>…</p>                       <!-- 段落ごと。空なら <p class="(灰色)">準備中</p> -->
+<h3>ペアと偽ペア</h3>
+<!-- 段落と例の図(MegaminxPllBasicsBlock)。compare が無い節で段落が空なら <p class="(灰色)">準備中</p>。compare がある節は導入で、空なら何も出さない -->
+<p>…</p>
 <div>(例の図を横に並べ、折り返す)
   <figure>
     <div id="pll-basics-<節の番号>-<図の番号>"><svg …/></div>   <!-- MegaminxImage -->
     <figcaption>label</figcaption>                              <!-- label があるときだけ -->
   </figure>
+</div>
+<!-- compare があるときだけ。広い画面で左右 2 列、狭い画面(md 未満)で縦に積む。各欄は枠で囲む -->
+<div class="grid md:grid-cols-2">
+  <div>
+    <h4>ペア</h4>
+    <!-- 段落と例の図(上と同じ。図の id は pll-basics-<節の番号>-<欄の番号>-<図の番号>)。段落が空なら「準備中」 -->
+  </div>
+  <div><h4>偽ペア</h4> …</div>
 </div>
 ```
 

@@ -68,21 +68,34 @@ export interface PllExample {
   /** 図の下に添える説明 */
   label?: string
 }
+/** 比べる欄の 1 つ */
+export interface PllBasicsColumn {
+  title: string
+  /** 空なら「準備中」 */
+  paragraphs: string[]
+  examples?: PllExample[]
+}
 export interface PllBasicsSection {
   /** 節の見出し */
   title: string
-  /** 段落(1 つの文字列が 1 段落)。空なら「準備中」 */
+  /** 段落(1 つの文字列が 1 段落)。compare が無いとき、空なら「準備中」。compare があるときは欄の上の導入(空なら何も出さない) */
   paragraphs: string[]
   /** 例の図。無くてもよい */
   examples?: PllExample[]
+  /** 左右に並べて比べる欄(左に本物、右に偽物)。無くてもよい(FR-016) */
+  compare?: [PllBasicsColumn, PllBasicsColumn]
 }
 export const pllBasics: PllBasicsSection[] = [
-  { title: '偽ペア', paragraphs: [], examples: [] },
-  { title: '偽バー', paragraphs: [], examples: [] },
+  { title: 'ペアと偽ペア', paragraphs: [], compare: [{ title: 'ペア', … }, { title: '偽ペア', … }] },
+  { title: 'バーと偽バー', paragraphs: [], compare: [{ title: 'バー', … }, { title: '偽バー', … }] },
+  { title: 'ブロックと偽ブロック', paragraphs: [], compare: [{ title: 'ブロック', … }, { title: '偽ブロック', … }] },
+  { title: 'ヘッドライト', paragraphs: [], examples: [] },
 ]
 ```
 
-- 規則:例の図は、`pll` と `case` のちょうど一方を持つ。`pll` は `PLL_CASES` の名前。節は書いた順に表示する。
+- 例の図の `rotate`(上面を時計回りに回す回数)と `show`(色を残すステッカーの番号。megaminx-image の Sticker order。回した後の位置)は任意。`show` があると、それ以外の側面(11〜25)を濃い灰色にする(FR-017)。`MegaminxDiagram`(types.ts)にも同じ 2 つを足し、`MegaminxImage` が `svg()` の `rotate` と `stickers` に渡す。どちらも無い図(005 の 4 ページ)の SVG は変わらない。
+- ステッカーの番号:側面 k(0〜4。下の面 F は 2)の上の列は、左のコーナー 11+3k、エッジ 12+3k、右のコーナー 13+3k。面 k の右と面 k+1 の左が同じコーナー(151 ケースで確かめた)。最初の例は、下の面と両隣のコーナー(16〜20)、ブロックは右隣の面のエッジ(21)まで見せる。
+- 規則:例の図(節と欄のどちらでも)は、`pll` と `case` のちょうど一方を持つ。`show` の番号は 0〜25 の整数。`pll` は `PLL_CASES` の名前。節は書いた順に表示する。
 
 ## 検証(research.md の 3)
 

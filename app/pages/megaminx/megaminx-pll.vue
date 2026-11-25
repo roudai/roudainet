@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PLL_CASES } from 'megaminx-image/cases'
-import { pllBasics } from '~/data/megaminx/pll-basics'
+import { pllBasics, type PllExample } from '~/data/megaminx/pll-basics'
 import { pllRecognition, pllStageNotes } from '~/data/megaminx/pll-recognition'
 import { pllGroupNotes, pllStages } from '~/data/megaminx/pll-stages'
 
@@ -62,21 +62,35 @@ const stages = pllStages.map((stage) => {
   }
 })
 
-/** 基礎知識の節。例の図は、PLL のケース名なら PLL_CASES の手順に置き換える */
+/** 例の図を手順に置き換える。PLL のケース名なら PLL_CASES の手順にする */
+function resolveExamples(examples: PllExample[] | undefined, where: string) {
+  return (examples ?? []).map((example) => {
+    if ((example.pll === undefined) === (example.case === undefined)) {
+      fail(`pll-basics.ts の${where}の例には、pll か case のどちらか一方だけを書いてください`)
+    }
+    const badShow = (example.show ?? []).filter((n) => !Number.isInteger(n) || n < 0 || n > 25)
+    if (badShow.length)
+      fail(`pll-basics.ts の${where}の例の show に、0〜25 でない番号があります: ${badShow.join(', ')}`)
+    let alg = example.case!
+    if (example.pll !== undefined) {
+      const found = caseByName.get(example.pll)
+      if (!found) fail(`pll-basics.ts の${where}の例に、PLL に無いケース名があります: ${example.pll}`)
+      alg = found.alg
+    }
+    return { diagram: { case: alg, rotate: example.rotate, show: example.show }, label: example.label }
+  })
+}
+
+/** 基礎知識の節。compare があれば左右の欄も組み立てる */
 const basics = pllBasics.map((section) => ({
   title: section.title,
   paragraphs: section.paragraphs,
-  examples: (section.examples ?? []).map((example) => {
-    if ((example.pll === undefined) === (example.case === undefined)) {
-      fail(`pll-basics.ts の節「${section.title}」の例には、pll か case のどちらか一方だけを書いてください`)
-    }
-    if (example.pll !== undefined) {
-      const found = caseByName.get(example.pll)
-      if (!found) fail(`pll-basics.ts の節「${section.title}」の例に、PLL に無いケース名があります: ${example.pll}`)
-      return { alg: found.alg, label: example.label }
-    }
-    return { alg: example.case!, label: example.label }
-  }),
+  examples: resolveExamples(section.examples, `節「${section.title}」`),
+  compare: section.compare?.map((column) => ({
+    title: column.title,
+    paragraphs: column.paragraphs,
+    examples: resolveExamples(column.examples, `節「${section.title}」の欄「${column.title}」`),
+  })),
 }))
 
 const tabs = [{ label: '基礎知識', hash: 'basics' }, ...stages.map(({ label, hash }) => ({ label, hash }))]
@@ -140,15 +154,27 @@ onBeforeUnmount(() => {
     <div v-show="active === 'basics'" id="pll-tab-basics" role="tabpanel">
       <template v-for="(section, i) in basics" :key="section.title">
         <h3>{{ section.title }}</h3>
-        <template v-if="section.paragraphs.length">
-          <p v-for="(paragraph, k) in section.paragraphs" :key="k">{{ paragraph }}</p>
-        </template>
-        <p v-else class="text-[#7a7a7a]">準備中</p>
-        <div v-if="section.examples.length" class="flex flex-wrap gap-4">
-          <figure v-for="(example, j) in section.examples" :key="j" class="text-center">
-            <MegaminxImage :id="`pll-basics-${i}-${j}`" :diagram="{ case: example.alg }" />
-            <figcaption v-if="example.label">{{ example.label }}</figcaption>
-          </figure>
+        <MegaminxPllBasicsBlock
+          :id-prefix="`pll-basics-${i}`"
+          :paragraphs="section.paragraphs"
+          :examples="section.examples"
+          :pending="!section.compare"
+        />
+        <!-- 左右に比べる欄。狭い画面では縦に積む -->
+        <div v-if="section.compare" class="mb-6 grid gap-4 md:grid-cols-2">
+          <div
+            v-for="(column, c) in section.compare"
+            :key="column.title"
+            class="rounded border border-bulma-border p-4"
+          >
+            <h4>{{ column.title }}</h4>
+            <MegaminxPllBasicsBlock
+              :id-prefix="`pll-basics-${i}-${c}`"
+              :paragraphs="column.paragraphs"
+              :examples="column.examples"
+              :pending="true"
+            />
+          </div>
         </div>
       </template>
     </div>
