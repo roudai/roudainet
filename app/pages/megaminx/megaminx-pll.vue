@@ -38,13 +38,20 @@ if (unknownRecognition.length) {
   fail(`pll-recognition.ts に、PLL に無いケース名があります: ${unknownRecognition.join(', ')}`)
 }
 
-// 検証: 判断の図のキーは PLL のケース名だけ。show は 0〜25 の整数
+// 検証: 判断の図のキーは PLL のケース名だけ。show と arrows の番号は 0〜25 の整数。矢印の両端は別のステッカー
+// (誤りはライブラリも例外にするが、どのケースかが分かるようにここで止める)
+const isSticker = (n: number) => Number.isInteger(n) && n >= 0 && n <= 25
 for (const [name, marks] of Object.entries(pllMarks)) {
   if (!caseByName.has(name)) fail(`pll-recognition.ts の pllMarks に、PLL に無いケース名があります: ${name}`)
   for (const mark of marks) {
-    const bad = mark.show.filter((n) => !Number.isInteger(n) || n < 0 || n > 25)
+    const bad = mark.show.filter((n) => !isSticker(n))
     if (bad.length)
       fail(`pll-recognition.ts の pllMarks の ${name} の show に、0〜25 でない番号があります: ${bad.join(', ')}`)
+    const badArrows = (mark.arrows ?? []).filter(([from, to]) => !isSticker(from) || !isSticker(to) || from === to)
+    if (badArrows.length)
+      fail(
+        `pll-recognition.ts の pllMarks の ${name} の arrows に、誤った組があります: ${badArrows.map((a) => `[${a.join(', ')}]`).join(', ')}`,
+      )
   }
 }
 

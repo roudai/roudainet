@@ -26,7 +26,7 @@ defineProps<{
       <div class="flex shrink-0 items-start gap-2">
         <MegaminxImage :id="`pll-${name}`" :diagram="{ case: alg }" />
         <figure v-for="(mark, i) in marks" :key="i" class="m-0 text-center">
-          <MegaminxImage :id="`pll-${name}-mark-${i}`" :diagram="{ case: alg, show: mark.show }" />
+          <MegaminxImage :id="`pll-${name}-mark-${i}`" :diagram="{ case: alg, show: mark.show, arrows: mark.arrows }" />
           <figcaption v-if="mark.label" class="text-sm">{{ mark.label }}</figcaption>
         </figure>
       </div>

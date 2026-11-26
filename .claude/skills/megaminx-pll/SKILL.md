@@ -13,20 +13,20 @@ description: メガミンクス(Megaminx)の PLL の判断(recognition)を、meg
 
 ## 最初に読むもの
 
-- `references/stickers.md`:ステッカーの番号(11–25)、面・頂点の呼び方、コーナーの 2 枚、rotate と AUF、show。番号や位置を扱うなら必ず読む
+- `references/stickers.md`:ステッカーの番号(0–25)、面・頂点の呼び方、コーナーの 2 枚、rotate と AUF、show、arrows(矢印の向きの決め方)。番号や位置を扱うなら必ず読む
 - `references/terms.md`:ペア・バー・ブロック・3x2ブロック・ヘッドライトと、その偽物の定義、show の取り方。図を作る・文章を見るなら必ず読む
 - megaminx-image の使い方(図の作り方、記法、配色、PNG の書き出しなど)は、このスキルには写していない。要るときはプロジェクトの `node_modules/megaminx-image/README.ja.md` を読む(入っている版と一致する)
 - `references/roudainet.md`:roudai.net のリポジトリでの作業(どのファイルに書くか、誰が書くか、レビューの仕方、確かめ方、コミット)。そのリポジトリにいるときに読む
 
 ## スクリプト(`scripts/`)
 
-megaminx-image(1.1.0 以上。`show` を使うため)が入っているプロジェクトで、`node <スキルのパス>/scripts/<名前>.mjs` として動かす。
+megaminx-image(1.1.0 以上。`show` を使うため。矢印の `arrows` は 1.2.0 以上)が入っているプロジェクトで、`node <スキルのパス>/scripts/<名前>.mjs` として動かす。
 node が megaminx-image を見つけられる場所(そのプロジェクトの中)で実行すること。
 
 | スクリプト | 何をするか |
 | --- | --- |
 | `features.mjs <ケース...>` | 面ごとの 3 枚の色、頂点のコーナー、見つかった特徴と、その show の番号。`--group E`、`--rotate n`、`--json` |
-| `corners.mjs <ケース...>` | AUF を打ち消したうえで、どのコーナー・エッジがどこへ動くか(巡回)と、動かないコーナー |
+| `corners.mjs <ケース...>` | AUF を打ち消したうえで、どのコーナー・エッジがどこへ動くか(巡回)と、動かないコーナー。`--arrows` で矢印の組も出す |
 | `search.mjs <特徴> [--where 位置]` | その特徴が指定の位置に来るケースと rotate を探す。基礎知識の例の図を選ぶとき。`--only`、`--group`、`--limit` |
 | `shot.mjs <タブ> [--case ケース]` | roudai.net のページを確認用のサーバーから画像に撮る(サイト固有。`references/roudainet.md`) |
 | `lib.mjs` | 共通の処理。別の調べ方が要るときは、これを import して小さなスクリプトを書く |
@@ -38,6 +38,7 @@ node が megaminx-image を見つけられる場所(そのプロジェクトの�
 1. `features.mjs` で、そのケース(またはグループ)の特徴を出す
 2. 言われた特徴が、言われた位置に本当にあるかを確かめる。無い・別物(偽ペアと偽バーなど)なら、作る前に聞く
 3. show は `terms.md` の取り方で決める。判断に使う同じ種類の特徴が複数あれば 1 枚にまとめる。ラベルは短い名詞
+   - ピースの動きを矢印で見せるときは、`corners.mjs --arrows` の組を使う(向きと番号の決まりは `stickers.md` の arrows)。手で組を書かない
 4. 書いたら図を目で確かめる(roudai.net なら `shot.mjs`)
 5. 作った図を、ケースごとに「何を見せたか(番号と位置)」と短く報告する
 

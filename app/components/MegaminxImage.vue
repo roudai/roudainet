@@ -20,13 +20,14 @@ const markup = computed(() => {
     return ''
   }
   // OLL 型の図は ollScheme() の既定(上面は薄い灰色、ほかは濃い灰色)。それ以外はライブラリの既定の配色
-  const { case: alg, oll, rotate, show } = props.diagram
+  const { case: alg, oll, rotate, show, arrows } = props.diagram
   return svg({
     case: alg,
     size: 100,
     ...(oll && { scheme: ollScheme() }),
     ...(rotate !== undefined && { rotate }),
     ...(show && { show }),
+    ...(arrows && { arrows }),
   })
 })
 </script>

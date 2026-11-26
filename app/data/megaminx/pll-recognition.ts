@@ -39,6 +39,11 @@ export const pllStageNotes: Record<string, string> = {
 export interface PllMark {
   /** 色を残すステッカーの番号(megaminx-image の README の Sticker order)。ほかの側面は濃い灰色 */
   show: number[]
+  /**
+   * 矢印の組 `[from, to]`(megaminx-image の README の Sticker order)。無くてもよい。
+   * 向きは「揃えるには、from にあるピースが to へ行く」。`[a, b]` と `[b, a]` を両方書くと両矢印(2 点交換)
+   */
+  arrows?: [number, number][]
   /** 図の下に添える説明('バー'、'偽ペア' など)。無くてもよい */
   label?: string
 }

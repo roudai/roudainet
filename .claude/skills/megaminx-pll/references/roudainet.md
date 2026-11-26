@@ -8,11 +8,11 @@ roudai.net のリポジトリ(Nuxt 4 の静的生成、pnpm)の `/megaminx/megam
 | ファイル | 中身 | 誰が書くか |
 | --- | --- | --- |
 | `app/data/megaminx/pll-recognition.ts` の `pllStageNotes` | 各段階(タブ)の見出しの下の一言。キーは段階の名前(`'F2–5'` は全角ダッシュ) | 運営者 |
-| 同 `pllMarks` | 各ケースの判断の図(`{ show, label }` の配列、0–2 個) | 運営者の指示で Claude が作る |
+| 同 `pllMarks` | 各ケースの判断の図(`{ show, arrows?, label }` の配列、0–2 個) | 運営者の指示で Claude が作る |
 | 同 `pllRecognition` | 各ケースの判断基準の段落(文字列の配列) | 運営者 |
 | `app/data/megaminx/pll-basics.ts` | 基礎知識のタブ(`pllBasicsIntro` と、枠の行 `pllBasics`) | 運営者(例の図は Claude が選ぶことがある) |
 | `app/data/megaminx/pll-stages.ts` | 覚える順の 27 段階とグループの説明 | 変えない |
-| `app/pages/megaminx/megaminx-pll.vue` | ページ。キーや show の番号の誤りは、生成のときに例外で止まる | ― |
+| `app/pages/megaminx/megaminx-pll.vue` | ページ。キーや show・arrows の番号の誤りは、生成のときに例外で止まる | ― |
 
 文章は運営者が書く。Claude は頼まれない限り、判断基準の文章(`pllRecognition`・`pllStageNotes`・基礎知識の段落)を書かない。
 直すのは、レビューで指摘して了承をもらったところだけ。

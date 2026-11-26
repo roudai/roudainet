@@ -15,4 +15,11 @@ export interface MegaminxDiagram {
    * `svg()` の `show`(megaminx-image 1.1.0)にそのまま渡す
    */
   show?: number[]
+  /**
+   * 矢印の組 `[from, to]`(megaminx-image の番号。0〜10 は上面、11〜25 は側面の上の列。rotate の後の位置)。
+   * 向きは「揃えるには、from にあるピースが to へ行く」(手順を回したときの動きとは逆向き)。
+   * `[a, b]` と `[b, a]` を両方書くと、両矢印 1 本になる(2 点交換)。
+   * `svg()` の `arrows`(megaminx-image 1.2.0)にそのまま渡す
+   */
+  arrows?: [number, number][]
 }
