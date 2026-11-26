@@ -103,6 +103,7 @@ function resolveExamples(examples: PllExample[] | undefined, where: string) {
 const basics = pllBasics.map((row) =>
   row.map((box) => ({
     title: box.title,
+    wide: box.wide ?? false,
     paragraphs: box.paragraphs,
     examples: resolveExamples(box.examples, `枠「${box.title}」`),
   })),
@@ -177,9 +178,14 @@ onBeforeUnmount(() => {
         :pending="true"
         class="mb-4"
       />
-      <!-- 枠の行。広い画面で 2 列、狭い画面では縦に積む。枠が 1 つの行も、同じ幅の枠にする -->
+      <!-- 枠の行。広い画面で 2 列、狭い画面では縦に積む。枠が 1 つの行も、同じ幅の枠にする(wide の枠だけ全幅) -->
       <div v-for="(row, i) in basics" :key="i" class="mb-4 grid gap-4 md:grid-cols-2">
-        <div v-for="(box, c) in row" :key="box.title" class="rounded border border-bulma-border p-4">
+        <div
+          v-for="(box, c) in row"
+          :key="box.title"
+          class="rounded border border-bulma-border p-4"
+          :class="{ 'md:col-span-2': box.wide }"
+        >
           <h4>{{ box.title }}</h4>
           <MegaminxPllBasicsBlock
             :id-prefix="`pll-basics-${i}-${c}`"
