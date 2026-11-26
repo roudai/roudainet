@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: review-ae-text
+expected_outcome: |
+  A1+ の「上」は誤りで、正しくは左下(A1+ は左下・右上・右下の 3 点交換)。E2 の組み合わせは誤りで、正しくは上↔右上、左上↔右下。E1 は正しい。

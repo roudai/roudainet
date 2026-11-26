@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: d-wrong-claim
+expected_outcome: |
+  D+ にも D- にも左上の偽バーは無い(D+ は左上の面の左側のペアと左下のバー、D- は左上のバー)。それを計算で確かめ、questions.md で指摘して確かめる。右下のヘッドライト(19–23)はどちらにもある。
