@@ -31,7 +31,7 @@ export const pllStages: PllStage[] = [
   { label: 'W', cases: ['W'] },
   { label: 'Y', cases: ['Y1+', 'Y1-', 'Y2+', 'Y2-', 'Y3+', 'Y3-'] },
   { label: 'B', cases: ['B1+', 'B1-', 'B2+', 'B2-'] },
-  { label: 'R', cases: ['R1+', 'R2+', 'R1-', 'R2-', 'R3+', 'R4+', 'R3-', 'R4-'] },
+  { label: 'R', cases: ['R1+', 'R3+', 'R2+', 'R4+', 'R1-', 'R3-', 'R2-', 'R4-'] },
   { label: 'P', cases: ['P1+', 'P2+', 'P1-', 'P2-', 'P3+', 'P4+', 'P3-', 'P4-'] },
   { label: 'S', cases: ['S1+', 'S1-', 'S2+', 'S2-', 'S3+', 'S3-', 'S4+', 'S4-', 'S5+', 'S5-', 'S6+', 'S6-'] },
   { label: 'C', cases: ['C1+', 'C1-', 'C2+', 'C2-', 'C3+', 'C3-', 'C4+', 'C4-', 'C5+', 'C5-', 'C6+', 'C6-'] },
