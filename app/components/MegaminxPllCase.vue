@@ -25,9 +25,10 @@ defineProps<{
     <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
       <div class="flex shrink-0 items-start gap-2">
         <MegaminxImage :id="`pll-${name}`" :diagram="{ case: alg }" />
-        <figure v-for="(mark, i) in marks" :key="i" class="m-0 text-center">
+        <!-- 注釈は、書いた改行(\n)の位置でだけ改行する(文字の途中で折り返さない)。枠は図の幅(100px)を下限に、注釈のいちばん長い行に合わせる -->
+        <figure v-for="(mark, i) in marks" :key="i" class="m-0 min-w-[100px] text-center">
           <MegaminxImage :id="`pll-${name}-mark-${i}`" :diagram="{ case: alg, show: mark.show, arrows: mark.arrows }" />
-          <figcaption v-if="mark.label" class="text-sm">{{ mark.label }}</figcaption>
+          <figcaption v-if="mark.label" class="text-sm whitespace-pre-line">{{ mark.label }}</figcaption>
         </figure>
       </div>
       <div class="min-w-0 flex-1 basis-60">
