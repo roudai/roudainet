@@ -68,11 +68,38 @@ export function features(s) {
         show: [E(k), R(k), L(k + 1), E(k + 1)],
       })
     }
+    // ペア。ブロックの一部のペアは、運営者の数え方ではペアと数えない(ブロックと呼ぶ)ので、inBlock の印を付ける
     if (!bar(k)) {
-      if (same(E(k), R(k))) out.push({ kind: 'ペア', where: `${face}の右側`, show: [E(k), R(k), L(k + 1)] })
-      if (same(E(k), L(k))) out.push({ kind: 'ペア', where: `${face}の左側`, show: [R(k - 1), L(k), E(k)] })
+      if (same(E(k), R(k))) {
+        const inBlock = blockRight(k)
+        out.push({ kind: 'ペア', where: `${face}の右側${inBlock ? '(ブロックの中)' : ''}`, show: [E(k), R(k), L(k + 1)], inBlock })
+      }
+      if (same(E(k), L(k))) {
+        const inBlock = blockRight(k - 1)
+        out.push({ kind: 'ペア', where: `${face}の左側${inBlock ? '(ブロックの中)' : ''}`, show: [R(k - 1), L(k), E(k)], inBlock })
+      }
     }
-    if (same(L(k), R(k)) && !same(L(k), E(k))) out.push({ kind: 'ヘッドライト', where: face, show: five })
+    const headlight = (j) => same(L(j), R(j)) && !same(L(j), E(j))
+    if (headlight(k)) {
+      out.push({ kind: 'ヘッドライト', where: face, show: five })
+      // Rブロック:ヘッドライトの片方のコーナーが、隣の面のエッジとペアになっている。ペアのある側で左・右と呼ぶ
+      if (same(R(k - 1), E(k - 1)) && !bar(k - 1)) {
+        out.push({ kind: '左Rブロック', where: `${face}のヘッドライトと、${FACE_NAMES[mod(k - 1)]}の面のペア`, show: [E(k - 1), R(k - 1), L(k), E(k), R(k), L(k + 1)] })
+      }
+      if (same(L(k + 1), E(k + 1)) && !bar(k + 1)) {
+        out.push({ kind: '右Rブロック', where: `${face}のヘッドライトと、${FACE_NAMES[mod(k + 1)]}の面のペア`, show: [R(k - 1), L(k), E(k), R(k), L(k + 1), E(k + 1)] })
+      }
+    }
+    // Yペア(運営者の言葉):1 つのコーナー(頂点 k+1)を挟んで、面 k の左側と面 k+1 の右側にペアがある。どちらもブロック・バーの一部でない
+    const loosePairLeft = (j) => same(E(j), L(j)) && !bar(j) && !blockRight(j - 1)
+    const loosePairRight = (j) => same(E(j), R(j)) && !bar(j) && !blockRight(j)
+    if (loosePairLeft(k) && loosePairRight(k + 1)) {
+      out.push({
+        kind: 'Yペア',
+        where: `${VERTEX_NAMES[mod(k + 1)]}の頂点を挟む(${FACE_NAMES[k]}の面の左側と${FACE_NAMES[mod(k + 1)]}の面の右側)`,
+        show: [R(k - 1), L(k), E(k), E(k + 1), R(k + 1), L(k + 2)],
+      })
+    }
     const fakeLeft = same(E(k), R(k - 1)) && !same(E(k), L(k))
     const fakeRight = same(E(k), L(k + 1)) && !same(E(k), R(k))
     if (fakeLeft && fakeRight) out.push({ kind: '偽バー', where: face, show: five })
