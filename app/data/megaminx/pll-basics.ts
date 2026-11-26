@@ -34,9 +34,7 @@ export interface PllBasicsBox {
 }
 
 /** タブの最初に載せる一言(1 つの文字列が 1 段落)。空なら「準備中」 */
-export const pllBasicsIntro: string[] = [
-  'ペア、バー、ブロック、ヘッドライトをもとに判断します。ペア・バー・ブロックには「偽」もあります。',
-]
+export const pllBasicsIntro: string[] = ['パーツの塊や色をもとに判断します。ペア・バー・ブロックには「偽」もあります。']
 
 /** 枠の行。1 行に 1 つか 2 つ */
 export const pllBasics: ([PllBasicsBox] | [PllBasicsBox, PllBasicsBox])[] = [
@@ -85,6 +83,11 @@ export const pllBasics: ([PllBasicsBox] | [PllBasicsBox, PllBasicsBox])[] = [
       title: 'ヘッドライト',
       paragraphs: ['1面の両端のコーナー2つが同じ色で、間のエッジだけ違う色'],
       examples: [{ pll: 'F1+', rotate: 0, show: [16, 17, 18, 19, 20] }],
+    },
+    {
+      title: 'Rブロック',
+      paragraphs: ['ヘッドライトの片方のコーナーが、隣の面のエッジとペアになっている'],
+      examples: [{ pll: 'R1+', rotate: 0, show: [15, 16, 17, 18, 19, 20] }],
     },
   ],
 ]

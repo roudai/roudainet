@@ -22,7 +22,7 @@ export const pllStages: PllStage[] = [
   { label: 'Z', cases: ['Z1', 'Z2', 'Z3'] },
   { label: 'Q', cases: ['Q1+', 'Q1-', 'Q2+', 'Q2-'] },
   { label: 'D', cases: ['D+', 'D-'] },
-  { label: 'F2–5', cases: ['F2+', 'F3+', 'F2-', 'F3-', 'F4+', 'F5+', 'F4-', 'F5-'] },
+  { label: 'F2–5', cases: ['F3+', 'F2-', 'F2+', 'F3-', 'F4+', 'F5+', 'F4-', 'F5-'] },
   { label: 'J', cases: ['J1+', 'J1-', 'J2+', 'J3+', 'J2-', 'J3-'] },
   { label: 'M', cases: ['M'] },
   { label: 'N', cases: ['N1+', 'N1-', 'N2+', 'N2-'] },
