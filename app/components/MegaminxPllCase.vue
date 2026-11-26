@@ -13,9 +13,14 @@ defineProps<{
   alg: string
   /** 判断基準の段落 */
   recognition: string[]
-  /** 判断の図(ケースの図と同じ向きで、show のステッカーだけ色を残す) */
+  /** 判断の図(ケースの図と同じ向き。start を付けた図は回し始める向き。show のステッカーだけ色を残す) */
   marks: PllMark[]
 }>()
+
+/** 先頭の括弧の AUF(`(U)`、`(U2')` など)を外した手順。start を付けた判断の図は、この手順で描く(回し始める向きになる) */
+function withoutLeadingAuf(alg: string) {
+  return alg.replace(/^\(U[0-9]*'?\)\s*/, '')
+}
 </script>
 
 <template>
@@ -27,7 +32,10 @@ defineProps<{
         <MegaminxImage :id="`pll-${name}`" :diagram="{ case: alg }" />
         <!-- 注釈は、書いた改行(\n)の位置でだけ改行する(文字の途中で折り返さない)。枠は図の幅(100px)を下限に、注釈のいちばん長い行に合わせる -->
         <figure v-for="(mark, i) in marks" :key="i" class="m-0 min-w-[100px] text-center">
-          <MegaminxImage :id="`pll-${name}-mark-${i}`" :diagram="{ case: alg, show: mark.show, arrows: mark.arrows }" />
+          <MegaminxImage
+            :id="`pll-${name}-mark-${i}`"
+            :diagram="{ case: mark.start ? withoutLeadingAuf(alg) : alg, show: mark.show, arrows: mark.arrows }"
+          />
           <figcaption v-if="mark.label" class="text-sm whitespace-pre-line">{{ mark.label }}</figcaption>
         </figure>
       </div>

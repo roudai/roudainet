@@ -8,7 +8,7 @@ roudai.net のリポジトリ(Nuxt 4 の静的生成、pnpm)の `/megaminx/megam
 | ファイル | 中身 | 誰が書くか |
 | --- | --- | --- |
 | `app/data/megaminx/pll-recognition.ts` の `pllStageNotes` | 各段階(タブ)の見出しの下の一言。キーは段階の名前(`'F2–5'` は全角ダッシュ) | 運営者 |
-| 同 `pllMarks` | 各ケースの判断の図(`{ show, arrows?, label }` の配列、0–2 個) | 運営者の指示で Claude が作る |
+| 同 `pllMarks` | 各ケースの判断の図(`{ show, arrows?, start?, label }` の配列、0–2 個。`start: true` の図は、手順の先頭の括弧の AUF を回した後の向きで描き、番号もその向きで数える) | 運営者の指示で Claude が作る |
 | 同 `pllRecognition` | 各ケースの判断基準の段落(文字列の配列) | 運営者 |
 | `app/data/megaminx/pll-basics.ts` | 基礎知識のタブ(`pllBasicsIntro` と、枠の行 `pllBasics`) | 運営者(例の図は Claude が選ぶことがある) |
 | `app/data/megaminx/pll-stages.ts` | 覚える順の 27 段階とグループの説明 | 変えない |
