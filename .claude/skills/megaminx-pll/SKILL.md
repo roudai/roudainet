@@ -15,6 +15,7 @@ description: メガミンクス(Megaminx)の PLL の判断(recognition)を、meg
 
 - `references/stickers.md`:ステッカーの番号(11–25)、面・頂点の呼び方、コーナーの 2 枚、rotate と AUF、show。番号や位置を扱うなら必ず読む
 - `references/terms.md`:ペア・バー・ブロック・3x2ブロック・ヘッドライトと、その偽物の定義、show の取り方。図を作る・文章を見るなら必ず読む
+- megaminx-image の使い方(図の作り方、記法、配色、PNG の書き出しなど)は、このスキルには写していない。要るときはプロジェクトの `node_modules/megaminx-image/README.ja.md` を読む(入っている版と一致する)
 - `references/roudainet.md`:roudai.net のリポジトリでの作業(どのファイルに書くか、誰が書くか、レビューの仕方、確かめ方、コミット)。そのリポジトリにいるときに読む
 
 ## スクリプト(`scripts/`)
