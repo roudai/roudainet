@@ -148,6 +148,7 @@ onBeforeUnmount(() => {
   <div>
     <h2>Megaminx PLL</h2>
 
+    <!-- タブ。1 文字の段階(A、M、I など)が同じ幅になるよう、いちばん広い 1 文字(W)が収まる幅を下限にする -->
     <div role="tablist" aria-label="Megaminx PLL のタブ" class="my-4 flex flex-wrap gap-1">
       <button
         v-for="tab in tabs"
@@ -156,7 +157,7 @@ onBeforeUnmount(() => {
         role="tab"
         :aria-selected="active === tab.hash"
         :aria-controls="`pll-tab-${tab.hash}`"
-        class="cursor-pointer rounded border px-2 py-1 text-sm"
+        class="min-w-8 cursor-pointer rounded border px-2 py-1 text-sm"
         :class="
           active === tab.hash
             ? 'border-bulma-link bg-bulma-link text-white'
