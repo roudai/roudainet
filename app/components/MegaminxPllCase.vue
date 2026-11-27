@@ -28,10 +28,10 @@ function withoutLeadingAuf(alg: string) {
   <div class="mb-4 rounded border border-bulma-border p-4">
     <h4>{{ name }}</h4>
     <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-      <!-- 広い画面では、図が 1〜2 枚のケースも、図が 3 枚のケースと同じ位置から手順と判断基準が始まるよう、
-           図の列の幅の下限を、3 枚並べたときのいちばん広い幅(注釈の長さで 316〜328px)に合わせる。
-           狭い画面では手順と判断基準が図の下に回るので、下限を付けない(付けると幅 375px で横にはみ出す) -->
-      <div class="flex shrink-0 items-start gap-2 md:min-w-[330px]">
+      <!-- 図が 1〜2 枚のケースも、図が 3 枚のケースと同じに並ぶよう、図の列の幅の下限を、3 枚並べたときのいちばん広い幅
+           (注釈の長さで 316〜328px)に合わせる。こうすると、手順と判断基準が右に並ぶか下に回るかが、どの画面の幅でも
+           全ケースで同じになり、右に並ぶときは始まる位置もそろう。狭いスマホで横にはみ出さないよう、枠の幅を超えない -->
+      <div class="flex min-w-[min(330px,100%)] shrink-0 items-start gap-2">
         <MegaminxImage :id="`pll-${name}`" :diagram="{ case: alg }" />
         <!-- 注釈は、書いた改行(\n)の位置でだけ改行する(文字の途中で折り返さない)。枠は図の幅(100px)を下限に、注釈のいちばん長い行に合わせる -->
         <figure v-for="(mark, i) in marks" :key="i" class="m-0 min-w-[100px] text-center">
