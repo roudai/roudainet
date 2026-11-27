@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Megaminx PLL のスキルの版(記事のデータを最後に変えたコミット)を求めるため、履歴をすべて取る
+          fetch-depth: 0
 
       - uses: ./.github/actions/setup
 

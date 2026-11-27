@@ -1,5 +1,6 @@
 // Claude アプリ用のスキル megaminx-pll-qa を組み立てて zip にする。
-// 使い方: node scripts/build-pll-skill.mjs [出力先(既定は .skill-build)]
+// 使い方: node scripts/build-pll-skill.mjs [出力先(既定は .skill-build)] [--site 静的サイトの出力(.output/public)]
+//   --site を付けると、zip をサイトの /megaminx/megaminx-pll-qa.zip にも置く(pnpm generate が付けて動かす。記事のページから落とせる)
 //
 // - skills/megaminx-pll-qa/ の手で書いた部分(SKILL.md、用語、スクリプト)を写す
 // - megaminx-image(node_modules の dist)を scripts/vendor/ に同梱する(アプリで npm install しなくても動くように)
@@ -16,7 +17,10 @@ import { pllMarks, pllRecognition, pllStageNotes } from '../app/data/megaminx/pl
 import { pllGroupNotes, pllStages } from '../app/data/megaminx/pll-stages.ts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const outRoot = resolve(process.argv[2] ?? join(root, '.skill-build'))
+const args = process.argv.slice(2)
+const siteIndex = args.indexOf('--site')
+const site = siteIndex >= 0 ? resolve(args.splice(siteIndex, 2)[1]) : undefined
+const outRoot = resolve(args[0] ?? join(root, '.skill-build'))
 const name = 'megaminx-pll-qa'
 const dir = join(outRoot, name)
 const PAGE = 'https://roudai.net/megaminx/megaminx-pll'
@@ -29,7 +33,10 @@ cpSync(join(root, 'skills', name), dir, { recursive: true })
 // 版:記事のデータ・スキルの元・このスクリプトを最後に変えたコミットの日付とハッシュ。SKILL.md に書き込み、配布の名前にも使う
 const git = (...a) => execFileSync('git', a, { cwd: root, encoding: 'utf8' }).trim()
 const inputs = ['app/data/megaminx', 'skills', 'scripts/build-pll-skill.mjs']
-const [date, hash] = git('log', '-1', '--format=%cs %h', '--', ...inputs).split(' ')
+const last = git('log', '-1', '--format=%cs %h', '--', ...inputs)
+// 履歴が浅い(git clone --depth 1)と、入力を変えたコミットが見つからない。版を正しく出せないので止める
+if (!last) throw new Error('入力を最後に変えたコミットが見つかりません(履歴が浅い場合は、深く取り直してください)')
+const [date, hash] = last.split(' ')
 const dirty = git('status', '--porcelain', '--', ...inputs) !== ''
 const release = `${date}${dirty ? '+未コミット' : ` (${hash})`}`
 {
@@ -240,5 +247,10 @@ execFileSync('zip', ['-qr', `${name}.zip`, name, '-x', '*.DS_Store'], { cwd: out
 const count = (d) => readdirSync(d, { recursive: true }).length
 console.log(`組み立てた: ${dir}(${count(dir)} 個のファイル)`)
 console.log(`zip: ${join(outRoot, `${name}.zip`)}`)
+if (site) {
+  mkdirSync(join(site, 'megaminx'), { recursive: true })
+  cpSync(join(outRoot, `${name}.zip`), join(site, 'megaminx', `${name}.zip`))
+  console.log(`サイトに置いた: ${join(site, 'megaminx', `${name}.zip`)}`)
+}
 console.log(`版: ${release}${dirty ? '(配布する前にコミットする)' : `。配布のタグは ${name}-${date}`}`)
 for (const w of warnings) console.warn(`注意: ${w}`)

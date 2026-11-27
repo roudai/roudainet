@@ -149,6 +149,15 @@ onBeforeUnmount(() => {
   <div>
     <h2>Megaminx PLL</h2>
 
+    <!-- Claude のスキルの案内。zip は pnpm generate が記事のデータから組み立てて置く(scripts/build-pll-skill.mjs) -->
+    <p>
+      このページの判断基準をもとに、メガミンクスのPLLの質問に答えるClaudeのスキルを配布しています。<a
+        href="/megaminx/megaminx-pll-qa.zip"
+        download
+        >スキルをダウンロード</a
+      >（zip）して、Claudeアプリのスキルの設定からアップロードしてください。
+    </p>
+
     <!-- タブ。1 文字の段階(A、M、I など)が同じ幅になるよう、いちばん広い 1 文字(W)が収まる幅を下限にする -->
     <div role="tablist" aria-label="Megaminx PLL のタブ" class="my-4 flex flex-wrap gap-1">
       <button

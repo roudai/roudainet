@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && node scripts/build-pll-skill.mjs --site .output/public",
     "preview": "node scripts/preview.mjs",
     "postinstall": "nuxt prepare",
     "lint": "eslint . && prettier --check .",

@@ -34,6 +34,11 @@ if (!existsSync(appAdsPath)) {
   errors.push(`app-ads.txt が ${legacyAppAds} と一致しません`)
 }
 
+// Megaminx PLL のページから落とせる、Claude のスキルの zip(pnpm generate が置く)
+if (!existsSync(join(outputDir, 'megaminx', 'megaminx-pll-qa.zip'))) {
+  errors.push('megaminx/megaminx-pll-qa.zip がありません(pnpm generate で作られる)')
+}
+
 if (!existsSync(join(outputDir, 'favicon.ico'))) {
   errors.push('favicon.ico がありません')
 }
