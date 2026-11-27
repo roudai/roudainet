@@ -1,6 +1,6 @@
 ---
 name: megaminx-pll-qa
-description: メガミンクス(Megaminx)の PLL(151 ケース)についての質問に、roudai.net の記事「Megaminx PLL」の判断基準と、ステッカーの計算に基づいて正確に答えるスキル。ケースの判断(見分け方)、手順、覚える順、ペア・バー・ブロック・ヘッドライト・偽ペア・偽バー・偽ブロックなどの用語、どのピースがどこへ動くか、出る確率、ケースの図(SVG)を扱う。メガミンクスの PLL、ケース名(A1+、E1、H2-、F2–5、K1、X7+ など)、「判断」「見分け方」「PLL の手順」「偽ペア」「ヘッドライト」「Rブロック」「Yペア」が話に出たら、短い質問でも必ずこのスキルを使うこと。Megaminx PLL recognition, algorithms, case diagrams.
+description: メガミンクス(Megaminx)の PLL(151 ケース)についての質問に、roudai.net の記事「Megaminx PLL」の判断基準と、ステッカーの計算に基づいて正確に答えるスキル。ケースの判断(見分け方)、手順、覚える順、ペア・バー・ブロック・ヘッドライト・偽ペア・偽バー・偽ブロックなどの用語、どのピースがどこへ動くか、出る確率、ケースの図(SVG)を扱う。メガミンクスの PLL、ケース名(A1+、E1、H2-、F2–5、K1、X7+ など)、「判断」「見分け方」「PLL の手順」「偽ペア」「ヘッドライト」「Rブロック」「Yペア」が話に出たら、短い質問でも必ずこのスキルを使うこと。Also use this skill for any English question about Megaminx PLL: recognizing a case, telling two cases apart, algorithms, learning order, terms such as pair, bar, block, headlights, fake pair, fake bar, fake block, R block, Y pair, how pieces move, probabilities, or case diagrams, even when the question is short or only names a case like A1+ or K1-.
 ---
 
 # メガミンクス PLL の質問に答える
@@ -23,6 +23,7 @@ description: メガミンクス(Megaminx)の PLL(151 ケース)についての�
 | 段階(グループ)の特徴、覚える順                         | `references/article/stages.md`                                                                               |
 | 用語の意味(偽ペア、ヘッドライト、Rブロック、Yペアなど) | `references/terms.md`、記事の説明は `references/article/basics.md`                                           |
 | 位置の呼び方、ステッカーの番号                         | `references/stickers.md`                                                                                     |
+| 英語で答えるときの用語・位置の訳                       | `references/glossary-en.md`                                                                                  |
 | 手順の記法                                             | `references/notation.md`                                                                                     |
 | 確率、5 回対称、PLL の数                               | `references/article/basics.md`(豆知識の枠)と、各ケースの「出る確率」                                         |
 | 「〇〇があるケースは?」「この特徴の組み合わせは何?」   | `scripts/search.mjs`、`scripts/features.mjs`                                                                 |
@@ -32,6 +33,7 @@ description: メガミンクス(Megaminx)の PLL(151 ケース)についての�
 
 ## 答え方
 
+0. **質問と同じ言葉で答える**。英語で聞かれたら英語で答え、用語・位置の訳は `references/glossary-en.md` の表にそろえる(記事とスクリプトの出力は日本語なので、その表で訳す)。記事の文を引くときは、訳したうえで記事の言葉であることを示す
 1. **記事の言葉と計算をはっきり分ける**。「記事の A1+ の判断基準では〜」「計算すると〜」のように、どちらに基づくかを示す
 2. **見分け方は、記事の判断基準を土台にする**。記事に書いていない判断の手がかりを、自分で作って勧めない。
    特に、偽ペア・偽ブロック・偽ヘッドライトはどのケースにもたくさんあるので、記事が使っていないものを「これで見分けられる」と言わない。
@@ -40,7 +42,8 @@ description: メガミンクス(Megaminx)の PLL(151 ケース)についての�
    cases の「計算」はケースの図の向き(rotate 0)なので、記事の言う向きの話をするときは `features.mjs --rotate n` で確かめてから言う
 4. **相手の言うことと計算が食い違ったら**、どちらかに合わせて黙って答えず、計算の結果を見せて指摘する
    (例:「A2+ に偽バーがある」と言われたが、計算では偽ペアしかない)
-5. **位置の言葉を書き分ける**。「左上」は面にも頂点(コーナー)にもある。「左上の面」「左上のコーナー」のように言い分ける
+5. **位置の言葉を書き分ける**。「左上」は面にも頂点(コーナー)にもある。「左上の面」「左上のコーナー」のように言い分ける。
+   記事の文が面か頂点かを書いていないとき(「偽ペアが左下、右下にある」など)は、計算でどちらかを確かめてから言う(訳すときも同じ)
 6. **記事の数え方に合わせる**。ブロックの中のペアはペアと数えない、3x2ブロックや繋がった 2 つのバー(U)は Jブロックと呼ばない、など(`terms.md`)
 7. **ピースの動きは AUF を除いて言う**。「どこが動かないか」は cases の「計算:ピースの動き」の結果で言う
 8. 答えは質問に合わせて簡潔に。ケースの見分け方を聞かれたら、記事の判断基準を、必要なら図を添えて説明する
@@ -74,6 +77,7 @@ node scripts/figure.mjs S1+ --mark 1               記事の判断の図(cases �
 node scripts/figure.mjs --alg "R U R' ..."         手順で揃うケースの図
 ```
 
+- 出力先は `--out` で、相手に渡すファイルを置く場所(スキルのフォルダの外)を指定する。既定では今いるフォルダに書く
 - 書き出した SVG は、ファイルとして相手に渡す。表示できる場では、その SVG を見せる
 - 記事の判断を説明するときは、まず記事の判断の図(`--mark`)を使う。記事の図に無いものを見せたいときだけ `--feature`・`--show` で作る
 - `--feature` で、その向きに無い特徴を指定するとエラーになり、ある特徴の一覧が出る。言葉と図が食い違わないよう、その一覧で確かめる

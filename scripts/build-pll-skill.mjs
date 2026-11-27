@@ -30,7 +30,7 @@ rmSync(join(outRoot, `${name}.zip`), { force: true })
 mkdirSync(outRoot, { recursive: true })
 cpSync(join(root, 'skills', name), dir, { recursive: true })
 
-// 版:記事のデータ・スキルの元・このスクリプトを最後に変えたコミットの日付とハッシュ。SKILL.md に書き込み、配布の名前にも使う
+// 版:記事のデータ・スキルの元・このスクリプトを最後に変えたコミットの日付とハッシュ。SKILL.md に書き込む
 const git = (...a) => execFileSync('git', a, { cwd: root, encoding: 'utf8' }).trim()
 const inputs = ['app/data/megaminx', 'skills', 'scripts/build-pll-skill.mjs']
 const last = git('log', '-1', '--format=%cs %h', '--', ...inputs)
@@ -252,5 +252,5 @@ if (site) {
   cpSync(join(outRoot, `${name}.zip`), join(site, 'megaminx', `${name}.zip`))
   console.log(`サイトに置いた: ${join(site, 'megaminx', `${name}.zip`)}`)
 }
-console.log(`版: ${release}${dirty ? '(配布する前にコミットする)' : `。配布のタグは ${name}-${date}`}`)
+console.log(`版: ${release}${dirty ? '(配布する前にコミットする)' : ''}`)
 for (const w of warnings) console.warn(`注意: ${w}`)
