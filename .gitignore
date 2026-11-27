@@ -90,3 +90,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Claude アプリ用のスキルの組み立て先(scripts/build-pll-skill.mjs)
+.skill-build
