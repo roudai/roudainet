@@ -27,19 +27,29 @@ function withoutLeadingAuf(alg: string) {
   <!-- ケースごとに枠で囲む(基礎知識の枠と同じ見た目)。図を左に、手順と判断基準を右に置き、狭い画面では図の下に回す -->
   <div class="mb-4 rounded border border-bulma-border p-4">
     <h4>{{ name }}</h4>
-    <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+    <!-- @container:注釈の文字の大きさを、この枠の中の幅(cqw)から決めるため -->
+    <div class="@container flex flex-wrap items-center gap-x-6 gap-y-3">
       <!-- 図が 1〜2 枚のケースも、図が 3 枚のケースと同じに並ぶよう、図の列の幅の下限を、3 枚並べたときのいちばん広い幅
            (注釈の長さで 316〜328px)に合わせる。こうすると、手順と判断基準が右に並ぶか下に回るかが、どの画面の幅でも
-           全ケースで同じになり、右に並ぶときは始まる位置もそろう。狭いスマホで横にはみ出さないよう、枠の幅を超えない -->
-      <div class="flex min-w-[min(330px,100%)] shrink-0 items-start gap-2">
-        <MegaminxImage :id="`pll-${name}`" :diagram="{ case: alg }" />
-        <!-- 注釈は、書いた改行(\n)の位置でだけ改行する(文字の途中で折り返さない)。枠は図の幅(100px)を下限に、注釈のいちばん長い行に合わせる -->
-        <figure v-for="(mark, i) in marks" :key="i" class="m-0 min-w-[100px] text-center">
+           全ケースで同じになり、右に並ぶときは始まる位置もそろう。
+           枠の幅は超えない(max-w-full)。足りないときは、図を折り返さず、注釈の文字と図を縮めて 3 枚を横に収める -->
+      <div class="flex max-w-full min-w-[min(330px,100%)] shrink-0 items-start gap-2">
+        <MegaminxImage :id="`pll-${name}`" class="min-w-0" :diagram="{ case: alg }" />
+        <!-- 注釈は、書いた改行(\n)の位置でだけ改行する(文字の途中で折り返さない)。枠は注釈のいちばん長い行に合わせて広がる。
+             文字の大きさは、ふつうは text-sm(0.875rem)。枠の中が狭いとき(小さいスマホ、文字を大きくした端末)は、
+             8 文字の行の注釈の図を 3 枚並べて収まる大きさ((枠の中の幅 - 図の間 16px) ÷ 24 文字分)まで縮める。
+             それでも収まらないときは、図(SVG は入れ物の幅まで縮む)も縮む -->
+        <figure v-for="(mark, i) in marks" :key="i" class="m-0 min-w-0 text-center">
           <MegaminxImage
             :id="`pll-${name}-mark-${i}`"
             :diagram="{ case: mark.start ? withoutLeadingAuf(alg) : alg, show: mark.show, arrows: mark.arrows }"
           />
-          <figcaption v-if="mark.label" class="text-sm whitespace-pre-line">{{ mark.label }}</figcaption>
+          <figcaption
+            v-if="mark.label"
+            class="text-[length:min(0.875rem,calc((100cqw-16px)/24))] leading-[1.43] whitespace-pre-line"
+          >
+            {{ mark.label }}
+          </figcaption>
         </figure>
       </div>
       <div class="min-w-0 flex-1 basis-60">
