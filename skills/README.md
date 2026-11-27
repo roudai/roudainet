@@ -15,3 +15,17 @@ node scripts/build-pll-skill.mjs   # .skill-build/megaminx-pll-qa.zip ができ�
 
 できた zip を、Claude アプリのスキルの設定からアップロードする(コード実行をオンにしておくと、図と計算が使える)。
 記事を直したら、組み立て直して入れ直す。
+
+### 配布(GitHub Releases)
+
+1. 変更をコミットしてから組み立てる(未コミットだと、版に「+未コミット」と付く)
+2. 出力の最後の行に出るタグ(`megaminx-pll-qa-<日付>`)で、zip を添付したリリースを作る
+
+```sh
+git push
+gh release create megaminx-pll-qa-<日付> .skill-build/megaminx-pll-qa.zip --target main \
+  --title "Megaminx PLL スキル <日付>" --notes "…"
+```
+
+使う人は、リリースの zip をダウンロードして、Claude アプリのスキルの設定からアップロードする。
+同じ日に作り直したときは、`gh release upload <タグ> .skill-build/megaminx-pll-qa.zip --clobber` で差し替える。

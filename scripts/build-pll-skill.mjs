@@ -8,7 +8,7 @@
 //   (アプリでコード実行がオフでも、正確に答えられるように)
 // - 記事を直したら、これを動かし直して zip を入れ直す
 import { execFileSync } from 'node:child_process'
-import { cpSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
+import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { pllBasics, pllBasicsIntro } from '../app/data/megaminx/pll-basics.ts'
@@ -25,6 +25,20 @@ rmSync(dir, { recursive: true, force: true })
 rmSync(join(outRoot, `${name}.zip`), { force: true })
 mkdirSync(outRoot, { recursive: true })
 cpSync(join(root, 'skills', name), dir, { recursive: true })
+
+// 版:記事のデータ・スキルの元・このスクリプトを最後に変えたコミットの日付とハッシュ。SKILL.md に書き込み、配布の名前にも使う
+const git = (...a) => execFileSync('git', a, { cwd: root, encoding: 'utf8' }).trim()
+const inputs = ['app/data/megaminx', 'skills', 'scripts/build-pll-skill.mjs']
+const [date, hash] = git('log', '-1', '--format=%cs %h', '--', ...inputs).split(' ')
+const dirty = git('status', '--porcelain', '--', ...inputs) !== ''
+const release = `${date}${dirty ? '+未コミット' : ` (${hash})`}`
+{
+  const skillMd = join(dir, 'SKILL.md')
+  const text = readFileSync(skillMd, 'utf8')
+  const marker = '記事の内容は、このスキルを作った時点のもの。'
+  if (!text.includes(marker)) throw new Error(`SKILL.md に「${marker}」が見つかりません`)
+  writeFileSync(skillMd, text.replace(marker, `このスキルの版は ${release}。記事の内容は、この日付の時点のもの。`))
+}
 
 // megaminx-image を同梱する。PNG の書き出し(png.js)は別のパッケージが要るので外す
 const lib = join(root, 'node_modules', 'megaminx-image')
@@ -226,4 +240,5 @@ execFileSync('zip', ['-qr', `${name}.zip`, name, '-x', '*.DS_Store'], { cwd: out
 const count = (d) => readdirSync(d, { recursive: true }).length
 console.log(`組み立てた: ${dir}(${count(dir)} 個のファイル)`)
 console.log(`zip: ${join(outRoot, `${name}.zip`)}`)
+console.log(`版: ${release}${dirty ? '(配布する前にコミットする)' : `。配布のタグは ${name}-${date}`}`)
 for (const w of warnings) console.warn(`注意: ${w}`)
