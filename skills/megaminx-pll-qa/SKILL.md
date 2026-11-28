@@ -1,6 +1,6 @@
 ---
 name: megaminx-pll-qa
-description: メガミンクス(Megaminx)の PLL(151 ケース)についての質問に、roudai.net の記事「Megaminx PLL」の判断基準と、ステッカーの計算に基づいて正確に答えるスキル。ケースの判断(見分け方)、手順、覚える順、ペア・バー・ブロック・ヘッドライト・偽ペア・偽バー・偽ブロックなどの用語、どのピースがどこへ動くか、出る確率、ケースの図(SVG)を扱う。メガミンクスの PLL、ケース名(A1+、E1、H2-、F2–5、K1、X7+ など)、「判断」「見分け方」「PLL の手順」「偽ペア」「ヘッドライト」「Rブロック」「Yペア」が話に出たら、短い質問でも必ずこのスキルを使うこと。Also use this skill for any English question about Megaminx PLL: recognizing a case, telling two cases apart, algorithms, learning order, terms such as pair, bar, block, headlights, fake pair, fake bar, fake block, R block, Y pair, how pieces move, probabilities, or case diagrams, even when the question is short or only names a case like A1+ or K1-.
+description: Answers questions about Megaminx PLL (151 cases) based on the recognition guide on roudai.net and sticker calculations. メガミンクス(Megaminx)の PLL(151 ケース)についての質問に、roudai.net の記事「Megaminx PLL」の判断基準と、ステッカーの計算に基づいて正確に答えるスキル。ケースの判断(見分け方)、手順、覚える順、ペア・バー・ブロック・ヘッドライト・偽ペア・偽バー・偽ブロックなどの用語、どのピースがどこへ動くか、出る確率、ケースの図(SVG)を扱う。メガミンクスの PLL、ケース名(A1+、E1、H2-、F2–5、K1、X7+ など)、「判断」「見分け方」「PLL の手順」「偽ペア」「ヘッドライト」「Rブロック」「Yペア」が話に出たら、短い質問でも必ずこのスキルを使うこと。Also use this skill for any English question about Megaminx PLL: recognizing a case, telling two cases apart, algorithms, learning order, terms such as pair, bar, block, headlights, fake pair, fake bar, fake block, R block, Y pair, how pieces move, probabilities, or case diagrams, even when the question is short or only names a case like A1+ or K1-.
 ---
 
 # メガミンクス PLL の質問に答える
