@@ -144,7 +144,21 @@ mkdirSync(join(dir, 'references', 'article'), { recursive: true })
     )
   })
   lines.push('', '## 段階の説明(記事の各タブの冒頭の文)', '')
-  for (const st of pllStages) lines.push(`- **${st.label}**:${pllStageNotes[st.label] || '(記事に説明なし)'}`)
+  // 向きに触れている段階の説明には、向きは必須ではないことを冒頭に添える(答えで「必ずこの向き」と強めないため)。
+  // B の向きは判断でなく手順を始める向きなので、そう添える(手順を始める向きは手順の上では要るので「必須ではない」とは書かない)
+  const orientationNote = '(向きは判断しやすいように置き方をそろえているだけで、必須ではない)'
+  const stageNotePrefix = {
+    B: '(ここでの向きは、判断の向きではなく、手順を始める向きの話)',
+    R: orientationNote,
+    P: orientationNote,
+    I: orientationNote,
+    K2: orientationNote,
+    L: orientationNote,
+  }
+  for (const st of pllStages) {
+    const note = pllStageNotes[st.label]
+    lines.push(`- **${st.label}**:${note ? `${stageNotePrefix[st.label] ?? ''}${note}` : '(記事に説明なし)'}`)
+  }
   writeFileSync(join(dir, 'references', 'article', 'stages.md'), lines.join('\n') + '\n')
 }
 
